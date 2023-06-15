@@ -20,7 +20,7 @@ Kayura UASP 是一款在国企大型应用背景下一步步发展而来的。
 
 只需要以下几个步骤，您就得到一个基于 UASP 的开发项目。  
 您也可以直接下载搭建好的骨架工程，进行编译与运行。  
-[点击查看 kayura-skeleton，已包含一个简单模块示例](https://gitee.com/kayura-projects/kayura-uasp-showcast/tree/master/kayura-skeleton)
+[点击查看 kayura-skeleton，已包含一个简单模块示例](/kayura-uasp-showcast/tree/master/kayura-skeleton)
 
 ### 第1步：创建一个空的数据库
 
@@ -81,7 +81,7 @@ public class KayuraUaspWebStarter implements WebMvcConfigurer {
 }
 ``` 
 
-在 resources 目录下创建 [application.yml](https://gitee.com/kayura-projects/kayura-uasp-platform/tree/master/kayura-uasp/kayura-uasp-webstarter/src/main/resources) 文件，
+在 resources 目录下创建 [application.yml](/kayura-skeleton/kayura-skeleton-webstarter/src/main/resources) 文件，
 请点击链接查看，并复制到您的项目中。
 
 ### 第5步：现在您可以编译和运行项目了。
