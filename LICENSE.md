@@ -4,5 +4,5 @@
 
 ### 有关更多信息，请联系作者。 
 
-#### Email：liangxia@live.com
-#### QQ:    24634631
+#### Email：xialiang@vip.qq.com
+#### QQ群：796316725
