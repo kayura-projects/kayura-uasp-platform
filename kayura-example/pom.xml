@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.kayura.example</groupId>
+  <artifactId>kayura-example</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <organization>
+    <name>Kayura Software</name>
+    <url>https://www.kayura.org</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>LiangXia</name>
+      <email>liangxia@live.com</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+8</timezone>
+    </developer>
+  </developers>
+
+  <modules>
+    <module>kayura-example-common</module>
+    <module>kayura-example-service</module>
+    <module>kayura-example-webapi</module>
+    <module>kayura-example-webstarter</module>
+  </modules>
+
+  <properties>
+    <java.release>17</java.release>
+    <java.version>${java.release}</java.version>
+    <maven.compiler.release>${java.release}</maven.compiler.release>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <kayura.version>0.0.1</kayura.version>
+    <druid-spring.version>1.2.17</druid-spring.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+
+      <!-- kayura -->
+      <dependency>
+        <groupId>org.kayura</groupId>
+        <artifactId>kayura-dependencies</artifactId>
+        <version>${kayura.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- example -->
+      <dependency>
+        <groupId>org.kayura.example</groupId>
+        <artifactId>kayura-example-common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kayura.example</groupId>
+        <artifactId>kayura-example-service</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kayura.example</groupId>
+        <artifactId>kayura-example-webapi</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+</project>
