@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.kayura</groupId>
+  <artifactId>kayura-parent</artifactId>
+  <version>0.0.1</version>
+  <packaging>pom</packaging>
+
+  <organization>
+    <name>Kayura Software</name>
+    <url>https://www.kayura.org</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>LiangXia</name>
+      <email>liangxia@live.com</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+8</timezone>
+    </developer>
+  </developers>
+
+  <modules>
+    <module>kayura-dependencies</module>
+    <module>kayura-core</module>
+    <module>kayura-mybatis</module>
+    <module>kayura-uasp</module>
+  </modules>
+
+  <properties>
+    <java.release>17</java.release>
+    <java.version>${java.release}</java.version>
+    <maven.compiler.release>${java.release}</maven.compiler.release>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <!-- plugins -->
+    <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+    <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
+    <maven-javadoc-plugin.version>3.3.0</maven-javadoc-plugin.version>
+    <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+    <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+    <javadoc.failOnError>false</javadoc.failOnError>
+    <javadoc.failOnWarnings>false</javadoc.failOnWarnings>
+    <!-- spring -->
+    <spring-framework.version>5.3.27</spring-framework.version>
+    <spring-security.version>5.8.3</spring-security.version>
+    <spring-data.version>2.7.12</spring-data.version>
+    <spring-boot.version>2.7.12</spring-boot.version>
+    <!-- jar -->
+    <flyway.version>8.5.13</flyway.version>
+    <activiti.version>7.9.1</activiti.version>
+    <itext.version>7.2.5</itext.version>
+    <javax-validation.version>2.0.1.Final</javax-validation.version>
+    <jackson.version.databind>2.13.4.1</jackson.version.databind>
+    <servlet-api.version>4.0.1</servlet-api.version>
+    <jjwt.version>0.11.5</jjwt.version>
+    <slf4j.version>1.7.36</slf4j.version>
+    <commons-codec.version>1.13</commons-codec.version>
+    <netty.version>4.1.92.Final</netty.version>
+    <swagger.version>3.0.0</swagger.version>
+    <annotations.version>17.0.0</annotations.version>
+    <modelmapper.version>2.3.5</modelmapper.version>
+    <snakeyaml.version>1.33</snakeyaml.version>
+    <thumbnailator.version>0.4.17</thumbnailator.version>
+    <zxing.version>3.5.0</zxing.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- spring-boot -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- activiti -->
+      <dependency>
+        <groupId>org.activiti</groupId>
+        <artifactId>activiti-dependencies</artifactId>
+        <version>${activiti.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- swagger2 -->
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-core</artifactId>
+        <version>${swagger.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-boot-starter</artifactId>
+        <version>${swagger.version}</version>
+      </dependency>
+
+      <!-- other -->
+      <dependency>
+        <groupId>org.modelmapper</groupId>
+        <artifactId>modelmapper</artifactId>
+        <version>${modelmapper.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>net.coobird</groupId>
+        <artifactId>thumbnailator</artifactId>
+        <version>${thumbnailator.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.zxing</groupId>
+        <artifactId>core</artifactId>
+        <version>${zxing.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+  <distributionManagement>
+    <repository>
+      <id>kayura-release</id>
+      <url>http://nexus.kayura.org/repository/maven-releases</url>
+    </repository>
+  </distributionManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${maven-source-plugin.version}</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+              <phase>package</phase>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${maven-javadoc-plugin.version}</version>
+          <executions>
+            <execution>
+              <id>javadoc</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+              <phase>package</phase>
+            </execution>
+          </executions>
+          <configuration>
+            <failOnError>${javadoc.failOnError}</failOnError>
+            <failOnWarnings>${javadoc.failOnWarnings}</failOnWarnings>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-eclipse-plugin</artifactId>
+          <version>${maven-eclipse-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven-compiler-plugin.version}</version>
+          <configuration>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+            <compilerArgument>-parameters</compilerArgument>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring-boot.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+</project>

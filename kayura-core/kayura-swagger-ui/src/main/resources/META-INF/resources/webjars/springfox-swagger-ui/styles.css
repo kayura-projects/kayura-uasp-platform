@@ -1,0 +1,73 @@
+.swagger-ui .info {
+  margin: 10px 0;
+}
+
+.swagger-ui .info .title{
+  font-size: 28px;
+  margin: 5px 0;
+}
+
+.swagger-ui .opblock-tag {
+  font-size: 18px;
+  padding: 5px 15px 5px 5px;
+  border: 2px solid rgba(59,65,81,.3);
+  border-radius: 4px;
+  margin: 5px 0;
+  background-color: rgba(59,65,81,.1);
+}
+
+.swagger-ui .opblock .opblock-summary {
+  padding: 1px;
+}
+
+.swagger-ui .opblock .opblock-summary-method {
+  min-width: 60px;
+  padding: 6px 10px;
+}
+
+.swagger-ui .opblock .opblock-summary-description {
+  color: #858585;
+}
+
+.swagger-ui section.models h4 {
+  padding: 5px 15px 5px 5px;
+}
+
+.swagger-ui section.models {
+  margin: 10px 0;
+}
+
+.swagger-ui .markdown p, .swagger-ui .markdown pre, .swagger-ui .renderedMarkdown p, .swagger-ui .renderedMarkdown pre {
+  margin: 3px auto;
+}
+
+.swagger-ui section.models .model-container:first-of-type {
+  margin: 10px;
+}
+
+.swagger-ui section.models .model-container {
+  margin: 0 10px 10px;
+}
+
+.swagger-ui section.models .model-container:last-of-type {
+  margin: 0 10px;
+}
+
+.swagger-ui .model-title {
+    font-size: 14px;
+}
+.swagger-ui .model-box {
+  padding: 5px;
+}
+
+.swagger-ui .opblock {
+  margin: 0 0 5px;
+}
+
+.swagger-ui textarea.curl {
+  font-size: 14px;
+}
+
+.swagger-ui .opblock-body pre.microlight {
+  font-size: 14px;
+}

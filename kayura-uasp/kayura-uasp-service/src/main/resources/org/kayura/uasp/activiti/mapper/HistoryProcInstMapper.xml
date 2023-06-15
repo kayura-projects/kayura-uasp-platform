@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kayura.uasp.activiti.mapper.HistoryProcInstMapper">
+
+  <select id="collectProcInst" parameterType="map" resultType="org.kayura.uasp.activiti.model.ProcInstCount">
+    SELECT
+      rpd.ID_ AS defineId,
+      COUNT(mt.ID_) AS count
+    FROM act_hi_procinst mt
+    INNER JOIN act_re_procdef rpd ON rpd.ID_ = mt.PROC_DEF_ID_
+    WHERE rpd.KEY_ IN (
+      <foreach collection="processKeys" index="item" separator=",">#{item}</foreach>
+    )
+    GROUP BY rpd.ID_
+  </select>
+
+</mapper>

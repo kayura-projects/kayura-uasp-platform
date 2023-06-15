@@ -1,0 +1,13 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.kayura.autoconfigure.bean.BeanAutoConfigurer,\
+org.kayura.autoconfigure.cmd.CommandAutoConfigurer,\
+org.kayura.autoconfigure.event.EventBusAutoConfigurer,\
+org.kayura.autoconfigure.cache.CacheAutoConfigurer,\
+org.kayura.autoconfigure.nextid.NextIdAutoConfigurer,\
+org.kayura.autoconfigure.sms.SmsAutoConfigurer,\
+org.kayura.autoconfigure.security.VerifyCodeAutoConfigurer,\
+org.kayura.autoconfigure.security.SecurityAutoConfigurer,\
+org.kayura.autoconfigure.security.JwtAutoConfigure,\
+org.kayura.autoconfigure.webmvc.WebMvcAutoConfigurer,\
+org.kayura.autoconfigure.retry.RetryAutoConfigurer

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.kayura.uasp</groupId>
+    <artifactId>kayura-uasp</artifactId>
+    <version>0.0.1</version>
+  </parent>
+  <packaging>pom</packaging>
+  <artifactId>kayura-uasp-dependencies</artifactId>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.kayura.uasp</groupId>
+        <artifactId>kayura-uasp-common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kayura.uasp</groupId>
+        <artifactId>kayura-uasp-service</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kayura.uasp</groupId>
+        <artifactId>kayura-uasp-webapi</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kayura.uasp</groupId>
+        <artifactId>kayura-uasp-spring-boot</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kayura.uasp</groupId>
+        <artifactId>kayura-uasp-webui</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+</project>

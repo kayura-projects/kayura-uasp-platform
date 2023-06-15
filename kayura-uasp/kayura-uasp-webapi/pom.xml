@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.kayura.uasp</groupId>
+    <artifactId>kayura-uasp-dependencies</artifactId>
+    <version>0.0.1</version>
+    <relativePath>../kayura-uasp-dependencies</relativePath>
+  </parent>
+  <artifactId>kayura-uasp-webapi</artifactId>
+
+  <dependencies>
+
+    <!-- spring-framework -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+    </dependency>
+
+    <!-- spring-boot -->
+    <!--suppress VulnerableLibrariesLocal -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-cache</artifactId>
+    </dependency>
+
+    <!-- other -->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+    </dependency>
+
+    <!-- kayura-framework -->
+    <dependency>
+      <groupId>org.kayura</groupId>
+      <artifactId>kayura-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kayura</groupId>
+      <artifactId>kayura-spring-boot</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kayura.mybatis</groupId>
+      <artifactId>kayura-mybatis-spring-boot</artifactId>
+    </dependency>
+
+    <!-- kayura-uasp -->
+    <dependency>
+      <groupId>org.kayura.uasp</groupId>
+      <artifactId>kayura-uasp-common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kayura.uasp</groupId>
+      <artifactId>kayura-uasp-service</artifactId>
+    </dependency>
+
+    <!-- springfox -->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-core</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>

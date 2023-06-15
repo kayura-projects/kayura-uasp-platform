@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.kayura.uasp</groupId>
+    <artifactId>kayura-uasp-dependencies</artifactId>
+    <version>0.0.1</version>
+    <relativePath>../kayura-uasp-dependencies</relativePath>
+  </parent>
+
+  <artifactId>kayura-uasp-webstarter</artifactId>
+
+  <dependencies>
+
+    <!-- database -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid-spring-boot-starter</artifactId>
+      <version>${druid-spring.version}</version>
+    </dependency>
+
+    <!-- kayura-uasp -->
+    <!--suppress VulnerableLibrariesLocal -->
+    <dependency>
+      <groupId>org.kayura.uasp</groupId>
+      <artifactId>kayura-uasp-spring-boot</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kayura.uasp</groupId>
+      <artifactId>kayura-uasp-webui</artifactId>
+    </dependency>
+
+  </dependencies>
+
+</project>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.kayura.uasp</groupId>
+    <artifactId>kayura-uasp-dependencies</artifactId>
+    <version>0.0.1</version>
+    <relativePath>../kayura-uasp-dependencies</relativePath>
+  </parent>
+  <artifactId>kayura-uasp-spring-boot</artifactId>
+  <dependencies>
+
+    <!-- spring-boot -->
+    <!--suppress VulnerableLibrariesLocal -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure-processor</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-aop</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-cache</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <!-- other -->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-boot-starter</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>io.springfox</groupId>
+          <artifactId>springfox-swagger-ui</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- database -->
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-mysql</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid-spring-boot-starter</artifactId>
+      <version>${druid-spring.version}</version>
+      <optional>true</optional>
+    </dependency>
+
+    <!-- kayura-framework -->
+    <dependency>
+      <groupId>org.kayura.mybatis</groupId>
+      <artifactId>kayura-mybatis-spring-boot</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kayura</groupId>
+      <artifactId>kayura-swagger-ui</artifactId>
+    </dependency>
+
+    <!-- kayura-uasp -->
+    <dependency>
+      <groupId>org.kayura.uasp</groupId>
+      <artifactId>kayura-uasp-webapi</artifactId>
+    </dependency>
+
+  </dependencies>
+</project>
