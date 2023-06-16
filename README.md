@@ -22,9 +22,9 @@ Kayura UASP 是一款在大型应用背景下一步步发展而来的。
 
 ## 如何开始？
 
-- [现在就看下后台管理界面长啥样](https://uasp.kayura.org) :point_left:
-- [从新项目开始构建](help-doc/new-project.md) :point_left:
-- [从示例工程开始构建（kayura-skeleton）](kayura-skeleton) :point_left:
+- [在线后台管理示例](https://uasp.kayura.org) :point_left:
+- [从零构建本地项目](help-doc/new-project.md) :point_left:
+- [克隆示例工程（kayura-skeleton）](kayura-skeleton) :point_left:
 
 ## 项目包结构
 
