@@ -42,6 +42,30 @@ spring:
     <scope>import</scope>
   </dependency>
 </dependencyManagement>
+
+<dependencies>
+  <!-- kayura-uasp -->
+  <dependency>
+    <groupId>org.kayura.uasp</groupId>
+    <artifactId>kayura-uasp-spring-boot</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>org.kayura.uasp</groupId>
+    <artifactId>kayura-uasp-webui</artifactId>
+  </dependency>
+  <!-- database -->
+  <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>${mysql.version}</version>
+    <scope>runtime</scope>
+  </dependency>
+  <dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>druid-spring-boot-starter</artifactId>
+    <version>${druid-spring.version}</version>
+  </dependency>
+</dependencies>
 ``` 
 
 ### 第4步：添加或修改 application.yml 配置文件
