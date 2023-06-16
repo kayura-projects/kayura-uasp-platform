@@ -1,13 +1,15 @@
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- ~ 版权所属 2019 Liang.Xia 及 原作者
- ~ 您可以在 Apache License 2.0 版下获得许可副本，
- ~ 同时必须保证分发的本软件是在“原始”的基础上分发的。
- ~ 除非适用法律要求或书面同意。
- ~
- ~ http://www.apache.org/licenses/LICENSE-2.0
- ~
- ~ 请参阅许可证中控制权限和限制的特定语言。
- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*------------------------------------------------------------------------------
+ - 版权所有 (C) 2023 kayura
+ -
+ - 本程序是一个开源软件，根据 GNU 通用公共许可证 (AGPLv3) 的条款发布。
+ - 您可以按照该许可证的规定重新发布和修改本程序。
+ - 有关许可证的详细信息，请参阅 LICENSE 文件。
+ -
+ - 如果您有任何问题、建议或贡献，请联系版权所有者：<liangxia@live.com>
+ -
+ - 本程序基于无任何明示或暗示的担保提供，包括但不限于适销性和特定用途适用性的担保。
+ - 请参阅 GNU 通用公共许可证以获取详细信息。
+ -----------------------------------------------------------------------------*/
 
 package org.kayura.mybatis.toolkit;
 
@@ -16,47 +18,16 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.regex.Pattern;
 
-/**
- * The type String kit.
- */
 public abstract class StringKit extends StringUtils implements StringPool {
 
-  /**
-   * The constant EMPTY.
-   */
   public static final String EMPTY = "";
-  /**
-   * The constant IS.
-   */
   public static final String IS = "is";
-  /**
-   * The constant UNDERLINE.
-   */
   public static final char UNDERLINE = '_';
-  /**
-   * The constant PLACE_HOLDER.
-   */
   public static final String PLACE_HOLDER = "{%s}";
-  /**
-   * The constant MP_SQL_PLACE_HOLDER.
-   */
   public static final Pattern MP_SQL_PLACE_HOLDER = Pattern.compile("[{](?<idx>\\d+)}");
-  /**
-   * The constant P_IS_COLUMN.
-   */
   public static final Pattern P_IS_COLUMN = Pattern.compile("^\\w\\S*[\\w\\d]*$");
-  /**
-   * The constant CAPITAL_MODE.
-   */
   public static final Pattern CAPITAL_MODE = Pattern.compile("^[0-9A-Z/_]+$");
 
-  /**
-   * Format string.
-   *
-   * @param target the target
-   * @param params the params
-   * @return the string
-   */
   public static String format(String target, Object... params) {
     if (target.contains("%s") && ArrayUtils.isNotEmpty(params)) {
       return String.format(target, params);
@@ -64,17 +35,6 @@ public abstract class StringKit extends StringUtils implements StringPool {
     return target;
   }
 
-  /**
-   * 字符串驼峰(java属性)转下划线格式(数据库字段).
-   *
-   * <pre>
-   * id         = id_
-   * userId     = user_id_
-   * </pre>
-   *
-   * @param param the param
-   * @return string string
-   */
   public static String camelToColumn(String param) {
     if (isBlank(param)) {
       return EMPTY;
@@ -91,17 +51,6 @@ public abstract class StringKit extends StringUtils implements StringPool {
     return sb.append(UNDERLINE).toString();
   }
 
-  /**
-   * 字符串下划线(数据库字段)转驼峰(java属性)格式。
-   *
-   * <pre>
-   * id_          = id
-   * user_id_      = userId
-   * </pre>
-   *
-   * @param param the param
-   * @return string
-   */
   public static String columnToCamel(String param) {
     if (isBlank(param)) {
       return EMPTY;
@@ -122,17 +71,6 @@ public abstract class StringKit extends StringUtils implements StringPool {
     return sb.toString();
   }
 
-  /**
-   * 将实体名转为表名
-   *
-   * <pre>
-   * Table          = table
-   * SimpleTable    = simple_table
-   * </pre>
-   *
-   * @param param the param
-   * @return string
-   */
   public static String classToTable(String param) {
 
     if (isBlank(param)) {
@@ -150,17 +88,6 @@ public abstract class StringKit extends StringUtils implements StringPool {
     return sb.toString();
   }
 
-  /**
-   * 将实体名转为驼峰格式。
-   *
-   * <pre>
-   * Table          = table
-   * SimpleTable    = simpleTable
-   * </pre>
-   *
-   * @param param the param
-   * @return string
-   */
   public static String classToCamel(String param) {
     if (isBlank(param)) {
       return EMPTY;
@@ -168,17 +95,6 @@ public abstract class StringKit extends StringUtils implements StringPool {
     return param.substring(0, 1).toLowerCase() + param.substring(1);
   }
 
-  /**
-   * 将表名转换为实体名
-   *
-   * <pre>
-   * table          = Table
-   * simple_table   = SimpleTable
-   * </pre>
-   *
-   * @param param the param
-   * @return string
-   */
   public static String tableToClass(String param) {
 
     if (isBlank(param)) {
@@ -204,37 +120,14 @@ public abstract class StringKit extends StringUtils implements StringPool {
     return sb.toString();
   }
 
-  /**
-   * 将数据表名转为驼峰格式。
-   *
-   * <pre>
-   * table          = table
-   * simple_table   = simpleTable
-   * </pre>
-   *
-   * @param param the param
-   * @return string
-   */
   public static String tableToCamel(String param) {
     return classToCamel(tableToClass(param));
   }
 
-  /**
-   * Has length boolean.
-   *
-   * @param str the str
-   * @return the boolean
-   */
   public static boolean hasLength(String str) {
     return (str != null && !str.isEmpty());
   }
 
-  /**
-   * Has text boolean.
-   *
-   * @param str the str
-   * @return the boolean
-   */
   public static boolean hasText(CharSequence str) {
     return (str != null && str.length() > 0 && containsText(str));
   }
@@ -249,12 +142,6 @@ public abstract class StringKit extends StringUtils implements StringPool {
     return false;
   }
 
-  /**
-   * Value not null boolean.
-   *
-   * @param value the value
-   * @return the boolean
-   */
   public static boolean valueNotNull(Object value) {
     if (value instanceof CharSequence) {
       return isNotEmpty((CharSequence) value);
@@ -262,23 +149,10 @@ public abstract class StringKit extends StringUtils implements StringPool {
     return value != null;
   }
 
-  /**
-   * Value null boolean.
-   *
-   * @param value the value
-   * @return the boolean
-   */
   public static boolean valueNull(Object value) {
     return !valueNotNull(value);
   }
 
-  /**
-   * Concat capitalize string.
-   *
-   * @param concatStr the concat str
-   * @param str       the str
-   * @return the string
-   */
   public static String concatCapitalize(String concatStr, final String str) {
     if (isEmpty(concatStr)) {
       concatStr = EMPTY;

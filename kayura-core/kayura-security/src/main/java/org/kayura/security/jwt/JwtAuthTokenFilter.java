@@ -1,13 +1,15 @@
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- ~ 版权所属 2019 Liang.Xia 及 原作者
- ~ 您可以在 Apache License 2.0 版下获得许可副本，
- ~ 同时必须保证分发的本软件是在“原始”的基础上分发的。
- ~ 除非适用法律要求或书面同意。
- ~
- ~ http://www.apache.org/licenses/LICENSE-2.0
- ~
- ~ 请参阅许可证中控制权限和限制的特定语言。
- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*------------------------------------------------------------------------------
+ - 版权所有 (C) 2023 kayura
+ -
+ - 本程序是一个开源软件，根据 GNU 通用公共许可证 (AGPLv3) 的条款发布。
+ - 您可以按照该许可证的规定重新发布和修改本程序。
+ - 有关许可证的详细信息，请参阅 LICENSE 文件。
+ -
+ - 如果您有任何问题、建议或贡献，请联系版权所有者：<liangxia@live.com>
+ -
+ - 本程序基于无任何明示或暗示的担保提供，包括但不限于适销性和特定用途适用性的担保。
+ - 请参阅 GNU 通用公共许可证以获取详细信息。
+ -----------------------------------------------------------------------------*/
 
 package org.kayura.security.jwt;
 
@@ -31,7 +33,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
-
 
 public class JwtAuthTokenFilter extends OncePerRequestFilter {
 
