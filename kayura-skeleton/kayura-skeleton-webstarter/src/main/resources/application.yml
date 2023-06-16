@@ -18,18 +18,15 @@ kayura:
     ignoring-urls:
     permit-urls:
       - /
-      - /favicon.ico
-      - /csrf
       - /uasp/**
+      - /api/uasp/passport/**
+      - /api/uasp/toolkit/**
+      - /api/uasp/file/download
+      - /app/**
       - /swagger-ui/**
       - /swagger-resources/**
       - /v3/api-docs
-      - /test/**
-      - /api/uasp/passport/**
-      - /api/uasp/toolkit/**
-      - /api/file/download
-      - /app/**
-      - /error
+      - /favicon.ico
     pwd-level: LOW
     privilege-urls:
       - ${kayura.uasp.api-url}

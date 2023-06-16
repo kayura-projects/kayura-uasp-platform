@@ -46,10 +46,106 @@ spring:
 
 ### 第4步：添加或修改 application.yml 配置文件
 
-> 配置文件内容，请参考 [application.yml](../kayura-skeleton/kayura-skeleton-webstarter/src/main/resources) 文件，
-> 请点击链接查看，并复制到您的项目中。
+```yaml
+server:
+  port: 8810
+  servlet:
+    encoding:
+      force-response: true
+    session:
+      cookie:
+        name: SESSIONID
+  tomcat:
+    uri-encoding: UTF-8
+kayura:
+  uasp:
+    api-url: /api/uasp
+  app:
+    app-code: UASP
+    pwd-expire: 7776000
+  security:
+    ignoring-urls:
+    permit-urls:
+      - /
+      - /uasp/**
+      - /api/uasp/passport/**
+      - /api/uasp/toolkit/**
+      - /api/uasp/file/download
+      - /app/**
+      - /swagger-ui/**
+      - /swagger-resources/**
+      - /v3/api-docs
+      - /favicon.ico
+    pwd-level: LOW
+    privilege-urls:
+      - ${kayura.uasp.api-url}
+    whitelist:
+      - 127.0.0.1
+      - 128.23.*.*
+  upload:
+    store-path: Z:\\file-store
+    temp-path: ${kayura.upload.store-path}\\temp
+  verify:
+    expire: 300
+  retry:
+    policy: 0,0,0,30,30,300,300,1800,1800,18000
+  jwt:
+    secret: Bsyj/Nw1qSPizh727O9WFIc62NYOoSeOVxCZEQiflxU=
+    expire: 604800
+  sms:
+    sender: Console
+    mock: true
+    templates:
+      LOGIN: 您的登录短信验码为{VCODE},有效时间{TIME}分钟。
+      REGISTER: 您的注册短信验码为{VCODE},有效时间{TIME}分钟。
+spring:
+  activiti:
+    db-history-used: true
+    history-level: full
+    check-process-definitions: false
+  servlet:
+    multipart:
+      max-file-size: 512MB
+      max-request-size: 1024MB
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://localhost/xy_uasp_dev?serverTimezone=Asia/Shanghai&characterEncoding=utf-8&useSSL=false&nullCatalogMeansCurrent=true
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initial-size: 10
+      min-idle: 10
+      max-active: 100
+      max-wait: 60000
+      keep-alive: true
+      validation-query: SELECT 'X'
+      test-on-borrow: true
+      test-while-idle: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 60s
+    database: 1
+    jedis:
+      pool:
+        max-active: 100
+        max-wait: -1ms
+        min-idle: 20
+logging:
+  level:
+    root: info
+    org.springframework: info
+    org.kayura: debug
+    org.activiti: info
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){yellow} %clr(%-5level) %clr(-){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n"
+```
 
-### 第4步：请参以下代码来修改您工程中的代码：
+### 第5步：请参以下代码来修改您工程中的代码：
 
 **这一步不是必需的**，您可以在程运行后输入地址 /uasp 来访问后台应用界面。  
 也可以参考修改如下启动代码，自动跳转至 /uasp 地址。
@@ -70,7 +166,7 @@ public class ExampleWebApplication implements WebMvcConfigurer {
 }
 ``` 
 
-### 第5步：现在您可以编译和运行项目了。
+### 最后：现在您可以编译和运行项目了。
 
 * 默认账号：root
 * 默认密码：root
