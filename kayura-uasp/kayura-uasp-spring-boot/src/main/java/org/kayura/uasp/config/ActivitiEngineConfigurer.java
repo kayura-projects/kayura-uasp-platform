@@ -1,6 +1,7 @@
 package org.kayura.uasp.config;
 
 import org.activiti.engine.delegate.event.ActivitiEventListener;
+import org.activiti.engine.impl.history.HistoryLevel;
 import org.activiti.spring.SpringProcessEngineConfiguration;
 import org.activiti.spring.boot.ProcessEngineConfigurationConfigurer;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,8 @@ public class ActivitiEngineConfigurer implements ProcessEngineConfigurationConfi
 
   @Override
   public void configure(SpringProcessEngineConfiguration configuration) {
+    configuration.setDbHistoryUsed(true);
+    configuration.setHistoryLevel(HistoryLevel.FULL);
     if (eventListeners != null) {
       configuration.setEventListeners(eventListeners);
     }

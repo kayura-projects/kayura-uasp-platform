@@ -49,14 +49,6 @@ spring:
 ```yaml
 server:
   port: 8810
-  servlet:
-    encoding:
-      force-response: true
-    session:
-      cookie:
-        name: SESSIONID
-  tomcat:
-    uri-encoding: UTF-8
 kayura:
   uasp:
     api-url: /api/uasp
@@ -69,7 +61,6 @@ kayura:
       - /
       - /uasp/**
       - /api/uasp/passport/**
-      - /api/uasp/toolkit/**
       - /api/uasp/file/download
       - /app/**
       - /swagger-ui/**
@@ -79,9 +70,6 @@ kayura:
     pwd-level: LOW
     privilege-urls:
       - ${kayura.uasp.api-url}
-    whitelist:
-      - 127.0.0.1
-      - 128.23.*.*
   upload:
     store-path: Z:\\file-store
     temp-path: ${kayura.upload.store-path}\\temp
@@ -100,8 +88,6 @@ kayura:
       REGISTER: 您的注册短信验码为{VCODE},有效时间{TIME}分钟。
 spring:
   activiti:
-    db-history-used: true
-    history-level: full
     check-process-definitions: false
   servlet:
     multipart:
@@ -130,19 +116,12 @@ spring:
     port: 6379
     timeout: 60s
     database: 1
-    jedis:
-      pool:
-        max-active: 100
-        max-wait: -1ms
-        min-idle: 20
 logging:
   level:
     root: info
     org.springframework: info
-    org.kayura: debug
     org.activiti: info
-  pattern:
-    console: "%clr(%d{HH:mm:ss.SSS}){yellow} %clr(%-5level) %clr(-){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n"
+    org.kayura: debug
 ```
 
 ### 第5步：请参以下代码来修改您工程中的代码：
