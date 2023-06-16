@@ -6,7 +6,7 @@
   <parent>
     <artifactId>kayura-core-dependencies</artifactId>
     <groupId>org.kayura</groupId>
-    <version>0.0.1</version>
+    <version>1.0.0.a1</version>
     <relativePath>../kayura-core-dependencies</relativePath>
   </parent>
   <artifactId>kayura-spring-boot</artifactId>

@@ -6,12 +6,12 @@
   <parent>
     <artifactId>kayura-parent</artifactId>
     <groupId>org.kayura</groupId>
-    <version>0.0.1</version>
+    <version>1.0.0.a1</version>
   </parent>
   <packaging>pom</packaging>
   <groupId>org.kayura.mybatis</groupId>
   <artifactId>kayura-mybatis</artifactId>
-  <version>0.0.1</version>
+  <version>1.0.0.a1</version>
 
   <properties>
     <mybatis.version>3.5.10</mybatis.version>
@@ -68,14 +68,5 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
 
 </project>

@@ -6,12 +6,12 @@
   <parent>
     <artifactId>kayura-parent</artifactId>
     <groupId>org.kayura</groupId>
-    <version>0.0.1</version>
+    <version>1.0.0.a1</version>
   </parent>
   <packaging>pom</packaging>
   <groupId>org.kayura.uasp</groupId>
   <artifactId>kayura-uasp</artifactId>
-  <version>0.0.1</version>
+  <version>1.0.0.a1</version>
 
   <modules>
     <module>kayura-uasp-common</module>

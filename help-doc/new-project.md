@@ -33,12 +33,11 @@ spring:
 ### 第3步：创建一个新的spring-boot工程，并引用 UASP 包
 
 ```xml
-
 <dependencyManagement>
   <dependency>
     <groupId>org.kayura</groupId>
     <artifactId>kayura-dependencies</artifactId>
-    <version>${kayura.version}</version>
+    <version>1.0.0.a1</version>
     <type>pom</type>
     <scope>import</scope>
   </dependency>
@@ -67,6 +66,14 @@ spring:
     <version>${druid-spring.version}</version>
   </dependency>
 </dependencies>
+
+<!-- 目前 jar 包发布在私有仓库中 -->
+<repositories>
+  <repository>
+    <id>kayura-release</id>
+    <url>http://nexus.kayura.org/repository/maven-host</url>
+  </repository>
+</repositories>
 ``` 
 
 ### 第4步：添加或修改 application.yml 配置文件
@@ -156,7 +163,7 @@ logging:
 
 ```java
 @SpringBootApplication
-@MapperScan("{mybatis配置文件xml的包空间}")
+//@MapperScan("{mybatis配置文件xml的包空间}")
 public class ExampleWebApplication implements WebMvcConfigurer {
 
   public static void main(String[] args) {
