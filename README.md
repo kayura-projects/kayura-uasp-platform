@@ -29,7 +29,7 @@ Kayura UASP 是一款在大型应用背景下一步步发展而来的。
 ## 如何开始？
 
 - [从新项目开始构建](help-doc/new-project.md)
-- 从示例工程开始构建
+- [从示例工程开始构建](kayura-skeleton)
 
 ## 项目源码结构
 
