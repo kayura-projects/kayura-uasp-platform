@@ -33,6 +33,7 @@ spring:
 ### 第3步：创建一个新的spring-boot工程，并引用 UASP 包
 
 ```xml
+
 <dependencyManagement>
   <dependency>
     <groupId>org.kayura</groupId>
@@ -155,6 +156,7 @@ logging:
 
 ```java
 @SpringBootApplication
+@MapperScan("{mybatis配置文件xml的包空间}")
 public class ExampleWebApplication implements WebMvcConfigurer {
 
   public static void main(String[] args) {
