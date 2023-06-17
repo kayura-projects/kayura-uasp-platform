@@ -63,7 +63,6 @@
     <!-- jar -->
     <flyway.version>8.5.13</flyway.version>
     <activiti.version>7.9.1</activiti.version>
-    <itext.version>7.2.5</itext.version>
     <javax-validation.version>2.0.1.Final</javax-validation.version>
     <jackson.version.databind>2.13.4.1</jackson.version.databind>
     <servlet-api.version>4.0.1</servlet-api.version>
