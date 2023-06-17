@@ -9,29 +9,6 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <organization>
-    <name>Kayura Software</name>
-    <url>https://www.kayura.org</url>
-  </organization>
-
-  <licenses>
-    <license>
-      <name>The Apache License, Version 2.0</name>
-      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
-
-  <developers>
-    <developer>
-      <name>LiangXia</name>
-      <email>liangxia@live.com</email>
-      <roles>
-        <role>developer</role>
-      </roles>
-      <timezone>+8</timezone>
-    </developer>
-  </developers>
-
   <modules>
     <module>kayura-skeleton-common</module>
     <module>kayura-skeleton-service</module>
@@ -86,7 +63,7 @@
 
   <repositories>
     <repository>
-      <id>kayura-release</id>
+      <id>kayura-host</id>
       <url>http://nexus.kayura.org/repository/maven-host</url>
     </repository>
   </repositories>
