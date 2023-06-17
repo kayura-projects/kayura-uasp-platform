@@ -38,13 +38,13 @@ Kayura UASP 是一款在大型应用背景下一步步发展而来的。
    使用JAR包集成，可以将企业应用开发支撑平台作为一个独立的模块来管理。这样可以方便地进行维护和升级，
    当平台提供新的版本或修复bug时，只需要替换或更新升级版本号，而不需要重新编译和构建整个项目。
 
-而且后端开发平台的源码均保持开源，并承若所有BUG都能得到及时的修复，并可直接联系作者提供技术支持。
+而且后端开发平台的源码均保持开源，您可以放心的使用。并承若所有BUG都能得到及时的修复，还可直接联系作者提供技术支持。
 
 ## 如何开始？
 
 - [在线后台管理示例](https://uasp.kayura.org) :point_left:
 - [从零构建本地项目](help-doc/new-project.md) :point_left:
-- [克隆示例工程（kayura-skeleton）](examples/kayura-skeleton) :point_left:推荐
+- [骨架示例工程（kayura-skeleton）](examples/kayura-skeleton) :point_left:推荐
 
 ## 项目包结构
 
