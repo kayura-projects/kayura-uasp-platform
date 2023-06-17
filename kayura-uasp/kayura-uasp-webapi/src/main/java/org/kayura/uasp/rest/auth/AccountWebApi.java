@@ -19,6 +19,7 @@ import org.kayura.uasp.account.ChangePwdPayload;
 import org.kayura.uasp.auth.cmd.AccountGetCommand;
 import org.kayura.uasp.auth.cmd.AccountUpdateCommand;
 import org.kayura.uasp.auth.cmd.ChangeOwnPasswordCommand;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -46,7 +47,7 @@ public class AccountWebApi {
 
   @PostMapping("/account/change-pwd")
   public HttpResult changePassword(ChangeOwnPasswordCommand command,
-                                   @RequestBody ChangePwdPayload payload) {
+                                   @RequestBody @Validated ChangePwdPayload payload) {
 
     return commandGateway.send(command.setPayload(payload));
   }

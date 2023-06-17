@@ -13,9 +13,13 @@
 
 package org.kayura.uasp.account;
 
+import javax.validation.constraints.NotBlank;
+
 public class ChangePwdPayload {
 
+  @NotBlank
   private String oldPwd;
+  @NotBlank
   private String newPwd;
 
   public String getOldPwd() {
