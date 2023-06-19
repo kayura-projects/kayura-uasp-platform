@@ -60,7 +60,7 @@ public class FuncAuthWebApi {
     return commandGateway.send(command
       .setTenantId(tenantId)
       .setType(CompanyTypes.Contact)
-      .setOutput(OutputTypes.TREE)
+      .setOutput(OutputTypes.SELECT)
     );
   }
 
