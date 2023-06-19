@@ -60,7 +60,7 @@ Kayura UASP 是一款在大型应用背景下一步步发展而来的。
 
 ## 前端工程
 
-项目由 angular 15 开发，项目地址：[kayura-uasp-angular](/kayura-projects/kayura-uasp-angular)
+项目由 angular 15 开发，项目地址：[kayura-uasp-angular](../kayura-uasp-angular)
 
 ## 引入其它主要开源技术
 
