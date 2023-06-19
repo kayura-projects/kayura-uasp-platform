@@ -58,7 +58,7 @@ Kayura UASP 是一款在大型应用背景下一步步发展而来的。
 | - kayura-skeleton   | 构建一个标准项目所需最小工程代码,包含1个演示模块。         |
 | - kayura-example    | 演示 UASP 各种接口方法的用法代码。               |
 
-## 前端工程
+## 后台管理 - 前端UI
 
 项目由 angular 15 开发，项目地址：[kayura-uasp-angular](../../../kayura-uasp-angular)
 
