@@ -24,6 +24,7 @@ public class ChooseTenantCommand extends Command {
   private OutputTypes outType;
   private boolean hasApp;
   private String appId;
+  private boolean includeApplic;
 
   public OutputTypes getOutType() {
     return outType;
@@ -49,6 +50,15 @@ public class ChooseTenantCommand extends Command {
 
   public ChooseTenantCommand setAppId(String appId) {
     this.appId = appId;
+    return this;
+  }
+
+  public boolean isIncludeApplic() {
+    return includeApplic;
+  }
+
+  public ChooseTenantCommand setIncludeApplic(boolean includeApplic) {
+    this.includeApplic = includeApplic;
     return this;
   }
 }

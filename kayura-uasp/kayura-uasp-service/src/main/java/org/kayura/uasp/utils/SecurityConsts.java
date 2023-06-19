@@ -43,7 +43,7 @@ public interface SecurityConsts {
   String UASP_ADMIN_ROLE = "UASP_ADMIN_USER";
   String UASP_ADMIN_USER = "UASP_ADMIN_USER";
   String UASP_CLIENT_USER = "UASP_CLIENT_USER";
-  String UASP_SNEAK = "UASP_SNEAK";
+  String UASP_NO_SECRET = "UASP_NO_SECRET";
 
   String UASP_WF_ROLE = "UASP_WF_ROLE";
   String UASP_BIZ_FORM = "UASP_BIZ_FORM";
@@ -57,5 +57,6 @@ public interface SecurityConsts {
 
   String UASP_APPLIC = "UASP_APPLIC";
   String UASP_MODULE = "UASP_MODULE";
+
 
 }

@@ -106,8 +106,8 @@ public class ChooseDictDefineCommandHandler implements CommandHandler<ChooseDict
       treeNodes.add(node);
 
       if (DictTypes.Item.equals(dd.getType())) {
-        node.addAttr("dataType", dd.getDataType().getValue());
-        node.addAttr("extFields", dd.getExtFields());
+        node.put("dataType", dd.getDataType().getValue());
+        node.put("extFields", dd.getExtFields());
       } else {
         List<DictDefineEntity> collect = allDefines.stream()
           .filter(x -> dd.getDefineId().equals(x.getParentId()))

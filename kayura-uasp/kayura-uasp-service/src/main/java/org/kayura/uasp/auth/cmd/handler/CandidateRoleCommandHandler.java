@@ -132,8 +132,8 @@ public class CandidateRoleCommandHandler implements CommandHandler<CandidateRole
           .setId(m.getRoleId())
           .setCode(m.getCode())
           .setText(m.getName())
-          .putAttr("app", m.getAppName())
-          .putAttr("tenant", m.getTenantName())
+          .put("app", m.getAppName())
+          .put("tenant", m.getTenantName())
       ).collect(Collectors.toList());
       return HttpResult.okBody(selectItems);
     } else {

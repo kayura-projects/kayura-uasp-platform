@@ -52,7 +52,7 @@ public class TreeNode {
     return this;
   }
 
-  public TreeNode addAttr(String key, Object value) {
+  public TreeNode put(String key, Object value) {
     if (this.attr == null) {
       this.attr = new Properties();
     }

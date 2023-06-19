@@ -122,7 +122,7 @@ public class SelectItem {
     return this;
   }
 
-  public SelectItem putAttr(String key, Object value) {
+  public SelectItem put(String key, Object value) {
     if (this.attrs == null) {
       this.attrs = new Properties();
     }

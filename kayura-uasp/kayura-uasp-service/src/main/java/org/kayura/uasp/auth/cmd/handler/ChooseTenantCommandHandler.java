@@ -22,20 +22,24 @@ import org.kayura.type.DataStatus;
 import org.kayura.type.HttpResult;
 import org.kayura.type.SelectItem;
 import org.kayura.type.TreeNode;
+import org.kayura.uasp.applic.ApplicVo;
 import org.kayura.uasp.auth.cmd.ChooseTenantCommand;
 import org.kayura.uasp.auth.entity.TenantEntity;
 import org.kayura.uasp.auth.manage.TenantManager;
 import org.kayura.uasp.company.CompanyTypes;
+import org.kayura.uasp.dev.entity.ApplicEntity;
 import org.kayura.uasp.organize.entity.CompanyApplicEntity;
 import org.kayura.uasp.organize.manage.CompanyApplicManager;
 import org.kayura.uasp.tenant.TenantVo;
 import org.kayura.uasp.utils.OutputTypes;
+import org.kayura.utils.CollectionUtils;
 import org.kayura.utils.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,7 +62,7 @@ public class ChooseTenantCommandHandler implements CommandHandler<ChooseTenantCo
   public HttpResult execute(ChooseTenantCommand command) {
 
     LoginUser loginUser = command.getLoginUser();
-    OutputTypes output = command.getOutType();
+    boolean hasApp = command.isHasApp();
 
     List<TenantEntity> entities;
 
@@ -68,14 +72,14 @@ public class ChooseTenantCommandHandler implements CommandHandler<ChooseTenantCo
         this.tenantManager.selectById(loginUser.getTenantId())
       );
     } else {
-      if (Boolean.TRUE.equals(command.isHasApp())) {
+      if (hasApp) {
         entities = this.chooseTenantsFromApp(command);
       } else {
         entities = this.chooseValidTenants();
       }
     }
 
-    return outputResult(output, entities);
+    return outputResult(command, entities);
   }
 
   private List<TenantEntity> chooseValidTenants() {
@@ -92,33 +96,64 @@ public class ChooseTenantCommandHandler implements CommandHandler<ChooseTenantCo
   @NotNull
   private List<TenantEntity> chooseTenantsFromApp(ChooseTenantCommand command) {
 
-    List<TenantEntity> entities = companyApplicManager.selectList(w -> {
-      w.distinct();
-      w.select(CompanyApplicEntity::getCompanyId);
-      w.select(CompanyApplicEntity::getCompanyCode);
-      w.select(CompanyApplicEntity::getCompanyName);
+    boolean includeApplic = command.isIncludeApplic();
+
+    List<CompanyApplicEntity> entities = companyApplicManager.selectList(w -> {
       if (StringUtils.hasText(command.getAppId())) {
         w.eq(CompanyApplicEntity::getAppId, command.getAppId());
       }
       w.eq(CompanyApplicEntity::getCompanyType, CompanyTypes.Tenant);
       w.eq(CompanyApplicEntity::getStatus, DataStatus.Valid);
-    }).stream().map(m ->
-      TenantEntity.create().setTenantId(m.getCompanyId()).setCode(m.getCompanyCode()).setName(m.getCompanyName())
-    ).toList();
-    return entities;
+    });
+
+    List<TenantEntity> tenantEntities = new ArrayList<>();
+    List<String> tenantIds = entities.stream().map(CompanyApplicEntity::getTenantId).toList();
+    if (CollectionUtils.isNotEmpty(tenantIds)) {
+      for (String tenantId : tenantIds) {
+        List<CompanyApplicEntity> list = entities.stream().filter(x -> x.getTenantId().equals(tenantId)).toList();
+        if (!list.isEmpty()) {
+          TenantEntity tenant = TenantEntity.create()
+            .setTenantId(tenantId)
+            .setCode(list.get(0).getTenantCode())
+            .setName(list.get(0).getTenantName());
+          if (includeApplic) {
+            List<ApplicEntity> applics = list.stream().map(m -> ApplicEntity.create().setAppId(m.getAppId()).setCode(m.getAppCode()).setName(m.getAppName())).toList();
+            tenant.setApplics(applics);
+          }
+          tenantEntities.add(tenant);
+        }
+      }
+    }
+    return tenantEntities;
   }
 
-  private HttpResult outputResult(OutputTypes output, List<TenantEntity> entities) {
+  private HttpResult outputResult(ChooseTenantCommand command, List<TenantEntity> entities) {
+
+    OutputTypes output = command.getOutType();
 
     if (OutputTypes.TREE.equals(output)) {
-      List<TreeNode> nodes = entities.stream().map(m ->
-        TreeNode.create().setId(m.getTenantId()).setCode(m.getCode()).setText(m.getName())
-      ).collect(Collectors.toList());
+      List<TreeNode> nodes = entities.stream().map(m -> {
+        TreeNode node = TreeNode.create().setId(m.getTenantId()).setCode(m.getCode()).setText(m.getName());
+        if (CollectionUtils.isNotEmpty(m.getApplics())) {
+          List<ApplicVo> applics = m.getApplics().stream().map(m1 ->
+            ApplicVo.create().setAppId(m1.getAppId()).setCode(m1.getCode()).setName(m1.getName())
+          ).toList();
+          node.put("APPLICS", applics);
+        }
+        return node;
+      }).collect(Collectors.toList());
       return HttpResult.okBody(nodes);
     } else if (OutputTypes.SELECT.equals(output)) {
-      List<SelectItem> selectItems = entities.stream().map(m ->
-        SelectItem.create().setId(m.getTenantId()).setCode(m.getCode()).setText(m.getName())
-      ).collect(Collectors.toList());
+      List<SelectItem> selectItems = entities.stream().map(m -> {
+        SelectItem node = SelectItem.create().setId(m.getTenantId()).setCode(m.getCode()).setText(m.getName());
+        if (CollectionUtils.isNotEmpty(m.getApplics())) {
+          List<ApplicVo> applics = m.getApplics().stream().map(m1 ->
+            ApplicVo.create().setAppId(m1.getAppId()).setCode(m1.getCode()).setName(m1.getName())
+          ).toList();
+          node.put("APPLICS", applics);
+        }
+        return node;
+      }).collect(Collectors.toList());
       return HttpResult.okBody(selectItems);
     } else {
       List<TenantVo> selectItems = entities.stream()

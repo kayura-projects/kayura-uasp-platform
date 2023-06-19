@@ -16,15 +16,14 @@
 
 package org.kayura.uasp.auth.entity;
 
-import org.kayura.mybatis.annotation.mapper.ForeignKey;
-import org.kayura.mybatis.annotation.mapper.Id;
-import org.kayura.mybatis.annotation.mapper.RefColumn;
-import org.kayura.mybatis.annotation.mapper.Table;
+import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.type.DataStatus;
+import org.kayura.uasp.dev.entity.ApplicEntity;
 import org.kayura.uasp.organize.entity.CompanyEntity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Table("uasp_tenant")
 public class TenantEntity {
@@ -59,6 +58,9 @@ public class TenantEntity {
 
   private LocalDate expireTime;
   private String remark;
+
+  @Virtual
+  private List<ApplicEntity> applics;
 
   public static TenantEntity create() {
     return new TenantEntity();
@@ -189,4 +191,13 @@ public class TenantEntity {
     this.adminEmail = adminEmail;
     return this;
   }
+
+    public List<ApplicEntity> getApplics() {
+        return applics;
+    }
+
+    public TenantEntity setApplics(List<ApplicEntity> applics) {
+        this.applics = applics;
+        return this;
+    }
 }

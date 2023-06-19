@@ -83,7 +83,7 @@ public class ChooseUserCommandHandler implements CommandHandler<ChooseUserComman
         .setId(m.getUserId())
         .setText(m.getDisplayName())
         .setCode(m.getUserName())
-        .putAttr("mobile", m.getMobile())
+        .put("mobile", m.getMobile())
     ).toList();
     return HttpResult.okBody(selectItems);
   }
