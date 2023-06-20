@@ -26,6 +26,7 @@ import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.cache.Cache;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -101,9 +102,7 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
 
   private void saveSecurityContext(LoginUserImpl loginUser) {
 
-    assert loginUser != null;
-    UsernamePasswordAuthenticationToken authToken =
-      new UsernamePasswordAuthenticationToken(loginUser, null, loginUser.getAuthorities());
+    Authentication authToken = new UsernamePasswordAuthenticationToken(loginUser, null, loginUser.getAuthorities());
     SecurityContextHolder.getContext().setAuthentication(authToken);
   }
 
