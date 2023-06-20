@@ -14,7 +14,7 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.auth.handler;
+package org.kayura.security.sneak;
 
 import java.io.Serializable;
 

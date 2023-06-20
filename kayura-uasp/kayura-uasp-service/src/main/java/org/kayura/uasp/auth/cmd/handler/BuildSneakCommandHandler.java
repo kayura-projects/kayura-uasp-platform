@@ -21,8 +21,8 @@ import org.kayura.nextid.RandomIdGenerator;
 import org.kayura.security.LoginUser;
 import org.kayura.type.HttpResult;
 import org.kayura.uasp.auth.cmd.BuildSneakCommand;
-import org.kayura.uasp.auth.handler.SneakHandler;
-import org.kayura.uasp.auth.handler.SneakItem;
+import org.kayura.security.sneak.SneakHandler;
+import org.kayura.security.sneak.SneakItem;
 import org.kayura.uasp.auth.model.SneakPayload;
 import org.springframework.stereotype.Component;
 

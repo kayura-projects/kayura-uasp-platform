@@ -14,18 +14,12 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.auth.manage;
+package org.kayura.security.sneak;
 
-import org.kayura.mybatis.manager.impl.CrudManagerImpl;
-import org.kayura.uasp.auth.entity.SneakEntity;
-import org.kayura.uasp.auth.mapper.SneakMapper;
-import org.springframework.stereotype.Component;
+public interface SneakHandler {
 
-@Component
-public class SneakManager extends CrudManagerImpl<SneakMapper, SneakEntity> {
+  boolean build(String key, SneakItem item);
 
-  protected SneakManager(SneakMapper baseMapper) {
-    super(baseMapper);
-  }
+  SneakItem find(String key);
 
 }

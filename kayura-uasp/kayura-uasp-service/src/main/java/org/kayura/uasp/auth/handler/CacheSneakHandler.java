@@ -16,17 +16,19 @@
 
 package org.kayura.uasp.auth.handler;
 
+import org.kayura.security.sneak.SneakHandler;
+import org.kayura.security.sneak.SneakItem;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RedisSneakHandler implements SneakHandler {
+public class CacheSneakHandler implements SneakHandler {
 
   private final Cache cache;
 
-  public RedisSneakHandler(CacheManager cacheManager) {
+  public CacheSneakHandler(CacheManager cacheManager) {
     this.cache = cacheManager.getCache("KAYURA:SNEAK");
   }
 
