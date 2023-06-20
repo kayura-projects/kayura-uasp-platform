@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.ops.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.applibrary.AppStorePayload;
 
-public class CreateAppStoreCommand extends Command {
+public class CreateAppStoreCommand extends ApiCommand {
 
   private AppStorePayload payload;
 

@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.dev.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.applic.ApplicTypes;
 import org.kayura.uasp.utils.OutputTypes;
 
-public class ChooseApplicCommand extends Command {
+public class ChooseApplicCommand extends ApiCommand {
 
   private OutputTypes output;
   private ApplicTypes type;

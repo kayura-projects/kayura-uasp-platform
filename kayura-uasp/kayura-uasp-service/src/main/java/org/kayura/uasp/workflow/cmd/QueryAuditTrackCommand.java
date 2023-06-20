@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.workflow.AuditTrackQuery;
 
-public class QueryAuditTrackCommand extends Command {
+public class QueryAuditTrackCommand extends ApiCommand {
 
   private AuditTrackQuery query;
 

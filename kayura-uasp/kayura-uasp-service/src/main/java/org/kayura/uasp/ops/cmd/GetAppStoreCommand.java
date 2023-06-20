@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.ops.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetAppStoreCommand extends Command {
+public class GetAppStoreCommand extends ApiCommand {
 
   private String releaseId;
 

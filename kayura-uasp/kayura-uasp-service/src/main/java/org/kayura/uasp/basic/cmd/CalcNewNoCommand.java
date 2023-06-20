@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.autono.NewNoArgs;
 
-public class CalcNewNoCommand extends Command {
+public class CalcNewNoCommand extends ApiCommand {
 
   private NewNoArgs args;
   private boolean fixed;

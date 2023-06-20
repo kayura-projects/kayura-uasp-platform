@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.passport.LoginPayload;
 
-public class CreateTokenCommand extends Command {
+public class CreateTokenCommand extends ApiCommand {
 
   private LoginPayload payload;
 

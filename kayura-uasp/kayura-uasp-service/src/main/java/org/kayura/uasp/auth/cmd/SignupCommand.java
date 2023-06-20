@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.signup.SignupPayload;
 
-public class SignupCommand extends Command {
+public class SignupCommand extends ApiCommand {
 
   private SignupPayload payload;
 

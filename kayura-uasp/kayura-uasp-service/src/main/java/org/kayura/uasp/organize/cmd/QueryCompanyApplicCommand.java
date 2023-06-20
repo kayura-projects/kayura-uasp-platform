@@ -16,12 +16,12 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.OrderByClause;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.company.CompanyApplicQuery;
 
-public class QueryCompanyApplicCommand extends Command {
+public class QueryCompanyApplicCommand extends ApiCommand {
 
   private String companyId;
   private String appId;

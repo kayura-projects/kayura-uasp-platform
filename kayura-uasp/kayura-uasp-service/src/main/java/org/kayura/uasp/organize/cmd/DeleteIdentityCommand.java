@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
 import java.util.Set;
 
-public class DeleteIdentityCommand extends Command {
+public class DeleteIdentityCommand extends ApiCommand {
 
   private String identityId;
   private Set<String> identityIds;

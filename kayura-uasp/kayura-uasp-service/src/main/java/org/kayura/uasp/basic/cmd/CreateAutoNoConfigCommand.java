@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.autono.AutoNoPayload;
 
-public class CreateAutoNoConfigCommand extends Command {
+public class CreateAutoNoConfigCommand extends ApiCommand {
 
   private AutoNoPayload payload;
 

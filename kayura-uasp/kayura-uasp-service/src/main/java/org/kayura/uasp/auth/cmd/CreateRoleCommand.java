@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.role.RolePayload;
 import org.kayura.uasp.role.RoleTypes;
 
-public class CreateRoleCommand extends Command {
+public class CreateRoleCommand extends ApiCommand {
 
   private RoleTypes roleType;
   private RolePayload payload;

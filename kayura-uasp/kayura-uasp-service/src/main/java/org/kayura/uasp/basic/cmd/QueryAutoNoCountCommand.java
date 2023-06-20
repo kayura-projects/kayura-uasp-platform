@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class QueryAutoNoCountCommand extends Command {
+public class QueryAutoNoCountCommand extends ApiCommand {
 
   private String configId;
   private String tenantId;

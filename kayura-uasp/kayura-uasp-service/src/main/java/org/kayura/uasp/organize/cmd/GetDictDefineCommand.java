@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetDictDefineCommand extends Command {
+public class GetDictDefineCommand extends ApiCommand {
 
   private String defineId;
 

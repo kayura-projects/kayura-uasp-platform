@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetAutoNoConfigCommand extends Command {
+public class GetAutoNoConfigCommand extends ApiCommand {
 
   private String configId;
 

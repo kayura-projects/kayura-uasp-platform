@@ -16,12 +16,12 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.OrderByClause;
 import org.kayura.uasp.company.CompanyTypes;
 import org.kayura.uasp.utils.OutputTypes;
 
-public class ChooseCompanyCommand extends Command {
+public class ChooseCompanyCommand extends ApiCommand {
 
   private OutputTypes output;
   private CompanyTypes type;

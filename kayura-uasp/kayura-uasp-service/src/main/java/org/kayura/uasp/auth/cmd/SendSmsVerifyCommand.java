@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.passport.SmsVerifyPayload;
 
-public class SendSmsVerifyCommand extends Command {
+public class SendSmsVerifyCommand extends ApiCommand {
 
   private String template;
   private SmsVerifyPayload payload;

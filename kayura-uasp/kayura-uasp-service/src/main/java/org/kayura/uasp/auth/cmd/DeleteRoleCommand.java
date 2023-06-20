@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 import org.kayura.uasp.role.RoleTypes;
 
-public class DeleteRoleCommand extends Command {
+public class DeleteRoleCommand extends ApiCommand {
 
   private RoleTypes roleType;
   private IdPayload payload;

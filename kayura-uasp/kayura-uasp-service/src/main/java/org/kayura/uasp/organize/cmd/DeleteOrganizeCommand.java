@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 import org.kayura.uasp.organize.OrganizeTypes;
 
-public class DeleteOrganizeCommand extends Command {
+public class DeleteOrganizeCommand extends ApiCommand {
 
   private OrganizeTypes type;
   private String orgId;

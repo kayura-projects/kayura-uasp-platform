@@ -16,12 +16,12 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.OrderByClause;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.tenant.TenantQuery;
 
-public class QueryTenantCommand extends Command {
+public class QueryTenantCommand extends ApiCommand {
 
   private PageClause pageClause;
   private OrderByClause orderByClause;

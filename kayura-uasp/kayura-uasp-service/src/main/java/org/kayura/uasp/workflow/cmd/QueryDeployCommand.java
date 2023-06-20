@@ -15,9 +15,9 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class QueryDeployCommand extends Command {
+public class QueryDeployCommand extends ApiCommand {
 
   private String flowId;
 

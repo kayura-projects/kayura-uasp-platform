@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 
-public class DeleteCompanyCommand extends Command {
+public class DeleteCompanyCommand extends ApiCommand {
 
   private String companyId;
   private IdPayload payload;

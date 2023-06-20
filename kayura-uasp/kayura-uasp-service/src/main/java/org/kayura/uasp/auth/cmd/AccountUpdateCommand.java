@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.account.AccountPayload;
 
-public class AccountUpdateCommand extends Command {
+public class AccountUpdateCommand extends ApiCommand {
 
   private AccountPayload payload;
 

@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.user.ClientUserPayload;
 
-public class CreateClientUserCommand extends Command {
+public class CreateClientUserCommand extends ApiCommand {
 
   private ClientUserPayload payload;
 

@@ -16,12 +16,12 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.role.RoleUserPayload;
 
 import java.util.List;
 
-public class DeleteRoleUserCommand extends Command {
+public class DeleteRoleUserCommand extends ApiCommand {
 
   private String roleId;
   private String userId;

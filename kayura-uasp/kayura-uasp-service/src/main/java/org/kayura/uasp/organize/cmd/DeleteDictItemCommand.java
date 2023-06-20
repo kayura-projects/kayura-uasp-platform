@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 
-public class DeleteDictItemCommand extends Command {
+public class DeleteDictItemCommand extends ApiCommand {
 
   private String itemId;
   private IdPayload payload;

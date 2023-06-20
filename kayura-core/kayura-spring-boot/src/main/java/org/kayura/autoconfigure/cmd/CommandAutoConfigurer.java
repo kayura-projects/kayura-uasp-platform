@@ -106,7 +106,7 @@ public class CommandAutoConfigurer {
   }
 
   @SuppressWarnings("unchecked")
-  private Class<? extends Command> getCommandType(CommandHandler<?, ?> handler) {
+  private Class<? extends ICommand> getCommandType(CommandHandler<?, ?> handler) {
 
     Object target = handler;
     if (AopUtils.isCglibProxy(handler)) {
@@ -115,7 +115,7 @@ public class CommandAutoConfigurer {
     Type[] interfaces = Objects.requireNonNull(target).getClass().getGenericInterfaces();
     ParameterizedType parameterizedType = (ParameterizedType) interfaces[0];
     Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
-    return (Class<? extends Command>) actualTypeArguments[0];
+    return (Class<? extends ICommand>) actualTypeArguments[0];
   }
 
 }

@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 
-public class DeleteTenantCommand extends Command {
+public class DeleteTenantCommand extends ApiCommand {
 
   private IdPayload payload;
 

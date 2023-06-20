@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.file.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.file.MoveFilePayload;
 
-public class MoveFileLinkCommand extends Command {
+public class MoveFileLinkCommand extends ApiCommand {
 
   private MoveFilePayload payload;
 

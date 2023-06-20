@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.user.AdminUserPayload;
 
-public class UpdateAdminUserCommand extends Command {
+public class UpdateAdminUserCommand extends ApiCommand {
 
   private String userId;
   private AdminUserPayload payload;

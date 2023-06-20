@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetCompanyCommand extends Command {
+public class GetCompanyCommand extends ApiCommand {
 
   private String companyId;
 

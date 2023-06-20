@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.auth.model.SneakPayload;
 
-public class BuildSneakCommand extends Command {
+public class BuildSneakCommand extends ApiCommand {
 
   private SneakPayload payload;
 

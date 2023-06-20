@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 
-public class DeleteAutoNoCountCommand extends Command {
+public class DeleteAutoNoCountCommand extends ApiCommand {
 
   private String countId;
   private IdPayload payload;

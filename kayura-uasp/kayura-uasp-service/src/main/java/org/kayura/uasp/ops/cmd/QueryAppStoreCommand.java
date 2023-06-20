@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.ops.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.applibrary.AppStoreQuery;
 
-public class QueryAppStoreCommand extends Command {
+public class QueryAppStoreCommand extends ApiCommand {
 
   private String appId;
   private AppStoreQuery query;

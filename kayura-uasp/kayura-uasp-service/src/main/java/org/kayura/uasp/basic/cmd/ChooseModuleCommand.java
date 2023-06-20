@@ -16,12 +16,12 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.func.ModuleTypes;
 
 import java.util.Set;
 
-public class ChooseModuleCommand extends Command {
+public class ChooseModuleCommand extends ApiCommand {
 
   private String appId;
   private Set<ModuleTypes> types;

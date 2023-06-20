@@ -15,9 +15,9 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetBpmnXmlCommand extends Command {
+public class GetBpmnXmlCommand extends ApiCommand {
 
   private String flowId;
   private String modelId;

@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.file.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetFileLinkCommand extends Command {
+public class GetFileLinkCommand extends ApiCommand {
 
   private String linkId;
 

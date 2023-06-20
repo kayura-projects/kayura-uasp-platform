@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetDictItemCommand extends Command {
+public class GetDictItemCommand extends ApiCommand {
 
   private String itemId;
 

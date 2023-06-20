@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetFormFlowCommand extends Command {
+public class GetFormFlowCommand extends ApiCommand {
 
   private String flowId;
 

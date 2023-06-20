@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.organize.EmployeePayload;
 
-public class UpdateEmployeeCommand extends Command {
+public class UpdateEmployeeCommand extends ApiCommand {
 
   private String employeeId;
   private EmployeePayload payload;

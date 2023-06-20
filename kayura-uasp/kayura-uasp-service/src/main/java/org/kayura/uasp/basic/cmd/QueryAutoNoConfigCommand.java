@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.autono.AutoNoQuery;
 
-public class QueryAutoNoConfigCommand extends Command {
+public class QueryAutoNoConfigCommand extends ApiCommand {
 
   private AutoNoQuery query;
   private PageClause pageClause;

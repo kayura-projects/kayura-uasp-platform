@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.file.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.file.FolderPayload;
 
-public class UpdateFileFolderCommand extends Command {
+public class UpdateFileFolderCommand extends ApiCommand {
 
   private String folderId;
   private FolderPayload payload;

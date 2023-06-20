@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.form.FormDefineQuery;
 
-public class QueryFormDefineCommand extends Command {
+public class QueryFormDefineCommand extends ApiCommand {
 
   private FormDefineQuery query;
   private PageClause pageClause;

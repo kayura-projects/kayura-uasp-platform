@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetRoleCommand extends Command {
+public class GetRoleCommand extends ApiCommand {
 
   private String roleId;
 

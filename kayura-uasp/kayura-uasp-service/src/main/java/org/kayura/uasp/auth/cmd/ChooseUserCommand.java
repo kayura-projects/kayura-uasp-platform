@@ -16,12 +16,12 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.UserTypes;
 
 import java.util.List;
 
-public class ChooseUserCommand extends Command {
+public class ChooseUserCommand extends ApiCommand {
 
   private String roleId;
   private String tenantId;

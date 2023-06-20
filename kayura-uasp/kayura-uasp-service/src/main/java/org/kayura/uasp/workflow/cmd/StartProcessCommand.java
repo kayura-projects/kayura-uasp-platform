@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.workflow.StartPayload;
 
-public class StartProcessCommand extends Command {
+public class StartProcessCommand extends ApiCommand {
 
   private StartPayload payload;
 

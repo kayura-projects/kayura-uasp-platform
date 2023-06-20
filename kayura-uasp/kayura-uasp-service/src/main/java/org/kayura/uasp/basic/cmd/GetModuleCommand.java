@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetModuleCommand extends Command {
+public class GetModuleCommand extends ApiCommand {
 
   private String moduleId;
 

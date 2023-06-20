@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.file.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
 import java.util.List;
 
-public class ImageDownloadCommand extends Command {
+public class ImageDownloadCommand extends ApiCommand {
 
   private String formula;
   private List<String> imageTypes;

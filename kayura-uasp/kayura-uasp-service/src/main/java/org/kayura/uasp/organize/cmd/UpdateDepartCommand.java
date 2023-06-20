@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.organize.DepartPayload;
 
-public class UpdateDepartCommand extends Command {
+public class UpdateDepartCommand extends ApiCommand {
 
   private String departId;
   private DepartPayload payload;

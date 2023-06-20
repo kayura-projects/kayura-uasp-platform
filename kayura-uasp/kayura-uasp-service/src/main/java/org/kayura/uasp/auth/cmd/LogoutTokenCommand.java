@@ -16,7 +16,7 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class LogoutTokenCommand extends Command {
+public class LogoutTokenCommand extends ApiCommand {
 }

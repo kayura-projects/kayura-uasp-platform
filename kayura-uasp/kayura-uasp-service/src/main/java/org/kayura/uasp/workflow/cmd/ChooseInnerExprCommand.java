@@ -16,8 +16,8 @@
 
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class ChooseInnerExprCommand extends Command {
+public class ChooseInnerExprCommand extends ApiCommand {
 
 }

@@ -16,13 +16,13 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.privilege.ModuleAction;
 import org.kayura.uasp.privilege.PrivilegeTypes;
 
 import java.util.List;
 
-public class SavePrivilegeCommand extends Command {
+public class SavePrivilegeCommand extends ApiCommand {
 
   private String appId;
   private PrivilegeTypes type;

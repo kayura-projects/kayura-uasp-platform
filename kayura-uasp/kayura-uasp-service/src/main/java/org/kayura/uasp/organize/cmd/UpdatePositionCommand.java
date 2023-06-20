@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.organize.PositionPayload;
 
-public class UpdatePositionCommand extends Command {
+public class UpdatePositionCommand extends ApiCommand {
 
   private String positionId;
   private PositionPayload payload;

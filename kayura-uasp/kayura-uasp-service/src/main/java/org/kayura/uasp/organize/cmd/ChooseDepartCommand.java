@@ -16,12 +16,12 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.utils.OutputTypes;
 
 import java.util.Set;
 
-public class ChooseDepartCommand extends Command {
+public class ChooseDepartCommand extends ApiCommand {
 
   private OutputTypes output;
   private String companyId;

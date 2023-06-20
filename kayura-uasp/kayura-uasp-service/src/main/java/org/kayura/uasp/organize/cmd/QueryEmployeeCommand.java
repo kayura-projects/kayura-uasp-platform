@@ -16,7 +16,7 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.applic.ApplicVo;
 import org.kayura.uasp.dev.entity.ApplicEntity;
@@ -25,9 +25,8 @@ import org.kayura.uasp.organize.EmployeeVo;
 import org.kayura.uasp.organize.entity.EmployeeEntity;
 
 import java.util.function.Function;
-import java.util.function.Supplier;
 
-public class QueryEmployeeCommand extends Command {
+public class QueryEmployeeCommand extends ApiCommand {
 
   private EmployeeQuery query;
   private PageClause pageClause;

@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.account.ChangePwdPayload;
 
-public class ChangeOwnPasswordCommand extends Command {
+public class ChangeOwnPasswordCommand extends ApiCommand {
 
   private ChangePwdPayload payload;
 

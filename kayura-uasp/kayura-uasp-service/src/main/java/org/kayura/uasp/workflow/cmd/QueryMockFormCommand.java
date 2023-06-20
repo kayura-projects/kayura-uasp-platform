@@ -15,11 +15,11 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.mockform.MockFormQuery;
 
-public class QueryMockFormCommand extends Command {
+public class QueryMockFormCommand extends ApiCommand {
 
   private MockFormQuery query;
   private PageClause pageClause;

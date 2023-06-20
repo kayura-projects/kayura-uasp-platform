@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.company.CompanyQuery;
 
-public class QueryCompanyCommand extends Command {
+public class QueryCompanyCommand extends ApiCommand {
 
   private CompanyQuery query;
   private PageClause pageClause;

@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.file.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 
-public class DeleteFileLinkCommand extends Command {
+public class DeleteFileLinkCommand extends ApiCommand {
 
   private String linkId;
   private IdPayload payload;

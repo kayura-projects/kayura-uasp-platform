@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
 import java.util.List;
 
-public class ImportModuleCommand extends Command {
+public class ImportModuleCommand extends ApiCommand {
 
   private String targetAppId;
   private String targetParentId;

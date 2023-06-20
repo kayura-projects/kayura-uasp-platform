@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.dict.DictDefineQuery;
 
-public class QueryDictDefineCommand extends Command {
+public class QueryDictDefineCommand extends ApiCommand {
 
   private DictDefineQuery query;
   private PageClause pageClause;

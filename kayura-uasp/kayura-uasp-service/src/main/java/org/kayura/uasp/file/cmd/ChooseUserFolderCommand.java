@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.file.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class ChooseUserFolderCommand extends Command {
+public class ChooseUserFolderCommand extends ApiCommand {
 
   private String userId;
 

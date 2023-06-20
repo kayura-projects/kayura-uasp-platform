@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.workflow.SubmitPayload;
 
-public class SubmitTaskCommand extends Command {
+public class SubmitTaskCommand extends ApiCommand {
 
   private SubmitPayload payload;
 

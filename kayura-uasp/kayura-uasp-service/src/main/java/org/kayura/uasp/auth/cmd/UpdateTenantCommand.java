@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.tenant.TenantPayload;
 
-public class UpdateTenantCommand extends Command {
+public class UpdateTenantCommand extends ApiCommand {
 
   private String tenantId;
   private TenantPayload payload;

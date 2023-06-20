@@ -15,10 +15,10 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.workflow.BpmnXmlPayload;
 
-public class SaveBpmnModelCommand extends Command {
+public class SaveBpmnModelCommand extends ApiCommand {
 
   private String modelId;
   private String body;

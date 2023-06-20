@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.func.ModulePayload;
 
-public class UpdateModuleCommand extends Command {
+public class UpdateModuleCommand extends ApiCommand {
 
   private String moduleId;
   private ModulePayload payload;

@@ -15,10 +15,10 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 
-public class DeleteDeployCommand extends Command {
+public class DeleteDeployCommand extends ApiCommand {
 
   private String deployId;
   private IdPayload payload;

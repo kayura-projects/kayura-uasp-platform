@@ -16,12 +16,12 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.OrderByClause;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.organize.IdentityQuery;
 
-public class QueryIdentityCommand extends Command {
+public class QueryIdentityCommand extends ApiCommand {
 
   private String employeeId;
   private IdentityQuery query;

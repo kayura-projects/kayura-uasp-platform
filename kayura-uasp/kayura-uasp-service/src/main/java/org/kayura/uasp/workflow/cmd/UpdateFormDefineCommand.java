@@ -15,10 +15,10 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.form.FormDefinePayload;
 
-public class UpdateFormDefineCommand extends Command {
+public class UpdateFormDefineCommand extends ApiCommand {
 
   private String formId;
   private FormDefinePayload payload;

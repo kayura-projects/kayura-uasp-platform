@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetTenantCommand extends Command {
+public class GetTenantCommand extends ApiCommand {
 
   private String tenantId;
 

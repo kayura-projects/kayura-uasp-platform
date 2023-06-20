@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.file.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.file.DownloadQuery;
 
-public class FileDownloadCommand extends Command {
+public class FileDownloadCommand extends ApiCommand {
 
   private DownloadQuery query;
 

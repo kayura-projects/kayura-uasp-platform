@@ -15,9 +15,9 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class BuildFlowLabelCommand extends Command {
+public class BuildFlowLabelCommand extends ApiCommand {
 
   private String flowId;
 

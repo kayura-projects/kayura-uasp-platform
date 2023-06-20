@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.dev.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.applic.ApplicPayload;
 
-public class UpdateApplicCommand extends Command {
+public class UpdateApplicCommand extends ApiCommand {
 
   private String appId;
   private ApplicPayload payload;

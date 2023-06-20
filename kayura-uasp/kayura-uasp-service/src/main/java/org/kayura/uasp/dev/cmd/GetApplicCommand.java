@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.dev.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetApplicCommand extends Command {
+public class GetApplicCommand extends ApiCommand {
 
   private String appId;
 

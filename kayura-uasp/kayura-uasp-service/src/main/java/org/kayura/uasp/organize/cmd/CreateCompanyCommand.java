@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.company.CompanyPayload;
 
-public class CreateCompanyCommand extends Command {
+public class CreateCompanyCommand extends ApiCommand {
 
   private CompanyPayload payload;
 

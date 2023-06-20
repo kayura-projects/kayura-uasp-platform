@@ -16,12 +16,12 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.dict.DictItemQuery;
 import org.kayura.uasp.utils.OutputTypes;
 
-public class QueryDictItemCommand extends Command {
+public class QueryDictItemCommand extends ApiCommand {
 
   private OutputTypes output;
   private DictItemQuery query;

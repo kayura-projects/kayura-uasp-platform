@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.file.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.file.FileLinkQuery;
 
-public class QueryFileLinkCommand extends Command {
+public class QueryFileLinkCommand extends ApiCommand {
 
   private FileLinkQuery query;
   private PageClause pageClause;

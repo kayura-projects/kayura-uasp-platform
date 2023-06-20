@@ -16,8 +16,8 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class RefreshTokenCommand extends Command {
+public class RefreshTokenCommand extends ApiCommand {
 
 }

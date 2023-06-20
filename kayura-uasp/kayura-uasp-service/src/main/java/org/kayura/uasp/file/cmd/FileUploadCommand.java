@@ -16,13 +16,13 @@
 
 package org.kayura.uasp.file.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.file.UploadPayload;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-public class FileUploadCommand extends Command {
+public class FileUploadCommand extends ApiCommand {
 
   private MultipartFile file;
   private UploadPayload payload;

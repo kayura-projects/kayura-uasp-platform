@@ -16,13 +16,13 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.OrderByClause;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.role.RoleQuery;
 import org.kayura.uasp.role.RoleTypes;
 
-public class QueryRoleCommand extends Command {
+public class QueryRoleCommand extends ApiCommand {
 
   private RoleTypes roleType;
   private String appId;

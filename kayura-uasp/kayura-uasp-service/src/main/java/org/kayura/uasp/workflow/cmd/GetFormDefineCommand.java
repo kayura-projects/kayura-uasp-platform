@@ -15,9 +15,9 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetFormDefineCommand extends Command {
+public class GetFormDefineCommand extends ApiCommand {
 
   private String formId;
 

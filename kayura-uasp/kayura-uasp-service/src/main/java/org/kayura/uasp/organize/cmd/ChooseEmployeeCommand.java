@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.OrderByClause;
 import org.kayura.uasp.organize.EmployeeQuery;
 
-public class ChooseEmployeeCommand extends Command {
+public class ChooseEmployeeCommand extends ApiCommand {
 
   private EmployeeQuery query;
   private OrderByClause orderByClause;

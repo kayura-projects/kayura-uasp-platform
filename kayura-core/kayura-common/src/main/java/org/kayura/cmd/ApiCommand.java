@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public abstract class Command implements ICommand{
+public abstract class ApiCommand implements ICommand{
 
   @JsonIgnore
   private CallerSource source;
@@ -37,7 +37,7 @@ public abstract class Command implements ICommand{
     return source;
   }
 
-  public Command setSource(CallerSource source) {
+  public ApiCommand setSource(CallerSource source) {
     this.source = source;
     return this;
   }
@@ -46,7 +46,7 @@ public abstract class Command implements ICommand{
     return request;
   }
 
-  public Command setRequest(HttpServletRequest request) {
+  public ApiCommand setRequest(HttpServletRequest request) {
     this.request = request;
     return this;
   }
@@ -55,7 +55,7 @@ public abstract class Command implements ICommand{
     return response;
   }
 
-  public Command setResponse(HttpServletResponse response) {
+  public ApiCommand setResponse(HttpServletResponse response) {
     this.response = response;
     return this;
   }
@@ -64,7 +64,7 @@ public abstract class Command implements ICommand{
     return loginUser;
   }
 
-  public Command setLoginUser(LoginUser loginUser) {
+  public ApiCommand setLoginUser(LoginUser loginUser) {
     this.loginUser = loginUser;
     return this;
   }

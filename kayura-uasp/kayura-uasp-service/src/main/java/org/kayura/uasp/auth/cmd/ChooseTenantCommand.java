@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.utils.OutputTypes;
 
-public class ChooseTenantCommand extends Command {
+public class ChooseTenantCommand extends ApiCommand {
 
   private OutputTypes outType;
   private boolean hasApp;

@@ -15,9 +15,9 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.utils.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class BuildQRCodeCommand extends Command {
+public class BuildQRCodeCommand extends ApiCommand {
 
   private String content;
   private int width = 400;

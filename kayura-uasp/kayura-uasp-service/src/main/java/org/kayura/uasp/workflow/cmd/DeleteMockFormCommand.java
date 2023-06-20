@@ -15,10 +15,10 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 
-public class DeleteMockFormCommand extends Command {
+public class DeleteMockFormCommand extends ApiCommand {
 
   private String mockId;
   private IdPayload payload;

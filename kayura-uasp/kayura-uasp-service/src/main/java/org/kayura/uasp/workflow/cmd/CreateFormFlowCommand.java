@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.workflow.FormFlowPayload;
 
-public class CreateFormFlowCommand extends Command {
+public class CreateFormFlowCommand extends ApiCommand {
 
   private FormFlowPayload payload;
 

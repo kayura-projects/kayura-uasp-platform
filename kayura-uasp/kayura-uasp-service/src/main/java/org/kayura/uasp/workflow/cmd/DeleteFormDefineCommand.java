@@ -15,10 +15,10 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 
-public class DeleteFormDefineCommand extends Command {
+public class DeleteFormDefineCommand extends ApiCommand {
 
   private String formId;
   private IdPayload payload;

@@ -104,7 +104,7 @@ public class WebMvcConfigAdapter implements WebMvcConfigurer {
     resolvers.add(new PageClauseArgumentResolver());
     resolvers.add(new OrderByClauseArgumentResolver());
     resolvers.add(new LoginUserArgumentResolver());
-    resolvers.add(new CommandArgumentResolver());
+    resolvers.add(new ApiCommandArgumentResolver());
   }
 
 }

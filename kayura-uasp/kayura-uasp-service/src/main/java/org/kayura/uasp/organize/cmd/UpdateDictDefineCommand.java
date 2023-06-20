@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.dict.DictDefinePayload;
 
-public class UpdateDictDefineCommand extends Command {
+public class UpdateDictDefineCommand extends ApiCommand {
 
   private String defineId;
   private DictDefinePayload payload;

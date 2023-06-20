@@ -16,12 +16,12 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.role.RoleUserPayload;
 
 import java.util.List;
 
-public class CreateRoleUserCommand extends Command {
+public class CreateRoleUserCommand extends ApiCommand {
 
   private RoleUserPayload payload;
   private List<RoleUserPayload> payloads;

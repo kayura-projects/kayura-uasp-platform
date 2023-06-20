@@ -15,9 +15,9 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class GetMockFormCommand extends Command {
+public class GetMockFormCommand extends ApiCommand {
 
   private String mockId;
 

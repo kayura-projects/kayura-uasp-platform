@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.func.ModuleQuery;
 
-public class QueryModuleCommand extends Command {
+public class QueryModuleCommand extends ApiCommand {
 
   private ModuleQuery query;
   private PageClause pageClause;

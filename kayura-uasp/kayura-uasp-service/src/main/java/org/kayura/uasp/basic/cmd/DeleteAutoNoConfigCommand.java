@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 
-public class DeleteAutoNoConfigCommand extends Command {
+public class DeleteAutoNoConfigCommand extends ApiCommand {
 
   private IdPayload payload;
   private String configId;

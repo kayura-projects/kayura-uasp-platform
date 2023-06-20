@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
 import java.util.Map;
 
-public class ChooseDictItemCommand extends Command {
+public class ChooseDictItemCommand extends ApiCommand {
 
   private String define;
   private String tenantId;

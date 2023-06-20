@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.DataStatus;
 import org.kayura.uasp.utils.OutputTypes;
 
-public class SelectOrganizeTreeCommand extends Command {
+public class SelectOrganizeTreeCommand extends ApiCommand {
 
   private OutputTypes output;
   private String companyId;

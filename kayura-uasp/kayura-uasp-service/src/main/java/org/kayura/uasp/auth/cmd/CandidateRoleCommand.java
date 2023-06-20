@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.role.RoleTypes;
 import org.kayura.uasp.utils.OutputTypes;
 
-public class CandidateRoleCommand extends Command {
+public class CandidateRoleCommand extends ApiCommand {
 
   private OutputTypes output;
   private String userId;

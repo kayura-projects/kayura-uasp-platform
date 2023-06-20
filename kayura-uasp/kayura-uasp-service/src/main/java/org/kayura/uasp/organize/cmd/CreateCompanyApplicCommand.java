@@ -16,12 +16,12 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.company.CompanyApplicPayload;
 
 import java.util.List;
 
-public class CreateCompanyApplicCommand extends Command {
+public class CreateCompanyApplicCommand extends ApiCommand {
 
   private CompanyApplicPayload payload;
   private List<CompanyApplicPayload> payloads;

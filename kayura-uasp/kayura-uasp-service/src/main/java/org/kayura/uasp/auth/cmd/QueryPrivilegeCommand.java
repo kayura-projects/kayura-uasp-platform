@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.privilege.PrivilegeTypes;
 
-public class QueryPrivilegeCommand extends Command {
+public class QueryPrivilegeCommand extends ApiCommand {
 
   private PrivilegeTypes type;
   private String appId;

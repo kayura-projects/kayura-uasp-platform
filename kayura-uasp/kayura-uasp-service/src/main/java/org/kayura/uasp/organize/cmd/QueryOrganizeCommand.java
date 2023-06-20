@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.organize.OrganizeQuery;
 
-public class QueryOrganizeCommand extends Command {
+public class QueryOrganizeCommand extends ApiCommand {
 
   private OrganizeQuery query;
   private PageClause pageClause;

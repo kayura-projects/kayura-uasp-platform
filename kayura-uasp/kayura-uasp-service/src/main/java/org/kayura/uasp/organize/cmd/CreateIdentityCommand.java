@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.organize.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.organize.IdentityPayload;
 
-public class CreateIdentityCommand extends Command {
+public class CreateIdentityCommand extends ApiCommand {
 
   private IdentityPayload payload;
 

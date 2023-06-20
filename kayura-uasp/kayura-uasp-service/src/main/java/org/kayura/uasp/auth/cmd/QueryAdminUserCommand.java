@@ -16,11 +16,11 @@
 
 package org.kayura.uasp.auth.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.user.AdminUserQuery;
 
-public class QueryAdminUserCommand extends Command {
+public class QueryAdminUserCommand extends ApiCommand {
 
   private AdminUserQuery query;
   private PageClause pageClause;

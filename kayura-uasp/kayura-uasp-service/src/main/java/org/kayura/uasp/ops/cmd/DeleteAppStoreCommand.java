@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.ops.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 
-public class DeleteAppStoreCommand extends Command {
+public class DeleteAppStoreCommand extends ApiCommand {
 
   private String releaseId;
   private IdPayload payload;

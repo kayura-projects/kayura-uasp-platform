@@ -17,7 +17,7 @@
 package org.kayura.spring.web;
 
 import org.kayura.cmd.CallerSource;
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.security.utils.UserContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -33,13 +33,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
-public class CommandArgumentResolver implements HandlerMethodArgumentResolver {
+public class ApiCommandArgumentResolver implements HandlerMethodArgumentResolver {
 
-  private final static Log LOG = LogFactory.getLog(CommandArgumentResolver.class);
+  private final static Log LOG = LogFactory.getLog(ApiCommandArgumentResolver.class);
 
   @Override
   public boolean supportsParameter(MethodParameter parameter) {
-    return Command.class.isAssignableFrom(parameter.getParameterType());
+    return ApiCommand.class.isAssignableFrom(parameter.getParameterType());
   }
 
   @Override
@@ -71,7 +71,7 @@ public class CommandArgumentResolver implements HandlerMethodArgumentResolver {
     }
 
     Object instantiated = BeanUtils.instantiateClass(type);
-    Command command = (Command) instantiated;
+    ApiCommand command = (ApiCommand) instantiated;
     command.setSource(CallerSource.create().setClazz(callerClass).setMethod(callerMethod));
     command.setLoginUser(UserContext.loginUser());
     command.setRequest(webRequest.getNativeRequest(HttpServletRequest.class));

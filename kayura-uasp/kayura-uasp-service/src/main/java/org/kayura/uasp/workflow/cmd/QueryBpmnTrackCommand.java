@@ -16,9 +16,9 @@
 
 package org.kayura.uasp.workflow.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 
-public class QueryBpmnTrackCommand extends Command {
+public class QueryBpmnTrackCommand extends ApiCommand {
 
   private String businessKey;
 

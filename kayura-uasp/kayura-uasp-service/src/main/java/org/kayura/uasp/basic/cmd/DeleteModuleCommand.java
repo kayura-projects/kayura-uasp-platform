@@ -16,10 +16,10 @@
 
 package org.kayura.uasp.basic.cmd;
 
-import org.kayura.cmd.Command;
+import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.common.IdPayload;
 
-public class DeleteModuleCommand extends Command {
+public class DeleteModuleCommand extends ApiCommand {
 
   private String moduleId;
   private IdPayload payload;
