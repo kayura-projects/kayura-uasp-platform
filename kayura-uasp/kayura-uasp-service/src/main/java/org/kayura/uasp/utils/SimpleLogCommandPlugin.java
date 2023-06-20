@@ -15,13 +15,13 @@
  -----------------------------------------------------------------------------*/
 package org.kayura.uasp.utils;
 
-import org.kayura.cmd.Command;
 import org.kayura.cmd.CommandHandlerWrapper;
 import org.kayura.cmd.CommandPlugin;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.kayura.cmd.ICommand;
 import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.stereotype.Component;
@@ -38,7 +38,7 @@ public class SimpleLogCommandPlugin implements CommandPlugin {
   }
 
   @Override
-  public <R> R invoke(Command command, CommandHandlerWrapper pluginWrapper) {
+  public <R> R invoke(ICommand command, CommandHandlerWrapper pluginWrapper) {
 
     if (LOG.isDebugEnabled()) {
       String separator = System.getProperty("line.separator");

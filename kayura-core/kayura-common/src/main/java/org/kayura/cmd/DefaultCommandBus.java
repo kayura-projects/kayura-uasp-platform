@@ -26,9 +26,9 @@ public class DefaultCommandBus implements CommandBus {
     this.registry = registry;
   }
 
-  public <R> R dispatch(Command command) {
+  public <R> R dispatch(ICommand command) {
 
-    Class<? extends Command> commandClass = command.getClass();
+    Class<? extends ICommand> commandClass = command.getClass();
     CommandHandlerWrapper handlerWrapper = this.registry.getHandlerWrapper(commandClass);
     List<CommandPluginWrapper> pluginWrappers = registry.getPluginWrappers();
 

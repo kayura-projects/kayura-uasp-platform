@@ -46,6 +46,10 @@ public class TenantVo {
   private CompanyVo company;
   private List<CompanyApplicVo> applics;
 
+  public static TenantVo create() {
+    return new TenantVo();
+  }
+
   public String getTenantId() {
     return tenantId;
   }

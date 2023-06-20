@@ -14,20 +14,25 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.rest.organize;
+package org.kayura.uasp.rest.auth;
 
 import org.kayura.cmd.CommandGateway;
 import org.kayura.security.annotation.Secured;
 import org.kayura.type.HttpResult;
 import org.kayura.type.PageClause;
+import org.kayura.uasp.applic.ApplicVo;
+import org.kayura.uasp.auth.cmd.BuildSneakCommand;
 import org.kayura.uasp.auth.cmd.ChooseTenantCommand;
+import org.kayura.uasp.auth.model.SneakPayload;
 import org.kayura.uasp.company.CompanyTypes;
 import org.kayura.uasp.organize.EmployeeQuery;
+import org.kayura.uasp.organize.EmployeeVo;
 import org.kayura.uasp.organize.OrganizeTypes;
 import org.kayura.uasp.organize.cmd.ChooseCompanyCommand;
 import org.kayura.uasp.organize.cmd.QueryEmployeeCommand;
 import org.kayura.uasp.utils.OutputTypes;
 import org.kayura.utils.StringUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import static org.kayura.uasp.utils.SecurityConsts.*;
@@ -49,7 +54,6 @@ public class NoSecretWebApi {
 
     return commandGateway.send(command
       .setHasApp(true)
-      .setIncludeApplic(true)
       .setOutType(OutputTypes.SELECT)
     );
   }
@@ -78,8 +82,28 @@ public class NoSecretWebApi {
     }
     return commandGateway.send(command
       .setQuery(query.setOrgType(OrganizeTypes.Company))
+      .setIncludeApplic(true)
       .setPageClause(pageClause)
+      .setEmployeeConverter(m -> EmployeeVo.create()
+        .setEmployeeId(m.getEmployeeId())
+        .setCompanyId(m.getCompanyId())
+        .setUserName(m.getUserName())
+        .setDisplayName(m.getDisplayName())
+        .setMobile(m.getMobile())
+        .setUserType(m.getUserType())
+      ).setApplicConverter(m -> ApplicVo.create()
+        .setAppId(m.getAppId())
+        .setName(m.getName())
+        .setUrl(m.getUrl())
+      )
     );
   }
 
+  @PostMapping("/no-secret/sneak")
+  @Secured(actions = QUERY)
+  public HttpResult buildSneak(BuildSneakCommand command,
+                               @RequestBody @Validated SneakPayload payload) {
+
+    return commandGateway.send(command.setPayload(payload));
+  }
 }

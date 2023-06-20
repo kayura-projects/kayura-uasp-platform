@@ -17,7 +17,9 @@
 package org.kayura.uasp.organize;
 
 import org.kayura.type.UserTypes;
+import org.kayura.uasp.applic.ApplicVo;
 import org.kayura.uasp.company.CompanyTypes;
+import org.kayura.uasp.tenant.TenantVo;
 import org.kayura.uasp.user.UserAvatarVo;
 
 import java.time.LocalDate;
@@ -68,6 +70,10 @@ public class EmployeeVo {
   private LocalDate accountExpire;
   private Boolean enabled;
   private Boolean locked;
+
+  // ---- applic ----
+
+  private List<ApplicVo> applics;
 
   public static EmployeeVo create() {
     return new EmployeeVo();
@@ -421,6 +427,15 @@ public class EmployeeVo {
 
   public EmployeeVo setUserType(UserTypes userType) {
     this.userType = userType;
+    return this;
+  }
+
+  public List<ApplicVo> getApplics() {
+    return applics;
+  }
+
+  public EmployeeVo setApplics(List<ApplicVo> applics) {
+    this.applics = applics;
     return this;
   }
 }

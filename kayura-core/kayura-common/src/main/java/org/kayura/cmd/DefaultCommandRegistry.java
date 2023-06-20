@@ -41,7 +41,7 @@ public class DefaultCommandRegistry implements CommandRegistry {
     this.interceptorWrappers.add(interceptorWrapper);
   }
 
-  public void subscribe(Class<? extends Command> commandType, CommandHandlerWrapper handlerWrapper) {
+  public void subscribe(Class<? extends ICommand> commandType, CommandHandlerWrapper handlerWrapper) {
 
     CommandHandlerWrapper oldValue = handlerWrappers.put(commandType, handlerWrapper);
     if (oldValue != null) {
@@ -55,12 +55,12 @@ public class DefaultCommandRegistry implements CommandRegistry {
     }
   }
 
-  public void unsubscribe(Class<? extends Command> commandClass) {
+  public void unsubscribe(Class<? extends ICommand> commandClass) {
     handlerWrappers.remove(commandClass);
   }
 
   @Override
-  public CommandHandlerWrapper getHandlerWrapper(Class<? extends Command> commandType) {
+  public CommandHandlerWrapper getHandlerWrapper(Class<? extends ICommand> commandType) {
     return this.handlerWrappers.getOrDefault(commandType, null);
   }
 

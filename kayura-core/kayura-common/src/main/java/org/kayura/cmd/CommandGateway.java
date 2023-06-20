@@ -17,5 +17,5 @@
 package org.kayura.cmd;
 
 public interface CommandGateway {
-  <R> R send(Command command);
+  <R> R send(ICommand command);
 }

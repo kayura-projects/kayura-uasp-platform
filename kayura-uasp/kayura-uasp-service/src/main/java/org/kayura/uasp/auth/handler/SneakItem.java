@@ -14,34 +14,44 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.cmd;
+package org.kayura.uasp.auth.handler;
 
-@SuppressWarnings({"ClassCanBeRecord", "rawtypes"})
-public final class CommandHandlerWrapper implements Comparable<CommandHandlerWrapper> {
+import java.io.Serializable;
 
-  private final CommandHandler handler;
-  private final int priority;
+public class SneakItem implements Serializable {
 
-  public CommandHandlerWrapper(CommandHandler handler, int priority) {
-    this.handler = handler;
-    this.priority = priority;
+  private Long expire;
+  private String user;
+  private String caller;
+
+  public static SneakItem create() {
+    return new SneakItem();
   }
 
-  @SuppressWarnings("unchecked")
-  public <R> R invoke(ICommand command) {
-    return (R) handler.execute(command);
+  public Long getExpire() {
+    return expire;
   }
 
-  @Override
-  public int compareTo(CommandHandlerWrapper other) {
-    return Integer.compare(priority, other.priority);
+  public SneakItem setExpire(Long expire) {
+    this.expire = expire;
+    return this;
   }
 
-  public CommandHandler getHandler() {
-    return this.handler;
+  public String getUser() {
+    return user;
   }
 
-  public int getPriority() {
-    return this.priority;
+  public SneakItem setUser(String user) {
+    this.user = user;
+    return this;
+  }
+
+  public String getCaller() {
+    return caller;
+  }
+
+  public SneakItem setCaller(String caller) {
+    this.caller = caller;
+    return this;
   }
 }

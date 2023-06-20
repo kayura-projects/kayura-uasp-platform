@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public abstract class Command {
+public abstract class Command implements ICommand{
 
   @JsonIgnore
   private CallerSource source;

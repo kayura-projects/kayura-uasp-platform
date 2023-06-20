@@ -16,6 +16,6 @@
 
 package org.kayura.cmd;
 
-public interface CommandHandler<T extends Command, R> {
+public interface CommandHandler<T extends ICommand, R> {
   R execute(T command);
 }

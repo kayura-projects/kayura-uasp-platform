@@ -106,7 +106,7 @@ public class CommandAutoConfigurer {
   }
 
   @SuppressWarnings("unchecked")
-  private Class<? extends Command> getCommandType(CommandHandler handler) {
+  private Class<? extends Command> getCommandType(CommandHandler<?, ?> handler) {
 
     Object target = handler;
     if (AopUtils.isCglibProxy(handler)) {

@@ -17,5 +17,5 @@
 package org.kayura.cmd;
 
 public interface CommandPlugin {
-  <R> R invoke(Command command, CommandHandlerWrapper pluginWrapper);
+  <R> R invoke(ICommand command, CommandHandlerWrapper pluginWrapper);
 }

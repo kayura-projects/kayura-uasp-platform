@@ -21,21 +21,21 @@ import java.util.Map;
 
 public class CommandSession {
 
-  private Command command;
+  private ICommand command;
   private Map<String, Object> data = new HashMap<>();
   private Object result;
 
-  public static CommandSession create(Command command) {
+  public static CommandSession create(ICommand command) {
     CommandSession session = new CommandSession();
     session.command = command;
     return session;
   }
 
-  public Command getCommand() {
+  public ICommand getCommand() {
     return command;
   }
 
-  public CommandSession setCommand(Command command) {
+  public CommandSession setCommand(ICommand command) {
     this.command = command;
     return this;
   }

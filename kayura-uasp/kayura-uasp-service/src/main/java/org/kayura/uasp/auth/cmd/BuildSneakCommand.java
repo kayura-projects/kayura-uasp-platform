@@ -14,34 +14,21 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.cmd;
+package org.kayura.uasp.auth.cmd;
 
-@SuppressWarnings({"ClassCanBeRecord", "rawtypes"})
-public final class CommandHandlerWrapper implements Comparable<CommandHandlerWrapper> {
+import org.kayura.cmd.Command;
+import org.kayura.uasp.auth.model.SneakPayload;
 
-  private final CommandHandler handler;
-  private final int priority;
+public class BuildSneakCommand extends Command {
 
-  public CommandHandlerWrapper(CommandHandler handler, int priority) {
-    this.handler = handler;
-    this.priority = priority;
+  private SneakPayload payload;
+
+  public SneakPayload getPayload() {
+    return payload;
   }
 
-  @SuppressWarnings("unchecked")
-  public <R> R invoke(ICommand command) {
-    return (R) handler.execute(command);
-  }
-
-  @Override
-  public int compareTo(CommandHandlerWrapper other) {
-    return Integer.compare(priority, other.priority);
-  }
-
-  public CommandHandler getHandler() {
-    return this.handler;
-  }
-
-  public int getPriority() {
-    return this.priority;
+  public BuildSneakCommand setPayload(SneakPayload payload) {
+    this.payload = payload;
+    return this;
   }
 }

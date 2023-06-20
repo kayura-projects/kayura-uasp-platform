@@ -20,6 +20,7 @@ import org.kayura.mybatis.annotation.mapper.ForeignKey;
 import org.kayura.mybatis.annotation.mapper.Id;
 import org.kayura.mybatis.annotation.mapper.RefColumn;
 import org.kayura.mybatis.annotation.mapper.Table;
+import org.kayura.type.UserTypes;
 import org.kayura.uasp.auth.entity.UserEntity;
 import org.kayura.uasp.company.CompanyTypes;
 import org.kayura.uasp.organize.SexEnum;
@@ -46,6 +47,8 @@ public class EmployeeEntity {
   private String displayName;
   @RefColumn(from = "eu")
   private String mobile;
+  @RefColumn(from = "eu")
+  private UserTypes userType;
   /** 租户ID */
   private String tenantId;
   /** 公司ID */
@@ -396,6 +399,15 @@ public class EmployeeEntity {
 
   public EmployeeEntity setDisplayName(String displayName) {
     this.displayName = displayName;
+    return this;
+  }
+
+  public UserTypes getUserType() {
+    return userType;
+  }
+
+  public EmployeeEntity setUserType(UserTypes userType) {
+    this.userType = userType;
     return this;
   }
 }

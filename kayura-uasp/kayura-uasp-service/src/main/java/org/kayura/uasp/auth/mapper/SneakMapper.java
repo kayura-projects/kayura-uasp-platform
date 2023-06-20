@@ -14,34 +14,12 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.cmd;
+package org.kayura.uasp.auth.mapper;
 
-@SuppressWarnings({"ClassCanBeRecord", "rawtypes"})
-public final class CommandHandlerWrapper implements Comparable<CommandHandlerWrapper> {
+import org.kayura.mybatis.mapper.CrudMapper;
+import org.kayura.uasp.auth.entity.SneakEntity;
+import org.springframework.stereotype.Repository;
 
-  private final CommandHandler handler;
-  private final int priority;
-
-  public CommandHandlerWrapper(CommandHandler handler, int priority) {
-    this.handler = handler;
-    this.priority = priority;
-  }
-
-  @SuppressWarnings("unchecked")
-  public <R> R invoke(ICommand command) {
-    return (R) handler.execute(command);
-  }
-
-  @Override
-  public int compareTo(CommandHandlerWrapper other) {
-    return Integer.compare(priority, other.priority);
-  }
-
-  public CommandHandler getHandler() {
-    return this.handler;
-  }
-
-  public int getPriority() {
-    return this.priority;
-  }
+@Repository
+public interface SneakMapper extends CrudMapper<SneakEntity> {
 }

@@ -28,9 +28,9 @@ public class DefaultCommandGateway implements CommandGateway {
     this.commandBus = commandBus;
   }
 
-  public <R> R send(Command command) {
+  public <R> R send(ICommand command) {
 
-    Class<? extends Command> commandClass = command.getClass();
+    Class<? extends ICommand> commandClass = command.getClass();
     List<CommandInterceptorWrapper> interceptorWrappers = registry.getInterceptorWrappers()
       .stream().filter(x -> x.hasSupport(commandClass)).toList();
     if (!interceptorWrappers.isEmpty()) {

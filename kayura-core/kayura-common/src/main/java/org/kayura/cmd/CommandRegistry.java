@@ -24,11 +24,11 @@ public interface CommandRegistry {
 
   void addInterceptor(CommandInterceptorWrapper interceptorWrapper);
 
-  void subscribe(Class<? extends Command> commandType, CommandHandlerWrapper handlerWrapper);
+  void subscribe(Class<? extends ICommand> commandType, CommandHandlerWrapper handlerWrapper);
 
-  void unsubscribe(Class<? extends Command> commandClass);
+  void unsubscribe(Class<? extends ICommand> commandClass);
 
-  CommandHandlerWrapper getHandlerWrapper(Class<? extends Command> commandType);
+  CommandHandlerWrapper getHandlerWrapper(Class<? extends ICommand> commandType);
 
   List<CommandInterceptorWrapper> getInterceptorWrappers();
 

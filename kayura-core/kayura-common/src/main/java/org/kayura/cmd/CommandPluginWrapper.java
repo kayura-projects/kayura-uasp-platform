@@ -35,7 +35,7 @@ public class CommandPluginWrapper implements Comparable<CommandPluginWrapper> {
     return suppers == null || Arrays.asList(suppers).contains(commandClass);
   }
 
-  public <R> R invoke(Command command, CommandHandlerWrapper pluginWrapper) {
+  public <R> R invoke(ICommand command, CommandHandlerWrapper pluginWrapper) {
     return plugin.invoke(command, pluginWrapper);
   }
 

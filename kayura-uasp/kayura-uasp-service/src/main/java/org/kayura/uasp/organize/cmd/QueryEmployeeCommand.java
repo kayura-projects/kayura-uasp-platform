@@ -18,12 +18,23 @@ package org.kayura.uasp.organize.cmd;
 
 import org.kayura.cmd.Command;
 import org.kayura.type.PageClause;
+import org.kayura.uasp.applic.ApplicVo;
+import org.kayura.uasp.dev.entity.ApplicEntity;
 import org.kayura.uasp.organize.EmployeeQuery;
+import org.kayura.uasp.organize.EmployeeVo;
+import org.kayura.uasp.organize.entity.EmployeeEntity;
+
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class QueryEmployeeCommand extends Command {
 
   private EmployeeQuery query;
   private PageClause pageClause;
+  private boolean includeApplic;
+
+  private Function<EmployeeEntity, EmployeeVo> employeeConverter;
+  private Function<ApplicEntity, ApplicVo> applicConverter;
 
   public EmployeeQuery getQuery() {
     return query;
@@ -40,6 +51,33 @@ public class QueryEmployeeCommand extends Command {
 
   public QueryEmployeeCommand setPageClause(PageClause pageClause) {
     this.pageClause = pageClause;
+    return this;
+  }
+
+  public boolean isIncludeApplic() {
+    return includeApplic;
+  }
+
+  public QueryEmployeeCommand setIncludeApplic(boolean includeApplic) {
+    this.includeApplic = includeApplic;
+    return this;
+  }
+
+  public Function<EmployeeEntity, EmployeeVo> getEmployeeConverter() {
+    return employeeConverter;
+  }
+
+  public QueryEmployeeCommand setEmployeeConverter(Function<EmployeeEntity, EmployeeVo> employeeConverter) {
+    this.employeeConverter = employeeConverter;
+    return this;
+  }
+
+  public Function<ApplicEntity, ApplicVo> getApplicConverter() {
+    return applicConverter;
+  }
+
+  public QueryEmployeeCommand setApplicConverter(Function<ApplicEntity, ApplicVo> applicConverter) {
+    this.applicConverter = applicConverter;
     return this;
   }
 }
