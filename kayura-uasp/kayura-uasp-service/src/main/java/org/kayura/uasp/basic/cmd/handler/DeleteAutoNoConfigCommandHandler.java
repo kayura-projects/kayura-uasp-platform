@@ -24,7 +24,7 @@ import org.kayura.uasp.basic.entity.AutoNoConfigEntity;
 import org.kayura.uasp.basic.manage.AutoNoConfigManager;
 import org.kayura.uasp.basic.manage.AutoNoDefineManager;
 import org.kayura.uasp.common.IdPayload;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.utils.CollectionUtils;
 import org.kayura.utils.StringUtils;
 import org.springframework.stereotype.Component;
@@ -64,7 +64,7 @@ public class DeleteAutoNoConfigCommandHandler implements CommandHandler<DeleteAu
     if (CollectionUtils.isNotEmpty(entities)) {
       for (AutoNoConfigEntity entity : entities) {
         if (loginUser.hasRootOrAdmin()) {
-          if (UaspConstants.GLOBAL.equalsIgnoreCase(entity.getTenantId())) {
+          if (UaspConsts.GLOBAL.equalsIgnoreCase(entity.getTenantId())) {
             defineManager.deleteById(entity.getDefineId());
           } else {
             configManager.deleteById(entity.getConfigId());

@@ -13,35 +13,35 @@
  - See the License for the specific language governing permissions and
  - limitations under the License.
  -----------------------------------------------------------------------------*/
-package org.kayura.uasp.config;
 
-import org.kayura.uasp.utils.UaspConsts;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+package org.kayura.uasp.notice;
 
-@ConfigurationProperties(prefix = "kayura.app")
-public class AppSettings {
+import org.kayura.mybatis.annotation.querier.Eq;
+import org.kayura.mybatis.annotation.querier.Like;
 
-  // 当前应用程序代码
-  private String appCode = UaspConsts.UASP_APP_CODE;
-  // 密码过期时间（秒）
-  private long pwdExpire = 7776000L;
+public class NoticeQuery {
 
-  public String getAppCode() {
-    return appCode;
+  @Eq
+  private String appId;
+
+  @Like("title")
+  private String searchText;
+
+  public String getAppId() {
+    return appId;
   }
 
-  public AppSettings setAppCode(String appCode) {
-    this.appCode = appCode;
+  public NoticeQuery setAppId(String appId) {
+    this.appId = appId;
     return this;
   }
 
-  public long getPwdExpire() {
-    return this.pwdExpire;
+  public String getSearchText() {
+    return searchText;
   }
 
-  public void setPwdExpire(long pwdExpire) {
-    this.pwdExpire = pwdExpire;
+  public NoticeQuery setSearchText(String searchText) {
+    this.searchText = searchText;
+    return this;
   }
-
-
 }

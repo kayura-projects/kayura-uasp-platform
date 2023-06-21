@@ -27,6 +27,7 @@ import org.kayura.uasp.privilege.PrivilegeTypes;
 import org.kayura.uasp.privilege.RolePrivilegePayload;
 import org.kayura.uasp.role.*;
 import org.kayura.uasp.utils.OutputTypes;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.vaildation.Create;
 import org.kayura.vaildation.Update;
 import org.springframework.validation.annotation.Validated;
@@ -39,7 +40,7 @@ import static org.kayura.uasp.utils.SecurityConsts.*;
 @RestController
 @RequestMapping("${kayura.uasp.api-url}")
 @Secured(resource = UASP_FUNC_ROLE)
-public class FuncRoleWebApi {
+public class FuncRoleWebApi implements UaspConsts {
 
   private final CommandGateway commandGateway;
 
@@ -52,7 +53,7 @@ public class FuncRoleWebApi {
   public HttpResult chooseApplics(ChooseApplicCommand command) {
 
     return commandGateway.send(command
-      .setNotUasp(true)
+      .setExclusionIds(UASP_APP_ID)
       .setType(ApplicTypes.PC)
       .setOutput(OutputTypes.TREE)
     );

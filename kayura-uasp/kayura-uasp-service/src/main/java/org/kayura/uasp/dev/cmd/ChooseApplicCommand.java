@@ -20,11 +20,13 @@ import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.applic.ApplicTypes;
 import org.kayura.uasp.utils.OutputTypes;
 
+import java.util.List;
+
 public class ChooseApplicCommand extends ApiCommand {
 
   private OutputTypes output;
   private ApplicTypes type;
-  private boolean notUasp;
+  private List<String> exclusionIds;
   private String tenantId;
   private String companyId;
   private String userId;
@@ -75,21 +77,26 @@ public class ChooseApplicCommand extends ApiCommand {
     return this;
   }
 
-  public boolean isNotUasp() {
-    return notUasp;
-  }
-
-  public ChooseApplicCommand setNotUasp(boolean notUasp) {
-    this.notUasp = notUasp;
-    return this;
-  }
-
   public String getUserId() {
     return userId;
   }
 
   public ChooseApplicCommand setUserId(String userId) {
     this.userId = userId;
+    return this;
+  }
+
+  public List<String> getExclusionIds() {
+    return exclusionIds;
+  }
+
+  public ChooseApplicCommand setExclusionIds(List<String> exclusionIds) {
+    this.exclusionIds = exclusionIds;
+    return this;
+  }
+
+  public ChooseApplicCommand setExclusionIds(String... exclusionIds) {
+    this.exclusionIds = List.of(exclusionIds);
     return this;
   }
 }

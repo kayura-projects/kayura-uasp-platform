@@ -14,52 +14,40 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.dev.cmd.handler;
+package org.kayura.uasp.basic.cmd.handler;
 
 import org.kayura.cmd.CommandHandler;
-import org.kayura.security.LoginUser;
 import org.kayura.type.HttpResult;
+import org.kayura.uasp.basic.cmd.DeleteNoticeCommand;
+import org.kayura.uasp.basic.manage.NoticeManager;
 import org.kayura.uasp.common.IdPayload;
-import org.kayura.uasp.dev.cmd.DeleteApplicCommand;
-import org.kayura.uasp.dev.manage.ApplicManager;
-import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.utils.CollectionUtils;
 import org.kayura.utils.StringUtils;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Component
-public class DeleteApplicCommandHandler implements CommandHandler<DeleteApplicCommand, HttpResult> {
+public class DeleteNoticeCommandHandler implements CommandHandler<DeleteNoticeCommand, HttpResult> {
 
-  private static final String UASP_ERROR_MESSAGE = "UASP 为保留应用，不可删除。";
-  private final ApplicManager applicManager;
+  private final NoticeManager noticeManager;
 
-  public DeleteApplicCommandHandler(ApplicManager applicManager) {
-    this.applicManager = applicManager;
+  public DeleteNoticeCommandHandler(NoticeManager noticeManager) {
+    this.noticeManager = noticeManager;
   }
 
-  @Transactional
-  public HttpResult execute(DeleteApplicCommand command) {
+  @Override
+  public HttpResult execute(DeleteNoticeCommand command) {
 
-    LoginUser loginUser = command.getLoginUser();
     IdPayload payload = Optional.ofNullable(command.getPayload()).orElse(IdPayload.create());
-    String appId = Optional.ofNullable(command.getAppId()).orElse(payload.getId());
+    String countId = Optional.ofNullable(command.getNoticeId()).orElse(payload.getId());
 
-    if (StringUtils.hasText(appId)) {
-      if (UaspConsts.UASP_APP_ID.equals(appId)) {
-        return HttpResult.error(UASP_ERROR_MESSAGE);
-      }
-      applicManager.deleteById(appId);
+    if (StringUtils.hasText(countId)) {
+      noticeManager.deleteById(countId);
     } else if (CollectionUtils.isNotEmpty(payload.getIds())) {
-      if (payload.getIds().stream().anyMatch(UaspConsts.UASP_APP_ID::equals)) {
-        return HttpResult.error(UASP_ERROR_MESSAGE);
-      }
-      applicManager.deleteByIds(payload.getIds());
+      noticeManager.deleteByIds(payload.getIds());
     }
 
     return HttpResult.ok();
   }
-
 }

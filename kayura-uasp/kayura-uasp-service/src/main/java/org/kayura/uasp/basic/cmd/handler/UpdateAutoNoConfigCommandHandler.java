@@ -26,7 +26,7 @@ import org.kayura.uasp.basic.entity.AutoNoConfigEntity;
 import org.kayura.uasp.basic.entity.AutoNoDefineEntity;
 import org.kayura.uasp.basic.manage.AutoNoConfigManager;
 import org.kayura.uasp.basic.manage.AutoNoDefineManager;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.utils.DateUtils;
 import org.kayura.utils.StringUtils;
 import org.modelmapper.ModelMapper;
@@ -71,7 +71,7 @@ public class UpdateAutoNoConfigCommandHandler implements CommandHandler<UpdateAu
 
     // 如果实体没有 tenantId 值，又传入的 tenantId 值。
     if (StringUtils.isBlank(entity.getTenantId()) &&
-      !UaspConstants.GLOBAL.equalsIgnoreCase(payload.getTenantId())) {
+      !UaspConsts.GLOBAL.equalsIgnoreCase(payload.getTenantId())) {
 
       // 表示要创建租户的自定义配置。
       configId = configManager.nextId();
@@ -94,7 +94,7 @@ public class UpdateAutoNoConfigCommandHandler implements CommandHandler<UpdateAu
     } else {
 
       // 全局配置，可以修改定义编号与名称
-      if (UaspConstants.GLOBAL.equalsIgnoreCase(payload.getTenantId())) {
+      if (UaspConsts.GLOBAL.equalsIgnoreCase(payload.getTenantId())) {
         AutoNoDefineEntity defineEntity = defineManager.selectById(entity.getDefineId());
         defineEntity.setCode(payload.getCode());
         defineEntity.setName(payload.getName());

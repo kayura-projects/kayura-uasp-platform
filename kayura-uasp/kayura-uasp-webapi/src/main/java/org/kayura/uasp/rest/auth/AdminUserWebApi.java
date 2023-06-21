@@ -31,7 +31,7 @@ import org.kayura.uasp.user.AdminUserPayload;
 import org.kayura.uasp.user.AdminUserQuery;
 import org.kayura.uasp.user.ChangeUserPasswordPayload;
 import org.kayura.uasp.utils.OutputTypes;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.vaildation.Create;
 import org.kayura.vaildation.Update;
 import org.springframework.validation.annotation.Validated;
@@ -149,7 +149,7 @@ public class AdminUserWebApi {
 
     return commandGateway.send(command
       .setType(PrivilegeTypes.User)
-      .setAppId(UaspConstants.UASP_APP_ID)
+      .setAppId(UaspConsts.UASP_APP_ID)
       .setLinkId(userId)
       .setAuthScope(true)
     );
@@ -162,7 +162,7 @@ public class AdminUserWebApi {
 
     return commandGateway.send(command
       .setType(PrivilegeTypes.User)
-      .setAppId(UaspConstants.UASP_APP_ID)
+      .setAppId(UaspConsts.UASP_APP_ID)
       .setLinkId(payload.getUserId())
       .setPrivileges(payload.getPrivileges())
     );

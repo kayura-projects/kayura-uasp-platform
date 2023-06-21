@@ -22,7 +22,7 @@ import org.kayura.uasp.passport.LoginPayload;
 import org.kayura.uasp.passport.ResetPasswordPayload;
 import org.kayura.uasp.passport.SmsVerifyPayload;
 import org.kayura.uasp.signup.SignupPayload;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("${kayura.uasp.api-url}")
-public class PassportWebApi implements UaspConstants {
+public class PassportWebApi implements UaspConsts {
 
   private final CommandGateway commandGateway;
 

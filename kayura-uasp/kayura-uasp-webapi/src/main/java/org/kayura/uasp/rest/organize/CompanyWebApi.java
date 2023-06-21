@@ -26,7 +26,7 @@ import org.kayura.uasp.company.CompanyPayload;
 import org.kayura.uasp.company.CompanyQuery;
 import org.kayura.uasp.organize.cmd.*;
 import org.kayura.uasp.utils.OutputTypes;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.vaildation.Create;
 import org.kayura.vaildation.Update;
 import org.springframework.validation.annotation.Validated;
@@ -57,7 +57,7 @@ public class CompanyWebApi {
   public HttpResult chooseOrgCategory(ChooseDictItemCommand command, String tenantId) {
 
     return commandGateway.send(command
-      .setDefine(UaspConstants.UASP_ORG_CATEGORY)
+      .setDefine(UaspConsts.UASP_ORG_CATEGORY)
       .setTenantId(tenantId)
     );
   }

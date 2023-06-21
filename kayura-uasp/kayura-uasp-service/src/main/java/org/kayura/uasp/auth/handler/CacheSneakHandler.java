@@ -18,18 +18,18 @@ package org.kayura.uasp.auth.handler;
 
 import org.kayura.security.sneak.SneakHandler;
 import org.kayura.security.sneak.SneakItem;
+import org.kayura.uasp.utils.CacheConsts;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
-import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CacheSneakHandler implements SneakHandler {
+public class CacheSneakHandler implements SneakHandler, CacheConsts {
 
   private final Cache cache;
 
   public CacheSneakHandler(CacheManager cacheManager) {
-    this.cache = cacheManager.getCache("KAYURA:SNEAK");
+    this.cache = cacheManager.getCache(SNEAK_KEY);
   }
 
   @Override
@@ -46,11 +46,11 @@ public class CacheSneakHandler implements SneakHandler {
     if (wrapper != null) {
       item = cache.get(key, SneakItem.class);
       if (item != null && System.currentTimeMillis() > item.getExpire()) {
-        throw new AuthenticationServiceException("该凭据已经超时间。");
+        throw new RuntimeException("该凭据已经超时间。");
       }
       cache.evict(key);
     } else {
-      throw new AuthenticationServiceException("传入凭据验证失败。");
+      throw new RuntimeException("传入凭据验证失败。");
     }
     return item;
   }

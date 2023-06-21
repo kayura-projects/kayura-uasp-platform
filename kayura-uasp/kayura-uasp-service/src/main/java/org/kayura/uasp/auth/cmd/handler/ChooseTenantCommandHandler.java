@@ -62,7 +62,8 @@ public class ChooseTenantCommandHandler implements CommandHandler<ChooseTenantCo
   public HttpResult execute(ChooseTenantCommand command) {
 
     LoginUser loginUser = command.getLoginUser();
-    boolean hasApp = command.isHasApp();
+    boolean formApp = command.isFormApp();
+    String appId = command.getAppId();
 
     List<TenantEntity> entities;
 
@@ -72,7 +73,7 @@ public class ChooseTenantCommandHandler implements CommandHandler<ChooseTenantCo
         this.tenantManager.selectById(loginUser.getTenantId())
       );
     } else {
-      if (hasApp) {
+      if (formApp) {
         entities = this.chooseTenantsFromApp(command);
       } else {
         entities = this.chooseValidTenants();
@@ -96,11 +97,12 @@ public class ChooseTenantCommandHandler implements CommandHandler<ChooseTenantCo
   @NotNull
   private List<TenantEntity> chooseTenantsFromApp(ChooseTenantCommand command) {
 
+    String appId = command.getAppId();
     boolean includeApplic = command.isIncludeApplic();
 
     List<CompanyApplicEntity> entities = companyApplicManager.selectList(w -> {
-      if (StringUtils.hasText(command.getAppId())) {
-        w.eq(CompanyApplicEntity::getAppId, command.getAppId());
+      if (StringUtils.hasText(appId)) {
+        w.eq(CompanyApplicEntity::getAppId, appId);
       }
       w.eq(CompanyApplicEntity::getCompanyType, CompanyTypes.Tenant);
       w.eq(CompanyApplicEntity::getStatus, DataStatus.Valid);
@@ -117,7 +119,12 @@ public class ChooseTenantCommandHandler implements CommandHandler<ChooseTenantCo
             .setCode(list.get(0).getTenantCode())
             .setName(list.get(0).getTenantName());
           if (includeApplic) {
-            List<ApplicEntity> applics = list.stream().map(m -> ApplicEntity.create().setAppId(m.getAppId()).setCode(m.getAppCode()).setName(m.getAppName())).toList();
+            List<ApplicEntity> applics = list.stream().map(m ->
+              ApplicEntity.create()
+                .setAppId(m.getAppId())
+                .setCode(m.getAppCode())
+                .setName(m.getAppName())
+            ).toList();
             tenant.setApplics(applics);
           }
           tenantEntities.add(tenant);

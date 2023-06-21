@@ -29,7 +29,7 @@ import org.kayura.uasp.dev.entity.ApplicEntity;
 import org.kayura.uasp.dev.manage.ApplicManager;
 import org.kayura.uasp.organize.entity.CompanyApplicEntity;
 import org.kayura.uasp.organize.manage.CompanyApplicManager;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.utils.CollectionUtils;
 import org.kayura.utils.StringUtils;
 import org.modelmapper.ModelMapper;
@@ -94,7 +94,7 @@ public class QueryApplicCommandHandler implements CommandHandler<QueryApplicComm
     ApplicQuery query = command.getQuery();
 
     if (Boolean.TRUE.equals(notUasp)) {
-      w.notEq(ApplicEntity::getAppId, UaspConstants.UASP_APP_ID);
+      w.notEq(ApplicEntity::getAppId, UaspConsts.UASP_APP_ID);
     }
 
     if (CollectionUtils.isNotEmpty(appIds)) {

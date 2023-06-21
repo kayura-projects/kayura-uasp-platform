@@ -26,7 +26,7 @@ import org.kayura.uasp.basic.entity.AutoNoRecycleEntity;
 import org.kayura.uasp.basic.manage.AutoNoConfigManager;
 import org.kayura.uasp.basic.manage.AutoNoCountManager;
 import org.kayura.uasp.basic.manage.AutoNoRecycleManager;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -71,7 +71,7 @@ public class QueryAutoNoCountCommandHandler implements CommandHandler<QueryAutoN
     List<AutoNoCountVo> counts = null;
     List<AutoNoCountEntity> countEntities = countManager.selectList(w -> {
       w.eq(AutoNoCountEntity::getDefineId, entity.getDefineId());
-      if (UaspConstants.GLOBAL.equalsIgnoreCase(tenantId)) {
+      if (UaspConsts.GLOBAL.equalsIgnoreCase(tenantId)) {
         w.isNull(AutoNoCountEntity::getTenantId);
       } else {
         w.eq(AutoNoCountEntity::getTenantId, tenantId);

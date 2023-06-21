@@ -32,7 +32,7 @@ import org.kayura.uasp.organize.manage.EmployeeManager;
 import org.kayura.uasp.role.RoleTypes;
 import org.kayura.uasp.role.RoleVo;
 import org.kayura.uasp.utils.OutputTypes;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.utils.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -107,7 +107,7 @@ public class CandidateRoleCommandHandler implements CommandHandler<CandidateRole
 
     } else {
       // 如果不是员工(即为后台管理员),将允许UASP应用角色。
-      appIds = Set.of(UaspConstants.UASP_APP_ID);
+      appIds = Set.of(UaspConsts.UASP_APP_ID);
     }
 
     List<RoleEntity> entities = new ArrayList<>();

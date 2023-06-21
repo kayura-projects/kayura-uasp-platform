@@ -24,7 +24,7 @@ import org.kayura.uasp.applic.ApplicVo;
 import org.kayura.uasp.dev.cmd.CreateApplicCommand;
 import org.kayura.uasp.dev.entity.ApplicEntity;
 import org.kayura.uasp.dev.manage.ApplicManager;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.utils.DateUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -48,7 +48,7 @@ public class CreateApplicCommandHandler implements CommandHandler<CreateApplicCo
     LoginUser loginUser = command.getLoginUser();
     ApplicPayload payload = command.getPayload();
 
-    if (UaspConstants.UASP_APP_CODE.equalsIgnoreCase(payload.getCode())) {
+    if (UaspConsts.UASP_APP_CODE.equalsIgnoreCase(payload.getCode())) {
       return HttpResult.error("UASP 为保留应用编号，不可使用。");
     }
 

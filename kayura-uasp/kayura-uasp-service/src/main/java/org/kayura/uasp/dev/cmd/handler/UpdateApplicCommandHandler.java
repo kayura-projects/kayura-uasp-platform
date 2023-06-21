@@ -24,7 +24,7 @@ import org.kayura.uasp.applic.ApplicPayload;
 import org.kayura.uasp.dev.cmd.UpdateApplicCommand;
 import org.kayura.uasp.dev.entity.ApplicEntity;
 import org.kayura.uasp.dev.manage.ApplicManager;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,7 +52,7 @@ public class UpdateApplicCommandHandler implements CommandHandler<UpdateApplicCo
       return HttpResult.error("更新的应用不存在。");
     }
 
-    if (UaspConstants.UASP_APP_CODE.equalsIgnoreCase(entity.getCode())) {
+    if (UaspConsts.UASP_APP_CODE.equalsIgnoreCase(entity.getCode())) {
       return HttpResult.error("UASP 为保留应用，不可编辑。");
     }
 

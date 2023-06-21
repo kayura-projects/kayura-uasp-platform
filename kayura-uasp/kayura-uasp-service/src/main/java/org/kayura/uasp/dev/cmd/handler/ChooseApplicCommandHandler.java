@@ -28,7 +28,7 @@ import org.kayura.uasp.organize.entity.EmployeeEntity;
 import org.kayura.uasp.organize.manage.CompanyApplicManager;
 import org.kayura.uasp.organize.manage.EmployeeManager;
 import org.kayura.uasp.utils.OutputTypes;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.utils.CollectionUtils;
 import org.kayura.utils.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.modelmapper.ModelMapper;
@@ -66,7 +66,7 @@ public class ChooseApplicCommandHandler implements CommandHandler<ChooseApplicCo
     String companyId = command.getCompanyId();
     String userId = command.getUserId();
     Integer level = command.getLevel();
-    boolean notUasp = command.isNotUasp();
+    List<String> exclusionIds = command.getExclusionIds();
 
     // 若指定的是userId将从employee信息中提取.
     if (StringUtils.hasText(userId)) {
@@ -86,7 +86,7 @@ public class ChooseApplicCommandHandler implements CommandHandler<ChooseApplicCo
     } else if (StringUtils.hasText(companyId)) {
       entities = this.chooseAppsByCompany(companyId);
     } else {
-      entities = this.chooseValidApps(applicType, notUasp);
+      entities = this.chooseValidApps(applicType, exclusionIds);
     }
 
     return outputResult(output, entities);
@@ -123,17 +123,17 @@ public class ChooseApplicCommandHandler implements CommandHandler<ChooseApplicCo
     return entities;
   }
 
-  private List<ApplicEntity> chooseValidApps(ApplicTypes applicType, boolean notUasp) {
+  private List<ApplicEntity> chooseValidApps(ApplicTypes applicType, List<String> exclusionIds) {
 
     List<ApplicEntity> entities = applicManager.selectList(w -> {
       w.select(ApplicEntity::getAppId);
       w.select(ApplicEntity::getName);
-      if (notUasp) {
-        w.notEq(ApplicEntity::getAppId, UaspConstants.UASP_APP_ID);
-      }
       w.eq(ApplicEntity::getStatus, DataStatus.Valid);
       if (applicType != null) {
         w.eq(ApplicEntity::getType, applicType);
+      }
+      if (CollectionUtils.isNotEmpty(exclusionIds)) {
+        w.notIn(ApplicEntity::getAppId, exclusionIds);
       }
     });
     return entities;

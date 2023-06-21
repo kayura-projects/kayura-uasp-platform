@@ -26,7 +26,7 @@ import org.kayura.uasp.privilege.PrivilegeTypes;
 import org.kayura.uasp.privilege.RolePrivilegePayload;
 import org.kayura.uasp.role.*;
 import org.kayura.uasp.utils.OutputTypes;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.vaildation.Create;
 import org.kayura.vaildation.Update;
 import org.springframework.validation.annotation.Validated;
@@ -55,7 +55,7 @@ public class AdminRoleWebApi {
                                        @RequestBody RoleQuery query, PageClause pageClause) {
 
     return commandGateway.send(command
-      .setAppId(UaspConstants.UASP_APP_ID)
+      .setAppId(UaspConsts.UASP_APP_ID)
       .setQuery(query)
       .setRoleType(RoleTypes.FUNC)
       .setPageClause(pageClause)
@@ -78,7 +78,7 @@ public class AdminRoleWebApi {
       .setRoleType(RoleTypes.FUNC)
       .setPayload(payload
         .setTenantId(null)
-        .setAppId(UaspConstants.UASP_APP_ID)
+        .setAppId(UaspConsts.UASP_APP_ID)
       ));
   }
 
@@ -148,7 +148,7 @@ public class AdminRoleWebApi {
   public HttpResult selectAuthPrivileges(QueryPrivilegeCommand command, String roleId) {
 
     return commandGateway.send(command
-      .setAppId(UaspConstants.UASP_APP_ID)
+      .setAppId(UaspConsts.UASP_APP_ID)
       .setType(PrivilegeTypes.Role)
       .setLinkId(roleId)
       .setAuthScope(true)
@@ -160,7 +160,7 @@ public class AdminRoleWebApi {
   public HttpResult selectViewPrivileges(QueryPrivilegeCommand command, String roleId) {
 
     return commandGateway.send(command
-      .setAppId(UaspConstants.UASP_APP_ID)
+      .setAppId(UaspConsts.UASP_APP_ID)
       .setType(PrivilegeTypes.Role)
       .setLinkId(roleId)
       .setAuthScope(false)
@@ -173,7 +173,7 @@ public class AdminRoleWebApi {
                                           @RequestBody RolePrivilegePayload payload) {
 
     return commandGateway.send(command
-      .setAppId(UaspConstants.UASP_APP_ID)
+      .setAppId(UaspConsts.UASP_APP_ID)
       .setType(PrivilegeTypes.Role)
       .setLinkId(payload.getRoleId())
       .setPrivileges(payload.getPrivileges())

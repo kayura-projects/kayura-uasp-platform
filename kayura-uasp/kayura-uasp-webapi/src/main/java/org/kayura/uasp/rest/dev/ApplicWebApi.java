@@ -102,7 +102,7 @@ public class ApplicWebApi {
     return commandGateway.send(command
       .setAppId(appId)
       .setOutType(OutputTypes.SELECT)
-      .setHasApp(true)
+      .setFormApp(true)
     );
   }
 

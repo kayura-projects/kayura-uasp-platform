@@ -30,7 +30,7 @@ import org.kayura.uasp.dev.entity.ModuleDefineEntity;
 import org.kayura.uasp.dev.manage.ModuleManager;
 import org.kayura.uasp.func.ModuleTypes;
 import org.kayura.uasp.privilege.AuthConst;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.utils.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
@@ -106,7 +106,7 @@ public class AccountGetCommandHandler implements CommandHandler<AccountGetComman
 
     // 拥有的菜单模块ID集
     List<MenuVo> result = new ArrayList<>();
-    List<ModuleDefineEntity> appModules = moduleManager.chooseAllModule(UaspConstants.UASP_APP_ID);
+    List<ModuleDefineEntity> appModules = moduleManager.chooseAllModule(UaspConsts.UASP_APP_ID);
     if (appModules.isEmpty()) {
       appModules.addAll(this.initDeveloperMenus());
     }

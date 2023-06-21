@@ -35,7 +35,7 @@ import org.kayura.uasp.privilege.PrivilegeModuleVo;
 import org.kayura.uasp.privilege.PrivilegeTypes;
 import org.kayura.uasp.privilege.RolePrivilege;
 import org.kayura.uasp.role.RoleTypes;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.utils.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -118,7 +118,7 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
       w.eq(RoleEntity::getType, RoleTypes.FUNC);
     });
     if (role != null) {
-      if (UaspConstants.UASP_APP_ID.equals(appId)) {
+      if (UaspConsts.UASP_APP_ID.equals(appId)) {
         privileges = this.queryPrivilegesByAdminRole(role, authScope);
       } else {
         privileges = this.queryPrivilegesByRole(role, authScope);
@@ -129,7 +129,7 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
 
   protected List<PrivilegeModuleVo> queryPrivilegesByAdminRole(RoleEntity role, boolean authScope) {
 
-    final String appId = UaspConstants.UASP_APP_ID;
+    final String appId = UaspConsts.UASP_APP_ID;
     final String roleId = role.getRoleId();
 
     List<PrivilegeModuleVo> result = new ArrayList<>();

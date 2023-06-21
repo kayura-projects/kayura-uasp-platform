@@ -20,7 +20,8 @@ import org.kayura.uasp.autono.NewNoArgs;
 import org.kayura.uasp.basic.entity.AutoNoConfigEntity;
 import org.kayura.uasp.basic.entity.AutoNoCountEntity;
 import org.kayura.uasp.basic.model.NewNoSettings;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.CacheConsts;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.utils.Assert;
 import org.kayura.utils.CollectionUtils;
 import org.kayura.utils.DateUtils;
@@ -38,7 +39,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @Component
-public class AutoNoManager {
+public class AutoNoManager implements CacheConsts {
 
   private final StringRedisTemplate redisTemplate;
   private final ObjectMapper objectMapper;
@@ -58,7 +59,6 @@ public class AutoNoManager {
   public String calcNewNo(NewNoArgs args, boolean isPersistent) {
 
     String lockValue = UUID.randomUUID().toString();
-    String LOCK_KEY = "kayura:NO_LOCK_KEY";
     Boolean lockResult = this.redisTemplate.opsForValue().setIfAbsent(LOCK_KEY, lockValue, Duration.ofSeconds(30));
     if (Boolean.TRUE.equals(lockResult)) {
       try {
@@ -143,7 +143,7 @@ public class AutoNoManager {
 
     List<AutoNoConfigEntity> configs = configManager.selectList(w -> {
       w.eq(AutoNoConfigEntity::getCode, args.getCode());
-      if (UaspConstants.GLOBAL.equalsIgnoreCase(args.getTenantId())) {
+      if (UaspConsts.GLOBAL.equalsIgnoreCase(args.getTenantId())) {
         w.isNull(AutoNoConfigEntity::getTenantId);
       } else {
         w.and(y -> y.eq(AutoNoConfigEntity::getTenantId, args.getTenantId()).or().isNull(AutoNoConfigEntity::getTenantId));
@@ -166,7 +166,7 @@ public class AutoNoManager {
       w.select(AutoNoCountEntity::getCountValue);
       w.eq(AutoNoCountEntity::getDefineId, config.getDefineId());
       w.eq(AutoNoCountEntity::getCycleValue, customCycle);
-      if (UaspConstants.GLOBAL.equalsIgnoreCase(args.getTenantId())) {
+      if (UaspConsts.GLOBAL.equalsIgnoreCase(args.getTenantId())) {
         w.isNull(AutoNoCountEntity::getTenantId);
       } else {
         w.eq(AutoNoCountEntity::getTenantId, args.getTenantId());
@@ -195,7 +195,7 @@ public class AutoNoManager {
         AutoNoCountEntity countEntity = AutoNoCountEntity.create()
           .setCountId(countManager.nextId())
           .setDefineId(settings.getDefineId())
-          .setTenantId(UaspConstants.GLOBAL.equalsIgnoreCase(args.getTenantId()) ? null : args.getTenantId())
+          .setTenantId(UaspConsts.GLOBAL.equalsIgnoreCase(args.getTenantId()) ? null : args.getTenantId())
           .setCycleValue(settings.getCustomCycle())
           .setCountValue(settings.getCountValue());
         settings.setCountId(countEntity.getCountId());
@@ -205,7 +205,7 @@ public class AutoNoManager {
       AutoNoCountEntity countEntity = AutoNoCountEntity.create()
         .setCountId(countManager.nextId())
         .setDefineId(settings.getDefineId())
-        .setTenantId(UaspConstants.GLOBAL.equalsIgnoreCase(args.getTenantId()) ? null : args.getTenantId())
+        .setTenantId(UaspConsts.GLOBAL.equalsIgnoreCase(args.getTenantId()) ? null : args.getTenantId())
         .setCycleValue(settings.getCustomCycle())
         .setCountValue(1);
       settings.setCountId(countEntity.getCountId());

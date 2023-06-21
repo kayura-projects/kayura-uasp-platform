@@ -27,7 +27,7 @@ import org.kayura.uasp.func.ModulePayload;
 import org.kayura.uasp.func.ModuleQuery;
 import org.kayura.uasp.func.ModuleTypes;
 import org.kayura.uasp.utils.OutputTypes;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.kayura.vaildation.Create;
 import org.kayura.vaildation.Update;
 import org.springframework.validation.annotation.Validated;
@@ -58,7 +58,7 @@ public class ModuleWebApi {
   public HttpResult candidateActions(ChooseDictItemCommand command) {
 
     return commandGateway.send(command
-      .setDefine(UaspConstants.UASP_FUNC_ACTION)
+      .setDefine(UaspConsts.UASP_FUNC_ACTION)
     );
   }
 

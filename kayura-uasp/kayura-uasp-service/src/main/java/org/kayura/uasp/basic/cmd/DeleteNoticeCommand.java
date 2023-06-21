@@ -14,26 +14,31 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.utils;
+package org.kayura.uasp.basic.cmd;
 
-public interface UaspConstants {
+import org.kayura.cmd.ApiCommand;
+import org.kayura.uasp.common.IdPayload;
 
-  String USER_TYPE_ROOT = "UT_ROOT";
-  String USER_TYPE_ADMIN = "UT_ADMIN";
-  String USER_TYPE_MANAGER = "UT_MANAGER";
-  String USER_TYPE_USER = "UT_USER";
-  String USER_TYPE_CLIENT = "UT_CLIENT";
+public class DeleteNoticeCommand extends ApiCommand {
 
-  String UASP_APP_ID = "UASP";
-  String UASP_APP_CODE = UASP_APP_ID;
+  private String noticeId;
+  private IdPayload payload;
 
-  String GLOBAL = "GLOBAL";
+  public String getNoticeId() {
+    return noticeId;
+  }
 
-  // 数据词典：数组架构公司分类
-  String UASP_ORG_CATEGORY = "UASP_ORG_CATEGORY";
-  String UASP_FUNC_ACTION = "UASP_FUNC_ACTION";
+  public DeleteNoticeCommand setNoticeId(String noticeId) {
+    this.noticeId = noticeId;
+    return this;
+  }
 
-  // UASP 内置短信类型
-  String SMS_REGISTER = "REGISTER";
+  public IdPayload getPayload() {
+    return payload;
+  }
 
+  public DeleteNoticeCommand setPayload(IdPayload payload) {
+    this.payload = payload;
+    return this;
+  }
 }

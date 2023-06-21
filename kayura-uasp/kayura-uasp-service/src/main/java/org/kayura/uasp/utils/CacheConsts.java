@@ -13,35 +13,12 @@
  - See the License for the specific language governing permissions and
  - limitations under the License.
  -----------------------------------------------------------------------------*/
-package org.kayura.uasp.config;
 
-import org.kayura.uasp.utils.UaspConsts;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+package org.kayura.uasp.utils;
 
-@ConfigurationProperties(prefix = "kayura.app")
-public class AppSettings {
+public interface CacheConsts {
 
-  // 当前应用程序代码
-  private String appCode = UaspConsts.UASP_APP_CODE;
-  // 密码过期时间（秒）
-  private long pwdExpire = 7776000L;
-
-  public String getAppCode() {
-    return appCode;
-  }
-
-  public AppSettings setAppCode(String appCode) {
-    this.appCode = appCode;
-    return this;
-  }
-
-  public long getPwdExpire() {
-    return this.pwdExpire;
-  }
-
-  public void setPwdExpire(long pwdExpire) {
-    this.pwdExpire = pwdExpire;
-  }
-
+  String LOCK_KEY = "KAYURA:NO_LOCK_KEY";
+  String SNEAK_KEY = "KAYURA:SNEAK";
 
 }

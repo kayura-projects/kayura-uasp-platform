@@ -26,7 +26,7 @@ import org.kayura.uasp.autono.AutoNoVo;
 import org.kayura.uasp.basic.cmd.QueryAutoNoConfigCommand;
 import org.kayura.uasp.basic.entity.AutoNoConfigEntity;
 import org.kayura.uasp.basic.manage.AutoNoConfigManager;
-import org.kayura.uasp.utils.UaspConstants;
+import org.kayura.uasp.utils.UaspConsts;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -74,7 +74,7 @@ public class QueryAutoNoConfigCommandHandler implements CommandHandler<QueryAuto
       List<String> defineIds = rows.stream().map(AutoNoVo::getDefineId).collect(Collectors.toList());
       List<AutoNoConfigEntity> configs = configManager.selectList(w -> {
         w.in(AutoNoConfigEntity::getDefineId, defineIds);
-        if (UaspConstants.GLOBAL.equalsIgnoreCase(query.getTenantId())) {
+        if (UaspConsts.GLOBAL.equalsIgnoreCase(query.getTenantId())) {
           w.isNull(AutoNoConfigEntity::getTenantId);
         } else {
           w.eq(AutoNoConfigEntity::getTenantId, query.getTenantId());

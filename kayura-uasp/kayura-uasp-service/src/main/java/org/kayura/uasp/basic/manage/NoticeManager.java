@@ -13,35 +13,19 @@
  - See the License for the specific language governing permissions and
  - limitations under the License.
  -----------------------------------------------------------------------------*/
-package org.kayura.uasp.config;
 
-import org.kayura.uasp.utils.UaspConsts;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+package org.kayura.uasp.basic.manage;
 
-@ConfigurationProperties(prefix = "kayura.app")
-public class AppSettings {
+import org.kayura.mybatis.manager.impl.CrudManagerImpl;
+import org.kayura.uasp.basic.entity.NoticeEntity;
+import org.kayura.uasp.basic.mapper.NoticeMapper;
+import org.springframework.stereotype.Component;
 
-  // 当前应用程序代码
-  private String appCode = UaspConsts.UASP_APP_CODE;
-  // 密码过期时间（秒）
-  private long pwdExpire = 7776000L;
+@Component
+public class NoticeManager extends CrudManagerImpl<NoticeMapper, NoticeEntity> {
 
-  public String getAppCode() {
-    return appCode;
+  protected NoticeManager(NoticeMapper baseMapper) {
+    super(baseMapper);
   }
-
-  public AppSettings setAppCode(String appCode) {
-    this.appCode = appCode;
-    return this;
-  }
-
-  public long getPwdExpire() {
-    return this.pwdExpire;
-  }
-
-  public void setPwdExpire(long pwdExpire) {
-    this.pwdExpire = pwdExpire;
-  }
-
 
 }

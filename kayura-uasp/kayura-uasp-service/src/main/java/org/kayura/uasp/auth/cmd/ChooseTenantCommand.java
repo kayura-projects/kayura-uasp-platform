@@ -22,7 +22,7 @@ import org.kayura.uasp.utils.OutputTypes;
 public class ChooseTenantCommand extends ApiCommand {
 
   private OutputTypes outType;
-  private boolean hasApp;
+  private boolean formApp;
   private String appId;
   private boolean includeApplic;
 
@@ -35,12 +35,12 @@ public class ChooseTenantCommand extends ApiCommand {
     return this;
   }
 
-  public boolean isHasApp() {
-    return hasApp;
+  public boolean isFormApp() {
+    return formApp;
   }
 
-  public ChooseTenantCommand setHasApp(boolean hasApp) {
-    this.hasApp = hasApp;
+  public ChooseTenantCommand setFormApp(boolean formApp) {
+    this.formApp = formApp;
     return this;
   }
 

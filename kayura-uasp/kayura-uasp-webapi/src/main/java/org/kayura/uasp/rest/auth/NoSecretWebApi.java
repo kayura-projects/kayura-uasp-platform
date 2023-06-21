@@ -53,7 +53,7 @@ public class NoSecretWebApi {
   public HttpResult chooseTenant(ChooseTenantCommand command) {
 
     return commandGateway.send(command
-      .setHasApp(true)
+      .setFormApp(true)
       .setOutType(OutputTypes.SELECT)
     );
   }

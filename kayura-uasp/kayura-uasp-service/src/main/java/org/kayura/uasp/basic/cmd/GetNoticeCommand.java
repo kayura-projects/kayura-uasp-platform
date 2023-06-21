@@ -13,35 +13,21 @@
  - See the License for the specific language governing permissions and
  - limitations under the License.
  -----------------------------------------------------------------------------*/
-package org.kayura.uasp.config;
 
-import org.kayura.uasp.utils.UaspConsts;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+package org.kayura.uasp.basic.cmd;
 
-@ConfigurationProperties(prefix = "kayura.app")
-public class AppSettings {
+import org.kayura.cmd.ApiCommand;
 
-  // 当前应用程序代码
-  private String appCode = UaspConsts.UASP_APP_CODE;
-  // 密码过期时间（秒）
-  private long pwdExpire = 7776000L;
+public class GetNoticeCommand extends ApiCommand {
 
-  public String getAppCode() {
-    return appCode;
+  private String noticeId;
+
+  public String getNoticeId() {
+    return noticeId;
   }
 
-  public AppSettings setAppCode(String appCode) {
-    this.appCode = appCode;
+  public GetNoticeCommand setNoticeId(String noticeId) {
+    this.noticeId = noticeId;
     return this;
   }
-
-  public long getPwdExpire() {
-    return this.pwdExpire;
-  }
-
-  public void setPwdExpire(long pwdExpire) {
-    this.pwdExpire = pwdExpire;
-  }
-
-
 }
