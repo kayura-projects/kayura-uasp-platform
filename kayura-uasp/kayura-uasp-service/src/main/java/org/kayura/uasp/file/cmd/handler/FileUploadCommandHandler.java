@@ -19,6 +19,7 @@ package org.kayura.uasp.file.cmd.handler;
 import org.kayura.cmd.CommandHandler;
 import org.kayura.security.LoginUser;
 import org.kayura.type.HttpResult;
+import org.kayura.uasp.config.UploadSettings;
 import org.kayura.uasp.file.cmd.FileUploadCommand;
 import org.kayura.uasp.file.UploadFile;
 import org.kayura.uasp.file.UploadPayload;
@@ -45,11 +46,14 @@ public class FileUploadCommandHandler implements CommandHandler<FileUploadComman
   private static final long MAX_MD5_LEN = 104857600L;
   private final UploadHandlerDelegate uploadHandler;
   private final UploadManager uploadManager;
+  private final UploadSettings uploadSettings;
 
   public FileUploadCommandHandler(UploadHandlerDelegate uploadHandler,
-                                  UploadManager uploadManager) {
+                                  UploadManager uploadManager,
+                                  UploadSettings uploadSettings) {
     this.uploadHandler = uploadHandler;
     this.uploadManager = uploadManager;
+    this.uploadSettings = uploadSettings;
   }
 
   @Transactional
@@ -59,7 +63,8 @@ public class FileUploadCommandHandler implements CommandHandler<FileUploadComman
     HttpServletRequest request = command.getRequest();
     MultipartFile file = command.getFile();
     UploadPayload payload = command.getPayload();
-    List<String> editableTypes = command.getEditableTypes();
+    List<String> editableTypes = Optional.ofNullable(command.getEditableTypes())
+      .orElse(uploadSettings.getEditableTypes());
 
     if (file == null) {
       return HttpResult.error("未传入 file 文件内容。");

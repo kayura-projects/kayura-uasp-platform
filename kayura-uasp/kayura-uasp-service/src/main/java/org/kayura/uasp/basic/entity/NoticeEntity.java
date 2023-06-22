@@ -16,9 +16,14 @@
 
 package org.kayura.uasp.basic.entity;
 
+import org.kayura.mybatis.annotation.mapper.ForeignKey;
 import org.kayura.mybatis.annotation.mapper.Id;
+import org.kayura.mybatis.annotation.mapper.RefColumn;
 import org.kayura.mybatis.annotation.mapper.Table;
 import org.kayura.type.DataStatus;
+import org.kayura.uasp.auth.entity.TenantEntity;
+import org.kayura.uasp.dev.entity.ApplicEntity;
+import org.kayura.uasp.organize.entity.CompanyEntity;
 
 import java.time.LocalDateTime;
 
@@ -34,9 +39,15 @@ public class NoticeEntity {
   @Id
   private String noticeId;
   /** 应用ID */
+  @ForeignKey(entity = ApplicEntity.class, alias = "app")
   private String appId;
+  @RefColumn(from = "app", value = "name_")
+  private String appName;
   /** 公司ID */
+  @ForeignKey(entity = CompanyEntity.class, alias = "cc")
   private String tenantId;
+  @RefColumn(from = "cc", value = "short_name_")
+  private String tenantName;
   /** 消息类型 */
   private String type;
   /** 标题 */
@@ -176,6 +187,24 @@ public class NoticeEntity {
 
   public NoticeEntity setStatus(DataStatus status) {
     this.status = status;
+    return this;
+  }
+
+  public String getAppName() {
+    return appName;
+  }
+
+  public NoticeEntity setAppName(String appName) {
+    this.appName = appName;
+    return this;
+  }
+
+  public String getTenantName() {
+    return tenantName;
+  }
+
+  public NoticeEntity setTenantName(String tenantName) {
+    this.tenantName = tenantName;
     return this;
   }
 }

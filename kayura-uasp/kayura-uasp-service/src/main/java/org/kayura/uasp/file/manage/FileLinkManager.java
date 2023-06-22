@@ -18,6 +18,7 @@ package org.kayura.uasp.file.manage;
 
 import org.kayura.mybatis.manager.impl.CrudManagerImpl;
 import org.kayura.uasp.file.DownloadFile;
+import org.kayura.uasp.file.FileLinkVo;
 import org.kayura.uasp.file.entity.FileLinkEntity;
 import org.kayura.uasp.file.mapper.FileLinkMapper;
 import org.modelmapper.ModelMapper;
@@ -34,6 +35,12 @@ public class FileLinkManager extends CrudManagerImpl<FileLinkMapper, FileLinkEnt
   protected FileLinkManager(FileLinkMapper baseMapper, ModelMapper modelMapper) {
     super(baseMapper);
     this.modelMapper = modelMapper;
+  }
+
+  public List<FileLinkVo> queryLinksForBusinessKey(String businessKey) {
+
+    List<FileLinkEntity> entities = this.selectList(w -> w.eq(FileLinkEntity::getBusinessKey, businessKey));
+    return entities.stream().map(m -> modelMapper.map(m, FileLinkVo.class)).toList();
   }
 
   public DownloadFile downloadFile(String linkId) {

@@ -20,6 +20,7 @@ import org.kayura.type.HttpResult;
 import org.kayura.uasp.file.UploadPayload;
 import org.kayura.uasp.file.cmd.FileUploadCommand;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,7 +36,9 @@ public class FileUploadWebApi {
   }
 
   @PostMapping("/file/upload")
-  public HttpResult fileUpload(FileUploadCommand command, MultipartFile file, UploadPayload payload) {
+  public HttpResult fileUpload(FileUploadCommand command,
+                               MultipartFile file,
+                               UploadPayload payload) {
 
     return commandGateway.send(command.setFile(file).setPayload(payload));
   }

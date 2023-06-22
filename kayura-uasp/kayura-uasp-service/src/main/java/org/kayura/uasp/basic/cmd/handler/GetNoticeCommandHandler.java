@@ -17,55 +17,48 @@
 package org.kayura.uasp.basic.cmd.handler;
 
 import org.kayura.cmd.CommandHandler;
-import org.kayura.security.LoginUser;
-import org.kayura.type.DataStatus;
 import org.kayura.type.HttpResult;
-import org.kayura.uasp.basic.cmd.CreateNoticeCommand;
+import org.kayura.uasp.basic.cmd.GetNoticeCommand;
 import org.kayura.uasp.basic.entity.NoticeEntity;
 import org.kayura.uasp.basic.manage.NoticeManager;
-import org.kayura.uasp.notice.NoticePayload;
+import org.kayura.uasp.file.FileLinkVo;
+import org.kayura.uasp.file.manage.FileLinkManager;
 import org.kayura.uasp.notice.NoticeVo;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-import java.util.Optional;
+import java.util.List;
 
 @Component
-public class CreateNoticeCommandHandler implements CommandHandler<CreateNoticeCommand, HttpResult> {
+public class GetNoticeCommandHandler implements CommandHandler<GetNoticeCommand, HttpResult> {
 
   private final NoticeManager noticeManager;
   private final ModelMapper modelMapper;
+  private final FileLinkManager fileLinkManager;
 
-  public CreateNoticeCommandHandler(NoticeManager noticeManager,
-                                    ModelMapper modelMapper) {
+  public GetNoticeCommandHandler(NoticeManager noticeManager,
+                                 ModelMapper modelMapper,
+                                 FileLinkManager fileLinkManager) {
     this.noticeManager = noticeManager;
     this.modelMapper = modelMapper;
+    this.fileLinkManager = fileLinkManager;
   }
 
   @Override
-  public HttpResult execute(CreateNoticeCommand command) {
+  public HttpResult execute(GetNoticeCommand command) {
 
-    LoginUser loginUser = command.getLoginUser();
-    NoticePayload payload = command.getPayload();
+    String noticeId = command.getNoticeId();
 
-    NoticeEntity entity = NoticeEntity.create();
-    entity.setNoticeId(Optional.ofNullable(payload.getNoticeId()).orElse(noticeManager.nextId()));
-    entity.setAppId(payload.getAppId());
-    entity.setTenantId(payload.getTenantId());
-    entity.setType(payload.getType());
-    entity.setTitle(payload.getTitle());
-    entity.setContent(payload.getContent());
-    entity.setCreatorId(loginUser.getUserId());
-    entity.setCreateTime(LocalDateTime.now());
-    entity.setExpireDay(payload.getExpireDay());
-    if (DataStatus.Valid.equals(payload.getStatus())) {
-      entity.setReleaseTime(LocalDateTime.now());
+    NoticeEntity entity = noticeManager.selectById(noticeId);
+    if (entity == null) {
+      return HttpResult.error("查找的模块记录不存在。");
     }
-    entity.setStatus(Optional.ofNullable(payload.getStatus()).orElse(DataStatus.Draft));
-    noticeManager.insertOne(entity);
 
     NoticeVo model = modelMapper.map(entity, NoticeVo.class);
+
+    List<FileLinkVo> attachments = fileLinkManager.queryLinksForBusinessKey(model.getNoticeId());
+    model.setAttachments(attachments);
+
     return HttpResult.okBody(model);
   }
 

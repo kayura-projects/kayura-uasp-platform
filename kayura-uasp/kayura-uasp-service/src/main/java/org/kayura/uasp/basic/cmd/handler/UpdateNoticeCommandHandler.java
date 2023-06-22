@@ -55,8 +55,11 @@ public class UpdateNoticeCommandHandler implements CommandHandler<UpdateNoticeCo
     entity.setStatus(payload.getStatus());
     entity.setUpdaterId(loginUser.getUserId());
     entity.setUpdateTime(LocalDateTime.now());
+    entity.setExpireDay(payload.getExpireDay());
     if (DataStatus.Valid.equals(payload.getStatus())) {
       entity.setReleaseTime(LocalDateTime.now());
+    } else {
+      entity.setReleaseTime(null);
     }
     noticeManager.updateById(noticeId, entity);
 

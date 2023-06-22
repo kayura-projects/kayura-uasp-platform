@@ -47,7 +47,6 @@ public class NoticePayload {
   @NotNull
   private Integer expireDay;
   /** 状态:D草搞,V发布,I禁用; */
-  @NotNull
   private DataStatus status;
 
   public static NoticePayload create() {

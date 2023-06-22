@@ -16,6 +16,7 @@
 
 package org.kayura.uasp.file.cmd;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.kayura.cmd.ApiCommand;
 import org.kayura.uasp.file.UploadPayload;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,6 +25,7 @@ import java.util.List;
 
 public class FileUploadCommand extends ApiCommand {
 
+  @JsonIgnore
   private MultipartFile file;
   private UploadPayload payload;
   private List<String> editableTypes;

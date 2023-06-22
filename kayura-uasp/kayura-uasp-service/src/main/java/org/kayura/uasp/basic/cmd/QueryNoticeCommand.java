@@ -25,8 +25,6 @@ public class QueryNoticeCommand extends ApiCommand {
   private NoticeQuery query;
   private PageClause pageClause;
 
-
-
   public NoticeQuery getQuery() {
     return query;
   }
