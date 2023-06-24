@@ -57,7 +57,7 @@ public class FormFlowWebApi {
   @Secured(actions = QUERY)
   public HttpResult chooseSelectItems(ChooseTenantCommand command, String appId) {
 
-    return commandGateway.send(command.setAppId(appId).setOutType(OutputTypes.SELECT));
+    return commandGateway.send(command.setAppId(appId).setOutput(OutputTypes.SELECT));
   }
 
   @GetMapping("/form-flow/choose/inner-expr")

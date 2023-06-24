@@ -49,7 +49,7 @@ public class FlowRoleWebApi {
   @Secured(actions = QUERY)
   public HttpResult chooseTenants(ChooseTenantCommand command) {
 
-    return commandGateway.send(command.setOutType(OutputTypes.TREE));
+    return commandGateway.send(command.setOutput(OutputTypes.TREE));
   }
 
   @GetMapping("/wf-role/choose/tenant-applic")

@@ -45,7 +45,7 @@ public class FuncAuthWebApi {
   @Secured(actions = QUERY)
   public HttpResult chooseTenant(ChooseTenantCommand command) {
 
-    return commandGateway.send(command.setFormApp(true).setOutType(OutputTypes.SELECT));
+    return commandGateway.send(command.setFormApp(true).setOutput(OutputTypes.SELECT));
   }
 
   @GetMapping("/func-auth/choose/contract-company")

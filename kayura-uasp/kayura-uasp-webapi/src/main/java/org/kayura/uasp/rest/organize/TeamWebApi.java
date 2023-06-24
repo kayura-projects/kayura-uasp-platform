@@ -46,7 +46,7 @@ public class TeamWebApi {
   @GetMapping("/team/choose/tenant")
   public HttpResult chooseTenantPage(ChooseTenantCommand command) {
 
-    return commandGateway.send(command.setOutType(OutputTypes.SELECT));
+    return commandGateway.send(command.setOutput(OutputTypes.SELECT));
   }
 
   /** Team */

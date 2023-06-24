@@ -49,7 +49,7 @@ public class CompanyWebApi {
   @Secured(actions = QUERY)
   public HttpResult chooseTenant(ChooseTenantCommand command) {
 
-    return commandGateway.send(command.setOutType(OutputTypes.TREE));
+    return commandGateway.send(command.setOutput(OutputTypes.TREE));
   }
 
   @GetMapping("/company/choose/org-category")

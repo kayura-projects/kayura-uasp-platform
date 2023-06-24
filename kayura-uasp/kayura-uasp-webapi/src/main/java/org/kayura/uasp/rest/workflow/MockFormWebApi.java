@@ -54,7 +54,7 @@ public class MockFormWebApi {
   @Secured(actions = QUERY)
   public HttpResult chooseTenants(ChooseTenantCommand command) {
 
-    return commandGateway.send(command.setOutType(OutputTypes.SELECT));
+    return commandGateway.send(command.setOutput(OutputTypes.SELECT));
   }
 
   @PostMapping("/mock-form/page")

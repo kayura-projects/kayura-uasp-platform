@@ -52,7 +52,7 @@ public class NoticeWebApi implements UaspConsts {
 
     return commandGateway.send(command
       .setExclusionIds(UASP_APP_ID)
-      .setOutput(OutputTypes.TREE)
+      .setOutput(OutputTypes.SELECT)
     );
   }
 
@@ -63,7 +63,7 @@ public class NoticeWebApi implements UaspConsts {
     return commandGateway.send(command
       .setAppId(appId)
       .setFormApp(true)
-      .setOutType(OutputTypes.SELECT)
+      .setOutput(OutputTypes.SELECT)
     );
   }
 

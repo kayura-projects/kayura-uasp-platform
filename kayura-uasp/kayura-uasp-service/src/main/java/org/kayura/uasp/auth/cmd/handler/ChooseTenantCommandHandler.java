@@ -136,7 +136,7 @@ public class ChooseTenantCommandHandler implements CommandHandler<ChooseTenantCo
 
   private HttpResult outputResult(ChooseTenantCommand command, List<TenantEntity> entities) {
 
-    OutputTypes output = command.getOutType();
+    OutputTypes output = command.getOutput();
 
     if (OutputTypes.TREE.equals(output)) {
       List<TreeNode> nodes = entities.stream().map(m -> {

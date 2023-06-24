@@ -54,7 +54,7 @@ public class OrganizeWebApi {
   @Secured(actions = QUERY)
   public HttpResult chooseTenant(ChooseTenantCommand command) {
 
-    return commandGateway.send(command.setOutType(OutputTypes.SELECT));
+    return commandGateway.send(command.setOutput(OutputTypes.SELECT));
   }
 
   @GetMapping("/organize/choose/org-category")

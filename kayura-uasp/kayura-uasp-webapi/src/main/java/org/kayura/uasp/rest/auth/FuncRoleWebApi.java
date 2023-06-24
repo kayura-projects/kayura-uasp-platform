@@ -63,7 +63,7 @@ public class FuncRoleWebApi implements UaspConsts {
   @Secured(actions = QUERY)
   public HttpResult chooseTenants(ChooseTenantCommand command) {
 
-    return commandGateway.send(command.setOutType(OutputTypes.TREE));
+    return commandGateway.send(command.setOutput(OutputTypes.TREE));
   }
 
   @GetMapping("/func-role/choose/tenant-applic")

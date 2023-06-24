@@ -54,7 +54,7 @@ public class NoSecretWebApi {
 
     return commandGateway.send(command
       .setFormApp(true)
-      .setOutType(OutputTypes.SELECT)
+      .setOutput(OutputTypes.SELECT)
     );
   }
 

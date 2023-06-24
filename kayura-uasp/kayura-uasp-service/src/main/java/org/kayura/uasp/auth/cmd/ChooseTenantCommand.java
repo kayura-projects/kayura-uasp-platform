@@ -21,17 +21,17 @@ import org.kayura.uasp.utils.OutputTypes;
 
 public class ChooseTenantCommand extends ApiCommand {
 
-  private OutputTypes outType;
+  private OutputTypes output;
   private boolean formApp;
   private String appId;
   private boolean includeApplic;
 
-  public OutputTypes getOutType() {
-    return outType;
+  public OutputTypes getOutput() {
+    return output;
   }
 
-  public ChooseTenantCommand setOutType(OutputTypes outType) {
-    this.outType = outType;
+  public ChooseTenantCommand setOutput(OutputTypes output) {
+    this.output = output;
     return this;
   }
 
