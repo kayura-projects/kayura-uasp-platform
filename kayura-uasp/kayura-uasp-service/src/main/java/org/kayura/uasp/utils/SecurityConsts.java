@@ -54,6 +54,7 @@ public interface SecurityConsts {
 
   String UASP_APP_STORE = "UASP_APP_STORE";
   String UASP_NOTICE = "UASP_NOTICE";
+  String UASP_FEED_BACK = "UASP_FEED_BACK";
 
   String UASP_APPLIC = "UASP_APPLIC";
   String UASP_MODULE = "UASP_MODULE";

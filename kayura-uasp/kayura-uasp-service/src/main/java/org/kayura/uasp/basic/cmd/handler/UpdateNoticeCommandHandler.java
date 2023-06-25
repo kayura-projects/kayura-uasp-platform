@@ -52,6 +52,7 @@ public class UpdateNoticeCommandHandler implements CommandHandler<UpdateNoticeCo
     }
     entity.setTitle(payload.getTitle());
     entity.setContent(payload.getContent());
+    entity.setAttachmentIds(payload.getAttachmentIds());
     entity.setStatus(payload.getStatus());
     entity.setUpdaterId(loginUser.getUserId());
     entity.setUpdateTime(LocalDateTime.now());

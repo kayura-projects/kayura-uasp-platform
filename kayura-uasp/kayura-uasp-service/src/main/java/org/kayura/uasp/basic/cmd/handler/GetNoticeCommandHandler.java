@@ -18,12 +18,14 @@ package org.kayura.uasp.basic.cmd.handler;
 
 import org.kayura.cmd.CommandHandler;
 import org.kayura.type.HttpResult;
+import org.kayura.type.StringList;
 import org.kayura.uasp.basic.cmd.GetNoticeCommand;
 import org.kayura.uasp.basic.entity.NoticeEntity;
 import org.kayura.uasp.basic.manage.NoticeManager;
 import org.kayura.uasp.file.FileLinkVo;
 import org.kayura.uasp.file.manage.FileLinkManager;
 import org.kayura.uasp.notice.NoticeVo;
+import org.kayura.utils.CollectionUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -56,8 +58,11 @@ public class GetNoticeCommandHandler implements CommandHandler<GetNoticeCommand,
 
     NoticeVo model = modelMapper.map(entity, NoticeVo.class);
 
-    List<FileLinkVo> attachments = fileLinkManager.queryLinksForBusinessKey(model.getNoticeId());
-    model.setAttachments(attachments);
+    StringList attachmentIds = entity.getAttachmentIds();
+    if (CollectionUtils.isNotEmpty(attachmentIds)) {
+      List<FileLinkVo> attachments = fileLinkManager.queryForIds(attachmentIds);
+      model.setAttachments(attachments);
+    }
 
     return HttpResult.okBody(model);
   }

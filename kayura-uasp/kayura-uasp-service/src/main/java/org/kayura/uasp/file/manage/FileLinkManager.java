@@ -24,6 +24,7 @@ import org.kayura.uasp.file.mapper.FileLinkMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -43,6 +44,11 @@ public class FileLinkManager extends CrudManagerImpl<FileLinkMapper, FileLinkEnt
     return entities.stream().map(m -> modelMapper.map(m, FileLinkVo.class)).toList();
   }
 
+  public List<FileLinkVo> queryForIds(Collection<String> attachmentIds) {
+    List<FileLinkEntity> entities = this.selectList(w -> w.in(FileLinkEntity::getLinkId, attachmentIds));
+    return entities.stream().map(m -> modelMapper.map(m, FileLinkVo.class)).toList();
+  }
+
   public DownloadFile downloadFile(String linkId) {
 
     DownloadFile model = null;
@@ -54,7 +60,7 @@ public class FileLinkManager extends CrudManagerImpl<FileLinkMapper, FileLinkEnt
     return model;
   }
 
-  public void updateDownloads(List<FileLinkEntity> links) {
+  public void updateDownloads(Collection<FileLinkEntity> links) {
 
     for (FileLinkEntity item : links) {
       this.updateByWhere(w -> {

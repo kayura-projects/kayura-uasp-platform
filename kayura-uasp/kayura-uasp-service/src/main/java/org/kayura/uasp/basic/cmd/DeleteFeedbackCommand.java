@@ -14,44 +14,31 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.common;
+package org.kayura.uasp.basic.cmd;
 
-import java.util.Set;
+import org.kayura.cmd.ApiCommand;
+import org.kayura.uasp.common.IdPayload;
 
-public class IdPayload {
+public class DeleteFeedbackCommand extends ApiCommand {
 
-  private String id;
-  private Set<String> ids;
-  private boolean cascade;
+  private String feedbackId;
+  private IdPayload payload;
 
-  public static IdPayload create() {
-    return new IdPayload();
+  public String getFeedbackId() {
+    return feedbackId;
   }
 
-  public String getId() {
-    return id;
-  }
-
-  public IdPayload setId(String id) {
-    this.id = id;
+  public DeleteFeedbackCommand setFeedbackId(String feedbackId) {
+    this.feedbackId = feedbackId;
     return this;
   }
 
-  public Set<String> getIds() {
-    return ids;
+  public IdPayload getPayload() {
+    return payload;
   }
 
-  public IdPayload setIds(Set<String> ids) {
-    this.ids = ids;
-    return this;
-  }
-
-  public boolean isCascade() {
-    return cascade;
-  }
-
-  public IdPayload setCascade(boolean cascade) {
-    this.cascade = cascade;
+  public DeleteFeedbackCommand setPayload(IdPayload payload) {
+    this.payload = payload;
     return this;
   }
 }

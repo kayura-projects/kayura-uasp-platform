@@ -14,44 +14,34 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.common;
+package org.kayura.uasp.feedback;
 
-import java.util.Set;
+import org.kayura.type.EnumValue;
 
-public class IdPayload {
+/**
+ * 状态:D 未发布,V 已发布,C 已关闭;
+ */
+public enum PostStatus implements EnumValue {
 
-  private String id;
-  private Set<String> ids;
-  private boolean cascade;
+  Draft("D", "未发布"),
+  Valid("V", "已发布"),
+  Closed("C", "已关闭");
 
-  public static IdPayload create() {
-    return new IdPayload();
+  private final String value;
+  private final String name;
+
+  PostStatus(final String value, String name) {
+    this.value = value;
+    this.name = name;
   }
 
-  public String getId() {
-    return id;
+  @Override
+  public String toString() {
+    return this.value;
   }
 
-  public IdPayload setId(String id) {
-    this.id = id;
-    return this;
-  }
-
-  public Set<String> getIds() {
-    return ids;
-  }
-
-  public IdPayload setIds(Set<String> ids) {
-    this.ids = ids;
-    return this;
-  }
-
-  public boolean isCascade() {
-    return cascade;
-  }
-
-  public IdPayload setCascade(boolean cascade) {
-    this.cascade = cascade;
-    return this;
+  @Override
+  public String getName() {
+    return name;
   }
 }

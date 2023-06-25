@@ -21,7 +21,7 @@ import org.kayura.mybatis.annotation.mapper.Id;
 import org.kayura.mybatis.annotation.mapper.RefColumn;
 import org.kayura.mybatis.annotation.mapper.Table;
 import org.kayura.type.DataStatus;
-import org.kayura.uasp.auth.entity.TenantEntity;
+import org.kayura.type.StringList;
 import org.kayura.uasp.dev.entity.ApplicEntity;
 import org.kayura.uasp.organize.entity.CompanyEntity;
 
@@ -54,6 +54,8 @@ public class NoticeEntity {
   private String title;
   /** 内容 */
   private String content;
+  /** 附件IDS */
+  private StringList attachmentIds;
   /** 发布时间 */
   private LocalDateTime releaseTime;
   /** 创建人ID */
@@ -205,6 +207,15 @@ public class NoticeEntity {
 
   public NoticeEntity setTenantName(String tenantName) {
     this.tenantName = tenantName;
+    return this;
+  }
+
+  public StringList getAttachmentIds() {
+    return attachmentIds;
+  }
+
+  public NoticeEntity setAttachmentIds(StringList attachmentIds) {
+    this.attachmentIds = attachmentIds;
     return this;
   }
 }

@@ -19,6 +19,7 @@ package org.kayura.uasp.config;
 import org.kayura.autoconfigure.bean.ModelMapperCustomizer;
 import org.kayura.type.ExtendField;
 import org.kayura.type.ExtendFields;
+import org.kayura.type.StringList;
 import org.kayura.uasp.dict.DictFieldList;
 import org.kayura.uasp.workflow.FlowLabel;
 import org.kayura.uasp.workflow.FlowLabels;
@@ -85,6 +86,18 @@ public class ModelMapperConfigurer implements ModelMapperCustomizer {
           for (FlowLabel row : source) {
             list.add(FlowLabel.clone(row));
           }
+        }
+        return list;
+      }
+    });
+    // StringList
+    modelMapper.addConverter(new AbstractConverter<StringList, StringList>() {
+      @Override
+      protected StringList convert(StringList source) {
+        StringList list = null;
+        if (source != null) {
+          list = new StringList();
+          list.addAll(source);
         }
         return list;
       }

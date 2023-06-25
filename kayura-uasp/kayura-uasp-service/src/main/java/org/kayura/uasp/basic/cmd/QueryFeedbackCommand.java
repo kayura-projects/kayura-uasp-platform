@@ -14,44 +14,42 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.common;
+package org.kayura.uasp.basic.cmd;
 
-import java.util.Set;
+import org.kayura.cmd.ApiCommand;
+import org.kayura.type.PageClause;
+import org.kayura.uasp.feedback.FeedbackQuery;
 
-public class IdPayload {
+public class QueryFeedbackCommand extends ApiCommand {
 
-  private String id;
-  private Set<String> ids;
-  private boolean cascade;
+  private String appId;
+  private FeedbackQuery query;
+  private PageClause pageClause;
 
-  public static IdPayload create() {
-    return new IdPayload();
+  public FeedbackQuery getQuery() {
+    return query;
   }
 
-  public String getId() {
-    return id;
-  }
-
-  public IdPayload setId(String id) {
-    this.id = id;
+  public QueryFeedbackCommand setQuery(FeedbackQuery query) {
+    this.query = query;
     return this;
   }
 
-  public Set<String> getIds() {
-    return ids;
+  public PageClause getPageClause() {
+    return pageClause;
   }
 
-  public IdPayload setIds(Set<String> ids) {
-    this.ids = ids;
+  public QueryFeedbackCommand setPageClause(PageClause pageClause) {
+    this.pageClause = pageClause;
     return this;
   }
 
-  public boolean isCascade() {
-    return cascade;
+  public String getAppId() {
+    return appId;
   }
 
-  public IdPayload setCascade(boolean cascade) {
-    this.cascade = cascade;
+  public QueryFeedbackCommand setAppId(String appId) {
+    this.appId = appId;
     return this;
   }
 }

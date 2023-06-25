@@ -14,7 +14,33 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.spring.web;
+package org.kayura.uasp.feedback;
 
-public class StringListArgumentResolver {
+import org.kayura.mybatis.annotation.querier.Eq;
+import org.kayura.mybatis.annotation.querier.Like;
+
+public class FeedbackQuery {
+
+  @Eq
+  private String category;
+  @Like("title")
+  private String searchText;
+
+  public String getCategory() {
+    return category;
+  }
+
+  public FeedbackQuery setCategory(String category) {
+    this.category = category;
+    return this;
+  }
+
+  public String getSearchText() {
+    return searchText;
+  }
+
+  public FeedbackQuery setSearchText(String searchText) {
+    this.searchText = searchText;
+    return this;
+  }
 }

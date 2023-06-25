@@ -14,44 +14,12 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.common;
+package org.kayura.uasp.basic.mapper;
 
-import java.util.Set;
+import org.kayura.mybatis.mapper.CrudMapper;
+import org.kayura.uasp.basic.entity.FeedbackEntity;
+import org.springframework.stereotype.Repository;
 
-public class IdPayload {
-
-  private String id;
-  private Set<String> ids;
-  private boolean cascade;
-
-  public static IdPayload create() {
-    return new IdPayload();
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public IdPayload setId(String id) {
-    this.id = id;
-    return this;
-  }
-
-  public Set<String> getIds() {
-    return ids;
-  }
-
-  public IdPayload setIds(Set<String> ids) {
-    this.ids = ids;
-    return this;
-  }
-
-  public boolean isCascade() {
-    return cascade;
-  }
-
-  public IdPayload setCascade(boolean cascade) {
-    this.cascade = cascade;
-    return this;
-  }
+@Repository
+public interface FeedbackMapper extends CrudMapper<FeedbackEntity> {
 }

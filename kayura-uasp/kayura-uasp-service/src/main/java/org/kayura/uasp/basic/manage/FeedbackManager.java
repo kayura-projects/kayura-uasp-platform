@@ -14,44 +14,18 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.common;
+package org.kayura.uasp.basic.manage;
 
-import java.util.Set;
+import org.kayura.mybatis.manager.impl.CrudManagerImpl;
+import org.kayura.uasp.basic.entity.FeedbackEntity;
+import org.kayura.uasp.basic.mapper.FeedbackMapper;
+import org.springframework.stereotype.Component;
 
-public class IdPayload {
+@Component
+public class FeedbackManager extends CrudManagerImpl<FeedbackMapper, FeedbackEntity> {
 
-  private String id;
-  private Set<String> ids;
-  private boolean cascade;
-
-  public static IdPayload create() {
-    return new IdPayload();
+  protected FeedbackManager(FeedbackMapper baseMapper) {
+    super(baseMapper);
   }
 
-  public String getId() {
-    return id;
-  }
-
-  public IdPayload setId(String id) {
-    this.id = id;
-    return this;
-  }
-
-  public Set<String> getIds() {
-    return ids;
-  }
-
-  public IdPayload setIds(Set<String> ids) {
-    this.ids = ids;
-    return this;
-  }
-
-  public boolean isCascade() {
-    return cascade;
-  }
-
-  public IdPayload setCascade(boolean cascade) {
-    this.cascade = cascade;
-    return this;
-  }
 }

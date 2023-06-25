@@ -17,6 +17,7 @@
 package org.kayura.uasp.notice;
 
 import org.kayura.type.DataStatus;
+import org.kayura.type.StringList;
 import org.kayura.vaildation.Create;
 import org.kayura.vaildation.Update;
 
@@ -43,6 +44,8 @@ public class NoticePayload {
   /** 内容 */
   @NotBlank
   private String content;
+  /** 附件IDS */
+  private StringList attachmentIds;
   /** 展示期限(天) */
   @NotNull
   private Integer expireDay;
@@ -122,6 +125,15 @@ public class NoticePayload {
 
   public NoticePayload setStatus(DataStatus status) {
     this.status = status;
+    return this;
+  }
+
+  public StringList getAttachmentIds() {
+    return attachmentIds;
+  }
+
+  public NoticePayload setAttachmentIds(StringList attachmentIds) {
+    this.attachmentIds = attachmentIds;
     return this;
   }
 }

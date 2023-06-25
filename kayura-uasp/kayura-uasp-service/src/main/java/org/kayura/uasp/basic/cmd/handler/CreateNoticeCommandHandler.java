@@ -56,6 +56,7 @@ public class CreateNoticeCommandHandler implements CommandHandler<CreateNoticeCo
     entity.setType(payload.getType());
     entity.setTitle(payload.getTitle());
     entity.setContent(payload.getContent());
+    entity.setAttachmentIds(payload.getAttachmentIds());
     entity.setCreatorId(loginUser.getUserId());
     entity.setCreateTime(LocalDateTime.now());
     entity.setExpireDay(payload.getExpireDay());
