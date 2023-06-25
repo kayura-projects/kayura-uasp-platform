@@ -28,7 +28,6 @@ import org.kayura.utils.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Component
 public class CreateFeedbackCommandHandler implements CommandHandler<CreateFeedbackCommand, HttpResult> {
@@ -55,13 +54,14 @@ public class CreateFeedbackCommandHandler implements CommandHandler<CreateFeedba
       .setPostTime(LocalDateTime.now());
 
     if (StringUtils.isBlank(subjectId)) {
+      entity.setSubjectId(entity.getPostId());
       entity.setTitle(payload.getTitle());
       entity.setCategory(payload.getCategory());
       entity.setSolved(Boolean.FALSE);
-      entity.setStatus(Optional.ofNullable(payload.getStatus()).orElse(PostStatus.Draft));
+      entity.setStatus(PostStatus.Valid);
     } else {
       FeedbackEntity subject = feedbackManager.selectById(subjectId);
-      if (subject == null || PostStatus.Draft.equals(subject.getStatus())) {
+      if (subject == null) {
         return HttpResult.error("要回复的反馈不存在。");
       }
       if (PostStatus.Closed.equals(subject.getStatus())) {

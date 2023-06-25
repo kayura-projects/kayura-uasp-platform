@@ -23,8 +23,10 @@ import org.kayura.type.PageClause;
 import org.kayura.uasp.basic.cmd.*;
 import org.kayura.uasp.common.IdPayload;
 import org.kayura.uasp.dev.cmd.ChooseApplicCommand;
+import org.kayura.uasp.feedback.ClosePayload;
 import org.kayura.uasp.feedback.FeedbackPayload;
 import org.kayura.uasp.feedback.FeedbackQuery;
+import org.kayura.uasp.feedback.ReplyPayload;
 import org.kayura.uasp.utils.OutputTypes;
 import org.kayura.vaildation.Create;
 import org.kayura.vaildation.Update;
@@ -54,7 +56,7 @@ public class FeedbackWebApi {
     );
   }
 
-  /** Feedback */
+  // --- subject ---
 
   @PostMapping("/feed-back/page")
   @Secured(actions = QUERY)
@@ -76,7 +78,7 @@ public class FeedbackWebApi {
     return commandGateway.send(command.setFeedbackId(id));
   }
 
-  @PostMapping("/feed-back/subject/create")
+  @PostMapping("/feed-back/create")
   @Secured(actions = CREATE)
   public HttpResult createSubject(CreateFeedbackCommand command,
                                   @RequestBody @Validated(Create.class) FeedbackPayload payload) {
@@ -84,37 +86,41 @@ public class FeedbackWebApi {
     return commandGateway.send(command.setPayload(payload));
   }
 
-  @PostMapping("/feed-back/subject/update")
-  @Secured(actions = UPDATE)
-  public HttpResult updateSubject(UpdateFeedbackCommand command,
-                                  @RequestBody @Validated(Update.class) FeedbackPayload payload) {
+  @PostMapping("/feed-back/close")
+  public HttpResult updateSubject(CloseFeedbackCommand command,
+                                  @RequestBody @Validated ClosePayload payload) {
 
     return commandGateway.send(command
-      .setFeedbackId(payload.getPostId())
+      .setPostId(payload.getPostId())
+      .setSolved(payload.getSolved())
+    );
+  }
+
+  @PostMapping("/feed-back/delete")
+  public HttpResult deleteSubject(DeleteFeedbackCommand command, @RequestBody IdPayload payload) {
+
+    return commandGateway.send(command
+      .setDeleteType(DeleteFeedbackCommand.FEED_BACK)
       .setPayload(payload)
     );
   }
 
-  @PostMapping("/feed-back/subject/delete")
-  @Secured(actions = DELETE)
-  public HttpResult deleteSubject(DeleteFeedbackCommand command, @RequestBody IdPayload payload) {
-
-    return commandGateway.send(command.setPayload(payload));
-  }
+  // --- reply ---
 
   @PostMapping("/feed-back/reply/create")
-  @Secured(actions = CREATE)
   public HttpResult createReply(CreateFeedbackCommand command,
-                                @RequestBody @Validated(Create.class) FeedbackPayload payload) {
+                                @RequestBody @Validated ReplyPayload payload) {
 
-    return commandGateway.send(command.setPayload(payload));
+    return commandGateway.send(command.setPayload(FeedbackPayload.of(payload)));
   }
 
   @PostMapping("/feed-back/reply/delete")
-  @Secured(actions = DELETE)
   public HttpResult deleteReply(DeleteFeedbackCommand command, @RequestBody IdPayload payload) {
 
-    return commandGateway.send(command.setPayload(payload));
+    return commandGateway.send(command
+      .setDeleteType(DeleteFeedbackCommand.REPLY)
+      .setPayload(payload)
+    );
   }
 
 }

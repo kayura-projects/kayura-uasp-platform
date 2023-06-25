@@ -14,35 +14,48 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.basic.cmd;
+package org.kayura.uasp.feedback;
 
-import org.kayura.cmd.ApiCommand;
-import org.kayura.uasp.common.IdPayload;
+import org.kayura.type.StringList;
 
-public class DeleteFeedbackCommand extends ApiCommand {
+import javax.validation.constraints.NotBlank;
 
-  public static final String FEED_BACK = "FEED_BACK";
-  public static final String REPLY = "REPLY";
+public class ReplyPayload {
 
-  /** FEED_BACK, REPLY */
-  private String deleteType;
-  private IdPayload payload;
+  @NotBlank
+  private String subjectId;
+  @NotBlank
+  private String content;
+  private StringList attachmentIds;
 
-  public String getDeleteType() {
-    return deleteType;
+  public static ReplyPayload create() {
+    return new ReplyPayload();
   }
 
-  public DeleteFeedbackCommand setDeleteType(String deleteType) {
-    this.deleteType = deleteType;
+  public String getSubjectId() {
+    return subjectId;
+  }
+
+  public ReplyPayload setSubjectId(String subjectId) {
+    this.subjectId = subjectId;
     return this;
   }
 
-  public IdPayload getPayload() {
-    return payload;
+  public String getContent() {
+    return content;
   }
 
-  public DeleteFeedbackCommand setPayload(IdPayload payload) {
-    this.payload = payload;
+  public ReplyPayload setContent(String content) {
+    this.content = content;
+    return this;
+  }
+
+  public StringList getAttachmentIds() {
+    return attachmentIds;
+  }
+
+  public ReplyPayload setAttachmentIds(StringList attachmentIds) {
+    this.attachmentIds = attachmentIds;
     return this;
   }
 }

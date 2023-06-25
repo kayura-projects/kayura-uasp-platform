@@ -17,17 +17,28 @@
 package org.kayura.uasp.feedback;
 
 import org.kayura.type.StringList;
+import org.kayura.vaildation.Update;
+
+import javax.validation.constraints.NotBlank;
 
 public class FeedbackPayload {
 
+  @NotBlank(groups = Update.class)
   private String postId;
   private String subjectId;
   private String category;
+  @NotBlank
   private String title;
+  @NotBlank
   private String content;
   private StringList attachmentIds;
-  private Boolean solved;
-  private PostStatus status;
+
+  public static FeedbackPayload of(ReplyPayload payload) {
+    return create()
+      .setSubjectId(payload.getSubjectId())
+      .setContent(payload.getContent())
+      .setAttachmentIds(payload.getAttachmentIds());
+  }
 
   public static FeedbackPayload create() {
     return new FeedbackPayload();
@@ -87,21 +98,4 @@ public class FeedbackPayload {
     return this;
   }
 
-  public Boolean getSolved() {
-    return solved;
-  }
-
-  public FeedbackPayload setSolved(Boolean solved) {
-    this.solved = solved;
-    return this;
-  }
-
-  public PostStatus getStatus() {
-    return status;
-  }
-
-  public FeedbackPayload setStatus(PostStatus status) {
-    this.status = status;
-    return this;
-  }
 }

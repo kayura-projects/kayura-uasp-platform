@@ -23,7 +23,6 @@ import org.kayura.type.EnumValue;
  */
 public enum PostStatus implements EnumValue {
 
-  Draft("D", "未发布"),
   Valid("V", "已发布"),
   Closed("C", "已关闭");
 

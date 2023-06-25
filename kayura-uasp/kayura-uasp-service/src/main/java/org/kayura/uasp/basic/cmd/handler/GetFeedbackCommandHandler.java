@@ -55,15 +55,12 @@ public class GetFeedbackCommandHandler implements CommandHandler<GetFeedbackComm
     String feedbackId = command.getFeedbackId();
 
     List<FeedbackEntity> entities = feedbackManager.selectList(w -> {
-      w.and(w1 ->
-        w1.eq(FeedbackEntity::getPostId, feedbackId).or()
-          .eq(FeedbackEntity::getSubjectId, feedbackId)
-      );
+      w.eq(FeedbackEntity::getSubjectId, feedbackId);
     });
 
     // subject
     FeedbackEntity entity = entities.stream()
-      .filter(x -> feedbackId.equals(x.getPostId()))
+      .filter(x -> x.getSubjectId().equals(x.getPostId()))
       .findAny().orElse(null);
     if (entity == null) {
       return HttpResult.error(UPDATE_ENTITY_NOT_EXISTS);

@@ -17,28 +17,29 @@
 package org.kayura.uasp.basic.cmd;
 
 import org.kayura.cmd.ApiCommand;
+import org.kayura.uasp.feedback.ClosePayload;
 import org.kayura.uasp.feedback.FeedbackPayload;
 
-public class UpdateFeedbackCommand extends ApiCommand {
+public class CloseFeedbackCommand extends ApiCommand {
 
-  private String feedbackId;
-  private FeedbackPayload payload;
+  private String postId;
+  private Boolean solved;
 
-  public String getFeedbackId() {
-    return feedbackId;
+  public String getPostId() {
+    return postId;
   }
 
-  public UpdateFeedbackCommand setFeedbackId(String feedbackId) {
-    this.feedbackId = feedbackId;
+  public CloseFeedbackCommand setPostId(String postId) {
+    this.postId = postId;
     return this;
   }
 
-  public FeedbackPayload getPayload() {
-    return payload;
+  public Boolean getSolved() {
+    return solved;
   }
 
-  public UpdateFeedbackCommand setPayload(FeedbackPayload payload) {
-    this.payload = payload;
+  public CloseFeedbackCommand setSolved(Boolean solved) {
+    this.solved = solved;
     return this;
   }
 }
