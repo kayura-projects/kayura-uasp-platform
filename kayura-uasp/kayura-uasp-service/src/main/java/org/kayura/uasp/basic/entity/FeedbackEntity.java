@@ -36,6 +36,8 @@ public class FeedbackEntity {
   private String postId;
   /** 应用ID */
   private String appId;
+  /** 标记:1 提问;2 回复; */
+  private Integer flag;
   /** 主题ID */
   private String subjectId;
   /** 归类 */
@@ -178,6 +180,15 @@ public class FeedbackEntity {
 
   public FeedbackEntity setLastlyTime(LocalDateTime lastlyTime) {
     this.lastlyTime = lastlyTime;
+    return this;
+  }
+
+  public Integer getFlag() {
+    return flag;
+  }
+
+  public FeedbackEntity setFlag(Integer flag) {
+    this.flag = flag;
     return this;
   }
 }

@@ -21,7 +21,7 @@ import java.util.List;
 /** 返回主题内容 */
 public class FeedbackVo {
 
-  private String feedbackId;
+  private String postId;
   private String title;
   private String content;
   private String authorId;
@@ -38,12 +38,12 @@ public class FeedbackVo {
     return new FeedbackVo();
   }
 
-  public String getFeedbackId() {
-    return feedbackId;
+  public String getPostId() {
+    return postId;
   }
 
-  public FeedbackVo setFeedbackId(String feedbackId) {
-    this.feedbackId = feedbackId;
+  public FeedbackVo setPostId(String postId) {
+    this.postId = postId;
     return this;
   }
 

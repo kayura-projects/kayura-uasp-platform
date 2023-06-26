@@ -19,7 +19,6 @@ import org.kayura.uasp.feedback.FeedbackQuery;
 
 public class QueryFeedbackCommand extends ApiCommand {
 
-  private String appId;
   private FeedbackQuery query;
   private PageClause pageClause;
 
@@ -38,15 +37,6 @@ public class QueryFeedbackCommand extends ApiCommand {
 
   public QueryFeedbackCommand setPageClause(PageClause pageClause) {
     this.pageClause = pageClause;
-    return this;
-  }
-
-  public String getAppId() {
-    return appId;
-  }
-
-  public QueryFeedbackCommand setAppId(String appId) {
-    this.appId = appId;
     return this;
   }
 }

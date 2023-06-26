@@ -53,9 +53,9 @@ public class QueryFeedbackCommandHandler implements CommandHandler<QueryFeedback
         w.eq(FeedbackEntity::getAuthorId, loginUser.getUserId());
         w.eq(FeedbackEntity::getAppId, loginUser.getAppId());
       } else {
-        w.eq(FeedbackEntity::getAppId, Optional.ofNullable(command.getAppId()).orElse(loginUser.getAppId()));
+        w.eq(FeedbackEntity::getAppId, Optional.ofNullable(query.getAppId()).orElse(loginUser.getAppId()));
       }
-      w.isNull(FeedbackEntity::getSubjectId);
+      w.eq(FeedbackEntity::getFlag, 1);
     }, pageClause).streamMap(m -> modelMapper.map(m, FeedbackVo.class));
 
     return HttpResult.okBody(pageList);

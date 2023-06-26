@@ -14,6 +14,7 @@
 package org.kayura.uasp.dev.cmd.handler;
 
 import org.kayura.cmd.CommandHandler;
+import org.kayura.security.LoginUser;
 import org.kayura.type.*;
 import org.kayura.uasp.applic.ApplicTypes;
 import org.kayura.uasp.applic.ApplicVo;
@@ -57,12 +58,12 @@ public class ChooseApplicCommandHandler implements CommandHandler<ChooseApplicCo
   @Transactional(readOnly = true)
   public HttpResult execute(ChooseApplicCommand command) {
 
+    LoginUser loginUser = command.getLoginUser();
     OutputTypes output = command.getOutput();
     ApplicTypes applicType = command.getType();
     String tenantId = command.getTenantId();
     String companyId = command.getCompanyId();
     String userId = command.getUserId();
-    Integer level = command.getLevel();
     List<String> exclusionIds = command.getExclusionIds();
 
     // 若指定的是userId将从employee信息中提取.

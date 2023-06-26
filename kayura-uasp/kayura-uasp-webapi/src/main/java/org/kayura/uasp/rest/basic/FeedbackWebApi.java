@@ -45,10 +45,7 @@ public class FeedbackWebApi {
   @GetMapping("/feed-back/choose/applic")
   public HttpResult chooseApplics(ChooseApplicCommand command) {
 
-    return commandGateway.send(command
-      .setExclusionIds(UASP_APP_ID)
-      .setOutput(OutputTypes.SELECT)
-    );
+    return commandGateway.send(command.setOutput(OutputTypes.SELECT));
   }
 
   // --- subject ---
@@ -58,10 +55,7 @@ public class FeedbackWebApi {
                                       @RequestBody FeedbackQuery query,
                                       PageClause pageClause) {
 
-    return commandGateway.send(command
-      .setQuery(query)
-      .setPageClause(pageClause)
-    );
+    return commandGateway.send(command.setQuery(query).setPageClause(pageClause));
   }
 
   @GetMapping("/feed-back/get")

@@ -58,6 +58,7 @@ public class CreateFeedbackCommandHandler implements CommandHandler<CreateFeedba
     }
 
     if (StringUtils.isBlank(subjectId)) {
+      entity.setFlag(1);
       entity.setSubjectId(entity.getPostId());
       entity.setTitle(payload.getTitle());
       entity.setCategory(payload.getCategory());
@@ -71,6 +72,7 @@ public class CreateFeedbackCommandHandler implements CommandHandler<CreateFeedba
       if (PostStatus.Closed.equals(subject.getStatus())) {
         return HttpResult.error("要回复的反馈已经关闭。");
       }
+      entity.setFlag(0);
       entity.setSubjectId(subjectId);
     }
 

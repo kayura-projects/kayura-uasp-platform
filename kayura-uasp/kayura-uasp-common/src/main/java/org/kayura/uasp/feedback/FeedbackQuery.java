@@ -13,11 +13,14 @@
 
 package org.kayura.uasp.feedback;
 
+import org.kayura.mybatis.annotation.Ignore;
 import org.kayura.mybatis.annotation.querier.Eq;
 import org.kayura.mybatis.annotation.querier.Like;
 
 public class FeedbackQuery {
 
+  @Ignore
+  private String appId;
   @Eq
   private String category;
   @Like("title")
@@ -38,6 +41,15 @@ public class FeedbackQuery {
 
   public FeedbackQuery setSearchText(String searchText) {
     this.searchText = searchText;
+    return this;
+  }
+
+  public String getAppId() {
+    return appId;
+  }
+
+  public FeedbackQuery setAppId(String appId) {
+    this.appId = appId;
     return this;
   }
 }
