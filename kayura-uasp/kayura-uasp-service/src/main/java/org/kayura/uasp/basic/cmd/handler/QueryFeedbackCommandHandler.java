@@ -44,13 +44,17 @@ public class QueryFeedbackCommandHandler implements CommandHandler<QueryFeedback
   public HttpResult execute(QueryFeedbackCommand command) {
 
     LoginUser loginUser = command.getLoginUser();
-    String appId = Optional.ofNullable(command.getAppId()).orElse(loginUser.getAppId());
     FeedbackQuery query = command.getQuery();
     PageClause pageClause = command.getPageClause();
 
     PageList<FeedbackVo> pageList = feedbackManager.selectPage(w -> {
       w.of(query);
-      w.eq(FeedbackEntity::getAppId, appId);
+      if (loginUser.hasTenantUser()) {
+        w.eq(FeedbackEntity::getAuthorId, loginUser.getUserId());
+        w.eq(FeedbackEntity::getAppId, loginUser.getAppId());
+      } else {
+        w.eq(FeedbackEntity::getAppId, Optional.ofNullable(command.getAppId()).orElse(loginUser.getAppId()));
+      }
       w.isNull(FeedbackEntity::getSubjectId);
     }, pageClause).streamMap(m -> modelMapper.map(m, FeedbackVo.class));
 

@@ -26,7 +26,6 @@ import org.kayura.uasp.feedback.FeedbackQuery;
 import org.kayura.uasp.feedback.ReplyPayload;
 import org.kayura.uasp.utils.OutputTypes;
 import org.kayura.vaildation.Create;
-import org.kayura.vaildation.Update;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,7 +43,6 @@ public class FeedbackWebApi {
   }
 
   @GetMapping("/feed-back/choose/applic")
-  @Secured(actions = QUERY)
   public HttpResult chooseApplics(ChooseApplicCommand command) {
 
     return commandGateway.send(command
@@ -56,7 +54,6 @@ public class FeedbackWebApi {
   // --- subject ---
 
   @PostMapping("/feed-back/page")
-  @Secured(actions = QUERY)
   public HttpResult queryFeedbackPage(QueryFeedbackCommand command,
                                       @RequestBody FeedbackQuery query,
                                       PageClause pageClause) {
@@ -68,7 +65,6 @@ public class FeedbackWebApi {
   }
 
   @GetMapping("/feed-back/get")
-  @Secured(actions = QUERY)
   public HttpResult findFeedbackById(GetFeedbackCommand command,
                                      @RequestParam("id") String id) {
 
@@ -76,7 +72,6 @@ public class FeedbackWebApi {
   }
 
   @PostMapping("/feed-back/create")
-  @Secured(actions = CREATE)
   public HttpResult createSubject(CreateFeedbackCommand command,
                                   @RequestBody @Validated(Create.class) FeedbackPayload payload) {
 
@@ -87,19 +82,13 @@ public class FeedbackWebApi {
   public HttpResult updateSubject(CloseFeedbackCommand command,
                                   @RequestBody @Validated ClosePayload payload) {
 
-    return commandGateway.send(command
-      .setPostId(payload.getPostId())
-      .setSolved(payload.getSolved())
-    );
+    return commandGateway.send(command.setPostId(payload.getPostId()).setSolved(payload.getSolved()));
   }
 
   @PostMapping("/feed-back/delete")
   public HttpResult deleteSubject(DeleteFeedbackCommand command, @RequestBody IdPayload payload) {
 
-    return commandGateway.send(command
-      .setDeleteType(DeleteFeedbackCommand.FEED_BACK)
-      .setPayload(payload)
-    );
+    return commandGateway.send(command.setPayload(payload));
   }
 
   // --- reply ---
@@ -114,10 +103,7 @@ public class FeedbackWebApi {
   @PostMapping("/feed-back/reply/delete")
   public HttpResult deleteReply(DeleteFeedbackCommand command, @RequestBody IdPayload payload) {
 
-    return commandGateway.send(command
-      .setDeleteType(DeleteFeedbackCommand.REPLY)
-      .setPayload(payload)
-    );
+    return commandGateway.send(command.setPayload(payload));
   }
 
 }

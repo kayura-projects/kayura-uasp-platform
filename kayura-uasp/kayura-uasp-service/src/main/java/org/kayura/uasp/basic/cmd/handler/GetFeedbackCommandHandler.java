@@ -14,6 +14,7 @@
 package org.kayura.uasp.basic.cmd.handler;
 
 import org.kayura.cmd.CommandHandler;
+import org.kayura.security.LoginUser;
 import org.kayura.type.HttpResult;
 import org.kayura.type.StringList;
 import org.kayura.uasp.basic.cmd.GetFeedbackCommand;
@@ -49,6 +50,7 @@ public class GetFeedbackCommandHandler implements CommandHandler<GetFeedbackComm
   @Override
   public HttpResult execute(GetFeedbackCommand command) {
 
+    LoginUser loginUser = command.getLoginUser();
     String feedbackId = command.getFeedbackId();
 
     List<FeedbackEntity> entities = feedbackManager.selectList(w -> {
@@ -61,6 +63,11 @@ public class GetFeedbackCommandHandler implements CommandHandler<GetFeedbackComm
       .findAny().orElse(null);
     if (entity == null) {
       return HttpResult.error(UPDATE_ENTITY_NOT_EXISTS);
+    }
+
+    // check
+    if (loginUser.hasTenantUser() && !entity.getAuthorId().equals(loginUser.getUserId())) {
+      return HttpResult.error("只有创建者与管理员能读取详情。");
     }
 
     FeedbackVo model = modelMapper.map(entity, FeedbackVo.class);

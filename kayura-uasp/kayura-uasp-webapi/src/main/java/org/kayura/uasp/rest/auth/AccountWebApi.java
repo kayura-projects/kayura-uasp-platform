@@ -51,4 +51,5 @@ public class AccountWebApi {
 
     return commandGateway.send(command.setPayload(payload));
   }
+
 }

@@ -22,6 +22,7 @@ public class FeedbackPayload {
 
   @NotBlank(groups = Update.class)
   private String postId;
+  private String appId;
   private String subjectId;
   private String category;
   @NotBlank
@@ -95,4 +96,12 @@ public class FeedbackPayload {
     return this;
   }
 
+  public String getAppId() {
+    return appId;
+  }
+
+  public FeedbackPayload setAppId(String appId) {
+    this.appId = appId;
+    return this;
+  }
 }

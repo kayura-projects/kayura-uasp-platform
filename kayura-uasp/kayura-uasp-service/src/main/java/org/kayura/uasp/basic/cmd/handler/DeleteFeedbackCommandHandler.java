@@ -40,7 +40,6 @@ public class DeleteFeedbackCommandHandler implements CommandHandler<DeleteFeedba
 
     LoginUser loginUser = command.getLoginUser();
     IdPayload payload = command.getPayload();
-    String deleteType = command.getDeleteType();
 
     List<FeedbackEntity> entities = feedbackManager.selectList(w -> {
       if (CollectionUtils.isNotEmpty(payload.getIds())) {
@@ -50,12 +49,16 @@ public class DeleteFeedbackCommandHandler implements CommandHandler<DeleteFeedba
       }
     });
 
+    // check
     for (FeedbackEntity entity : entities) {
-      if (entity.getSubjectId().equals(entity.getPostId())) {
+      if (!loginUser.getUserId().equals(entity.getAuthorId())) {
+        return HttpResult.error("只允许删除自己创建的数据。");
       }
     }
 
+    // delete
+    entities.forEach(row -> feedbackManager.deleteById(row.getPostId()));
 
-    return null;
+    return HttpResult.ok();
   }
 }

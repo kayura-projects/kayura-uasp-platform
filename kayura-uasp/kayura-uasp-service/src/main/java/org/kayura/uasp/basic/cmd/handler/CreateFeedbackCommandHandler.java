@@ -25,6 +25,7 @@ import org.kayura.utils.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Component
 public class CreateFeedbackCommandHandler implements CommandHandler<CreateFeedbackCommand, HttpResult> {
@@ -44,11 +45,17 @@ public class CreateFeedbackCommandHandler implements CommandHandler<CreateFeedba
 
     FeedbackEntity entity = FeedbackEntity.create()
       .setPostId(feedbackManager.nextId())
-      .setAppId(loginUser.getAppId())
       .setContent(payload.getContent())
       .setAttachmentIds(payload.getAttachmentIds())
       .setAuthorId(loginUser.getUserId())
       .setPostTime(LocalDateTime.now());
+
+    // appId
+    if (loginUser.hasTenantUser()) {
+      entity.setAppId(loginUser.getAppId());
+    } else {
+      entity.setAppId(Optional.ofNullable(payload.getAppId()).orElse(loginUser.getAppId()));
+    }
 
     if (StringUtils.isBlank(subjectId)) {
       entity.setSubjectId(entity.getPostId());

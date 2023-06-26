@@ -18,21 +18,7 @@ import org.kayura.uasp.common.IdPayload;
 
 public class DeleteFeedbackCommand extends ApiCommand {
 
-  public static final String FEED_BACK = "FEED_BACK";
-  public static final String REPLY = "REPLY";
-
-  /** FEED_BACK, REPLY */
-  private String deleteType;
   private IdPayload payload;
-
-  public String getDeleteType() {
-    return deleteType;
-  }
-
-  public DeleteFeedbackCommand setDeleteType(String deleteType) {
-    this.deleteType = deleteType;
-    return this;
-  }
 
   public IdPayload getPayload() {
     return payload;

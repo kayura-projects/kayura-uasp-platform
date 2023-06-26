@@ -22,6 +22,7 @@ public interface SecurityConsts {
   String EXCEPT = "EXCEPT";
   String PRINT = "PRINT";
   String AUTH = "AUTH";
+  String MANAGE = "MANAGE";
 
   String UASP_TASKS = "UASP_TASKS";
   String UASP_PROFILE = "UASP_PROFILE";

@@ -59,6 +59,8 @@ public class GetNoticeCommandHandler implements CommandHandler<GetNoticeCommand,
     if (CollectionUtils.isNotEmpty(attachmentIds)) {
       List<FileLinkVo> attachments = fileLinkManager.queryForIds(attachmentIds);
       model.setAttachments(attachments);
+    } else {
+      model.setAttachments(List.of());
     }
 
     return HttpResult.okBody(model);
