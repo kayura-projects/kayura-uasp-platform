@@ -13,7 +13,11 @@
 
 package org.kayura.uasp.feedback;
 
+import org.kayura.uasp.file.FileLinkVo;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FeedbackReplyVo {
 
@@ -22,6 +26,7 @@ public class FeedbackReplyVo {
   private String authorId;
   private String authorName;
   private LocalDateTime postTime;
+  private List<FileLinkVo> attachments = new ArrayList<>();
 
   public static FeedbackReplyVo create() {
     return new FeedbackReplyVo();
@@ -69,6 +74,15 @@ public class FeedbackReplyVo {
 
   public FeedbackReplyVo setPostTime(LocalDateTime postTime) {
     this.postTime = postTime;
+    return this;
+  }
+
+  public List<FileLinkVo> getAttachments() {
+    return attachments;
+  }
+
+  public FeedbackReplyVo setAttachments(List<FileLinkVo> attachments) {
+    this.attachments = attachments;
     return this;
   }
 }

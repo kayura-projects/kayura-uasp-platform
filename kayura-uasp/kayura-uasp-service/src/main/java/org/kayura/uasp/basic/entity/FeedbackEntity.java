@@ -51,7 +51,7 @@ public class FeedbackEntity {
   /** 内容 */
   private String content;
   /** 附件IDS */
-  private StringList attachmentIds;
+  private StringList attachmentIds = new StringList();
   /** 填写人ID */
   @ForeignKey(entity = UserEntity.class, alias = "uu", pkName = "user_id_")
   private String authorId;

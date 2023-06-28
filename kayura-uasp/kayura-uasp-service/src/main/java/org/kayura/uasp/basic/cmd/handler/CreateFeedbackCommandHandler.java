@@ -20,6 +20,7 @@ import org.kayura.uasp.basic.cmd.CreateFeedbackCommand;
 import org.kayura.uasp.basic.entity.FeedbackEntity;
 import org.kayura.uasp.basic.manage.FeedbackManager;
 import org.kayura.uasp.feedback.FeedbackPayload;
+import org.kayura.uasp.feedback.FeedbackReplyVo;
 import org.kayura.uasp.feedback.PostStatus;
 import org.kayura.utils.StringUtils;
 import org.springframework.stereotype.Component;
@@ -78,7 +79,14 @@ public class CreateFeedbackCommandHandler implements CommandHandler<CreateFeedba
 
     feedbackManager.insertOne(entity);
 
-    return HttpResult.ok();
+    return HttpResult.okBody(
+      FeedbackReplyVo.create()
+        .setPostId(entity.getPostId())
+        .setContent(entity.getContent())
+        .setAuthorId(entity.getAuthorId())
+        .setAuthorName(loginUser.getDisplayName())
+        .setPostTime(entity.getPostTime())
+    );
   }
 
 }

@@ -16,7 +16,6 @@ package org.kayura.uasp.basic.cmd.handler;
 import org.kayura.cmd.CommandHandler;
 import org.kayura.security.LoginUser;
 import org.kayura.type.HttpResult;
-import org.kayura.type.StringList;
 import org.kayura.uasp.basic.cmd.GetFeedbackCommand;
 import org.kayura.uasp.basic.entity.FeedbackEntity;
 import org.kayura.uasp.basic.manage.FeedbackManager;
@@ -28,9 +27,10 @@ import org.kayura.utils.CollectionUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.kayura.uasp.utils.TipConsts.*;
+import static org.kayura.uasp.utils.TipConsts.UPDATE_ENTITY_NOT_EXISTS;
 
 @Component
 public class GetFeedbackCommandHandler implements CommandHandler<GetFeedbackCommand, HttpResult> {
@@ -73,16 +73,20 @@ public class GetFeedbackCommandHandler implements CommandHandler<GetFeedbackComm
     FeedbackVo model = modelMapper.map(entity, FeedbackVo.class);
 
     // attachments
-    StringList attachmentIds = entity.getAttachmentIds();
-    if (CollectionUtils.isNotEmpty(attachmentIds)) {
-      List<FileLinkVo> attachments = fileLinkManager.queryForIds(attachmentIds);
-      model.setAttachments(attachments);
-    }
+    List<String> attachmentIds = entities.stream().flatMap(m -> m.getAttachmentIds().stream()).toList();
+    List<FileLinkVo> attachments = CollectionUtils.isNotEmpty(attachmentIds)
+      ? fileLinkManager.queryForIds(attachmentIds)
+      : new ArrayList<>();
+    model.setAttachments(attachments.stream().filter(x -> entity.getAttachmentIds().contains(x.getLinkId())).toList());
 
     // replays
     List<FeedbackReplyVo> replays = entities.stream()
       .filter(x -> !x.getSubjectId().equals(x.getPostId()))
-      .map(m -> modelMapper.map(m, FeedbackReplyVo.class))
+      .map(m -> {
+        FeedbackReplyVo mapped = modelMapper.map(m, FeedbackReplyVo.class);
+        mapped.setAttachments(attachments.stream().filter(x -> m.getAttachmentIds().contains(x.getLinkId())).toList());
+        return mapped;
+      })
       .toList();
     model.setReplays(replays);
 
