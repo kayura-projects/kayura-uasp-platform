@@ -19,6 +19,7 @@ import org.kayura.mybatis.annotation.mapper.RefColumn;
 import org.kayura.mybatis.annotation.mapper.Table;
 import org.kayura.type.StringList;
 import org.kayura.uasp.auth.entity.UserEntity;
+import org.kayura.uasp.dev.entity.ApplicEntity;
 import org.kayura.uasp.feedback.PostStatus;
 
 import java.time.LocalDateTime;
@@ -35,7 +36,10 @@ public class FeedbackEntity {
   @Id
   private String postId;
   /** 应用ID */
+  @ForeignKey(entity = ApplicEntity.class, alias = "ap")
   private String appId;
+  @RefColumn(from = "ap", value = "name_")
+  private String appName;
   /** 标记:1 提问;2 回复; */
   private Integer flag;
   /** 主题ID */
@@ -189,6 +193,15 @@ public class FeedbackEntity {
 
   public FeedbackEntity setFlag(Integer flag) {
     this.flag = flag;
+    return this;
+  }
+
+  public String getAppName() {
+    return appName;
+  }
+
+  public FeedbackEntity setAppName(String appName) {
+    this.appName = appName;
     return this;
   }
 }

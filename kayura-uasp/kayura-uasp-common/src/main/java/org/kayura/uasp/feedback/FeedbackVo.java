@@ -22,6 +22,8 @@ import java.util.List;
 public class FeedbackVo {
 
   private String postId;
+  private String appId;
+  private String appName;
   private String title;
   private String content;
   private String authorId;
@@ -134,6 +136,24 @@ public class FeedbackVo {
 
   public FeedbackVo setAuthorName(String authorName) {
     this.authorName = authorName;
+    return this;
+  }
+
+  public String getAppId() {
+    return appId;
+  }
+
+  public FeedbackVo setAppId(String appId) {
+    this.appId = appId;
+    return this;
+  }
+
+  public String getAppName() {
+    return appName;
+  }
+
+  public FeedbackVo setAppName(String appName) {
+    this.appName = appName;
     return this;
   }
 }

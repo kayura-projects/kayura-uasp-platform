@@ -81,7 +81,7 @@ public class GetFeedbackCommandHandler implements CommandHandler<GetFeedbackComm
 
     // replays
     List<FeedbackReplyVo> replays = entities.stream()
-      .filter(x -> feedbackId.equals(x.getSubjectId()))
+      .filter(x -> !x.getSubjectId().equals(x.getPostId()))
       .map(m -> modelMapper.map(m, FeedbackReplyVo.class))
       .toList();
     model.setReplays(replays);
