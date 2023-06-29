@@ -28,5 +28,6 @@ public class KayuraUaspWebStarter implements WebMvcConfigurer {
   @Override
   public void addViewControllers(ViewControllerRegistry registry) {
     registry.addRedirectViewController("/", "/uasp");
+    registry.addRedirectViewController("/uasp/", "/uasp");
   }
 }
