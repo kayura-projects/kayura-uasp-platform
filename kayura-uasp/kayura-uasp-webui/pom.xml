@@ -5,7 +5,7 @@
   <parent>
     <artifactId>kayura-uasp</artifactId>
     <groupId>org.kayura.uasp</groupId>
-    <version>1.0.0.a1</version>
+    <version>1.0.0.a2</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 

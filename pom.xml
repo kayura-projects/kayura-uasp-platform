@@ -6,7 +6,7 @@
 
   <groupId>org.kayura</groupId>
   <artifactId>kayura-parent</artifactId>
-  <version>1.0.0.a1</version>
+  <version>1.0.0.a2</version>
   <packaging>pom</packaging>
 
   <organization>
@@ -133,7 +133,7 @@
   <distributionManagement>
     <repository>
       <id>kayura-release</id>
-      <url>http://nexus.kayura.org/repository/maven-host</url>
+      <url>http://120.76.194.46:9091/repository/maven-host</url>
     </repository>
   </distributionManagement>
 
