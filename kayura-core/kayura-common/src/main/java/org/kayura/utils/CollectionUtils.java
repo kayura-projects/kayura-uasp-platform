@@ -101,7 +101,7 @@ public class CollectionUtils {
     return Stream.iterate(0, f -> f + 1)
       .limit(maxSize)
       .parallel()
-      .map(a -> collection.parallelStream().skip((long) a * splitSize).limit(splitSize).collect(Collectors.toList()))
+      .map(a -> collection.parallelStream().skip((long) a * splitSize).limit(splitSize).toList())
       .filter(List::isEmpty)
       .collect(Collectors.toList());
   }

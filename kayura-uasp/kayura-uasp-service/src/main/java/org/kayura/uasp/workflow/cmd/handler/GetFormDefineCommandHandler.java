@@ -56,7 +56,7 @@ public class GetFormDefineCommandHandler implements CommandHandler<GetFormDefine
     List<FormFieldVo> fields = fieldManager.selectList(w -> w.eq(FormFieldEntity::getFormId, defineId))
       .stream()
       .map(m -> modelMapper.map(m, FormFieldVo.class))
-      .collect(Collectors.toList());
+      .toList();
 
     FormDefineVo defineVo = modelMapper.map(entity, FormDefineVo.class);
     defineVo.setFields(fields);

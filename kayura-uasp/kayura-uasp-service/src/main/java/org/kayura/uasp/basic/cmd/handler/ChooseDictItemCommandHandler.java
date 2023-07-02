@@ -82,7 +82,7 @@ public class ChooseDictItemCommandHandler implements CommandHandler<ChooseDictIt
 
     List<SelectItem> selectItems = entities.stream().map(m ->
       SelectItem.create().setId(m.getItemId()).setCode(m.getCode()).setText(m.getName())
-    ).collect(Collectors.toList());
+    ).toList();
 
     return selectItems;
   }

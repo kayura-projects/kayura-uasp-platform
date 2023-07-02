@@ -82,7 +82,7 @@ public class GetOrganizeCommandHandler implements CommandHandler<GetOrganizeComm
         w.select(CompanyLeaderEntity::getLeaderName);
         w.select(CompanyLeaderEntity::getDuty);
         w.eq(CompanyLeaderEntity::getCompanyId, id);
-      }).stream().map(m -> modelMapper.map(m, LeaderVo.class)).collect(Collectors.toList());
+      }).stream().map(m -> modelMapper.map(m, LeaderVo.class)).toList();
       model.setLeaders(leaders);
     }
     return model;
@@ -99,7 +99,7 @@ public class GetOrganizeCommandHandler implements CommandHandler<GetOrganizeComm
         w.select(DepartLeaderEntity::getLeaderName);
         w.select(DepartLeaderEntity::getDuty);
         w.eq(DepartLeaderEntity::getDepartId, id);
-      }).stream().map(m -> modelMapper.map(m, LeaderVo.class)).collect(Collectors.toList());
+      }).stream().map(m -> modelMapper.map(m, LeaderVo.class)).toList();
       model.setLeaders(leaders);
     }
     return model;

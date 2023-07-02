@@ -81,7 +81,7 @@ public class UpdateDepartCommandHandler implements CommandHandler<UpdateDepartCo
           .setDepartId(entity.getDepartId())
           .setLeaderId(m.getLeaderId())
           .setDuty(m.getDuty())
-      ).collect(Collectors.toList());
+      ).toList();
       departLeaderManager.insertBatch(collect);
     }
 

@@ -136,7 +136,7 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
       Map<String, Set<String>> haveAuth = privilegeManager.findHaveAuth(appId, PrivilegeTypes.Role, roleId);
       List<ModuleDefineEntity> scopeModules = moduleManager.chooseModuleAndCategory(appId, null);
       List<ModuleDefineEntity> rootModules = scopeModules.stream()
-        .filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+        .filter(x -> StringUtils.isBlank(x.getParentId())).toList();
       moduleManager.makeChildrenModules(result, rootModules, scopeModules, haveAuth, null);
 
     } else {
@@ -144,7 +144,7 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
       Map<String, Set<String>> haveAuth = privilegeManager.findHaveAuth(appId, PrivilegeTypes.Role, roleId);
       List<ModuleDefineEntity> appModules = moduleManager.chooseModuleAndCategory(appId, haveAuth.keySet());
       List<ModuleDefineEntity> rootModules = appModules.stream()
-        .filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+        .filter(x -> StringUtils.isBlank(x.getParentId())).toList();
       moduleManager.makeChildrenModules(result, rootModules, appModules, haveAuth, null);
 
     }
@@ -168,13 +168,13 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
         Map<String, Set<String>> scopeAuth = privilegeManager.findHaveAuth(appId, PrivilegeTypes.Company, tenantId);
         List<ModuleDefineEntity> scopeModules = moduleManager.findScopeModules(appId, scopeAuth);
         List<ModuleDefineEntity> rootModules = scopeModules.stream()
-          .filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+          .filter(x -> StringUtils.isBlank(x.getParentId())).toList();
         Map<String, Set<String>> haveAuth = privilegeManager.findHaveAuth(appId, PrivilegeTypes.Role, roleId);
         moduleManager.makeChildrenModules(privileges, rootModules, scopeModules, haveAuth, null);
       } else {
         List<ModuleDefineEntity> scopeModules = moduleManager.chooseModuleAndCategory(appId, null);
         List<ModuleDefineEntity> rootModules = scopeModules.stream()
-          .filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+          .filter(x -> StringUtils.isBlank(x.getParentId())).toList();
         Map<String, Set<String>> haveAuth = privilegeManager.findHaveAuth(appId, PrivilegeTypes.Role, roleId);
         moduleManager.makeChildrenModules(privileges, rootModules, scopeModules, haveAuth, null);
       }
@@ -184,7 +184,7 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
       Map<String, Set<String>> haveAuth = privilegeManager.findHaveAuth(appId, PrivilegeTypes.Role, roleId);
       List<ModuleDefineEntity> appModules = moduleManager.chooseModuleAndCategory(appId, haveAuth.keySet());
       List<ModuleDefineEntity> rootModules = appModules.stream()
-        .filter(x -> StringUtils.hasText(x.getParentId())).collect(Collectors.toList());
+        .filter(x -> StringUtils.hasText(x.getParentId())).toList();
       moduleManager.makeChildrenModules(privileges, rootModules, appModules, haveAuth, null);
     }
 
@@ -206,7 +206,7 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
       Map<String, Set<String>> haveAuth = privilegeManager.findHaveAuth(appId, PrivilegeTypes.Company, companyId);
       List<ModuleDefineEntity> scopeModules = moduleManager.chooseModuleAndCategory(appId, null);
       List<ModuleDefineEntity> rootModules = scopeModules.stream()
-        .filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+        .filter(x -> StringUtils.isBlank(x.getParentId())).toList();
       moduleManager.makeChildrenModules(result, rootModules, scopeModules, haveAuth, null);
 
     } else {
@@ -215,7 +215,7 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
       Map<String, Set<String>> scopeAuth = privilegeManager.findHaveAuth(appId, PrivilegeTypes.Company, tenantId);
       List<ModuleDefineEntity> scopeModules = moduleManager.findScopeModules(appId, scopeAuth);
       List<ModuleDefineEntity> rootModules = scopeModules.stream()
-        .filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+        .filter(x -> StringUtils.isBlank(x.getParentId())).toList();
       // 获取往来公司拥有的权限
       Map<String, Set<String>> haveAuth = privilegeManager.findHaveAuth(appId, PrivilegeTypes.Company, companyId);
       moduleManager.makeChildrenModules(result, rootModules, scopeModules, haveAuth, null);
@@ -234,7 +234,7 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
     Map<String, Set<String>> haveAuth = privilegeManager.findHaveAuth(appId, PrivilegeTypes.User, userId);
     List<ModuleDefineEntity> scopeModules = moduleManager.chooseModuleAndCategory(appId, null);
     List<ModuleDefineEntity> rootModules = scopeModules.stream()
-      .filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+      .filter(x -> StringUtils.isBlank(x.getParentId())).toList();
     moduleManager.makeChildrenModules(result, rootModules, scopeModules, haveAuth, null);
 
     return result;
@@ -268,7 +268,7 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
         Map<String, Set<String>> haveAuth = privilegeManager.findHaveAuth(appId, PrivilegeTypes.User, employeeId);
         List<ModuleDefineEntity> scopeModules = moduleManager.findScopeModules(appId, scopeAuth);
         List<ModuleDefineEntity> rootModules = scopeModules.stream()
-          .filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+          .filter(x -> StringUtils.isBlank(x.getParentId())).toList();
         moduleManager.makeChildrenModules(result, rootModules, scopeModules, haveAuth, roleAuths);
 
       } else {
@@ -283,7 +283,7 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
         // 构建模块树
         List<ModuleDefineEntity> appModules = moduleManager.chooseModuleAndCategory(appId, haveAuth.keySet());
         List<ModuleDefineEntity> rootModules = appModules.stream()
-          .filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+          .filter(x -> StringUtils.isBlank(x.getParentId())).toList();
         moduleManager.makeChildrenModules(result, rootModules, appModules, haveAuth, roleAuths);
 
       }
@@ -302,9 +302,9 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
       w.eq(RoleUserEntity::getUserId, employeeId);
     }).stream().map(m ->
       RolePrivilege.create().setRoleId(m.getRoleId()).setRoleCode(m.getRoleCode()).setRoleName(m.getRoleName())
-    ).collect(Collectors.toList());
+    ).toList();
 
-    List<String> roleIds = roleAuths.stream().map(RolePrivilege::getRoleId).collect(Collectors.toList());
+    List<String> roleIds = roleAuths.stream().map(RolePrivilege::getRoleId).toList();
     if (!roleIds.isEmpty()) {
       List<PrivilegeEntity> list = privilegeManager.selectList(w -> {
         w.select(PrivilegeEntity::getLinkId);
@@ -317,7 +317,7 @@ public class QueryPrivilegeCommandHandler implements CommandHandler<QueryPrivile
       for (RolePrivilege ra : roleAuths) {
         List<ModuleAction> auth = list.stream().filter(x -> x.getLinkId().equals(ra.getRoleId())).map(m ->
           ModuleAction.create().setModuleId(m.getModuleId()).setActions(m.getActions())
-        ).collect(Collectors.toList());
+        ).toList();
         ra.setAuth(auth);
       }
       if (!list.isEmpty()) {

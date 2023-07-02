@@ -48,7 +48,7 @@ public class InnerExprManager {
   }
 
   public List<IdName> queryHandlers() {
-    return this.handlers.stream().map(InnerExprHandler::getIdName).collect(Collectors.toList());
+    return this.handlers.stream().map(InnerExprHandler::getIdName).toList();
   }
 
 }

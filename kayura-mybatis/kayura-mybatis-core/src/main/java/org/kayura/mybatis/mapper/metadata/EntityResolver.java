@@ -97,7 +97,7 @@ public class EntityResolver {
 
     List<Field> fkFields = entityFields.stream()
       .filter(a -> a.isAnnotationPresent(ForeignKey.class) || a.isAnnotationPresent(ForeignKeyList.class))
-      .collect(Collectors.toList());
+      .toList();
     for (Field fkField : fkFields) {
 
       ForeignKey[] fkList = fkField.getAnnotationsByType(ForeignKey.class);
@@ -172,7 +172,7 @@ public class EntityResolver {
 
     List<Field> sortFields = entityFields.stream()
       .filter(a -> a.isAnnotationPresent(Sort.class))
-      .collect(Collectors.toList());
+      .toList();
     for (Field sortField : sortFields) {
 
       Sorting sorting = Sorting.builder();

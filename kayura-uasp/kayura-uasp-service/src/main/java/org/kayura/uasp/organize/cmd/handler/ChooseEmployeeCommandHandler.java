@@ -109,7 +109,7 @@ public class ChooseEmployeeCommandHandler implements CommandHandler<ChooseEmploy
         w.orderByOf(orderByClause);
       }).stream()
       .map(m -> modelMapper.map(m, EmployeeVo.class))
-      .collect(Collectors.toList());
+      .toList();
 
     return HttpResult.okBody(toList);
   }

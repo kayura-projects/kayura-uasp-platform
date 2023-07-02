@@ -14,11 +14,13 @@
 package org.kayura.uasp.auth.manage;
 
 import org.kayura.mybatis.manager.impl.CrudManagerImpl;
+import org.kayura.type.StringList;
 import org.kayura.uasp.auth.entity.PrivilegeEntity;
 import org.kayura.uasp.auth.mapper.PrivilegeMapper;
 import org.kayura.uasp.privilege.ModuleAction;
 import org.kayura.uasp.privilege.PrivilegeBody;
 import org.kayura.uasp.privilege.PrivilegeTypes;
+import org.kayura.uasp.utils.SecurityConsts;
 import org.kayura.utils.CollectionUtils;
 import org.springframework.stereotype.Component;
 
@@ -50,10 +52,17 @@ public class PrivilegeManager extends CrudManagerImpl<PrivilegeMapper, Privilege
             .setLinkId(form.getLinkId())
             .setType(form.getType())
             .setModuleId(m.getModuleId())
-            .setActions(m.getActions())
-        ).collect(Collectors.toList());
+            .setActions(this.patchActions(m.getActions()))
+        ).toList();
       this.insertBatch(entities);
     }
+  }
+
+  private StringList patchActions(StringList sourceActions) {
+    if (sourceActions.contains(SecurityConsts.MENU) && !sourceActions.contains(SecurityConsts.QUERY)) {
+      sourceActions.add(SecurityConsts.QUERY);
+    }
+    return sourceActions;
   }
 
   /**

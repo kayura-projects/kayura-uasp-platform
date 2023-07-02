@@ -17,6 +17,7 @@ import org.kayura.type.EnumValue;
 
 public enum UsageTypes implements EnumValue {
 
+  Develop("D", "开发"),
   Admin("A", "管理"),
   Business("B", "业务"),
   Common("C", "通用");

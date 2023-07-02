@@ -63,20 +63,18 @@ public class ChooseDictDefineCommandHandler implements CommandHandler<ChooseDict
     }).stream().map(m ->
       IdName.create().setId(m.getAppId()).setName(m.getName())
     ).distinct().toList();
-    List<String> appIds = apps.stream().map(IdName::getId).collect(Collectors.toList());
+    List<String> appIds = apps.stream().map(IdName::getId).toList();
 
     List<DictDefineEntity> defineList = defineManager.selectList(w -> {
       w.in(DictDefineEntity::getAppId, appIds);
-      if (loginUser.hasTenantUser()) {
-        if (StringUtils.hasText(loginUser.getTenantId())) {
-          w.eq(DictDefineEntity::getScope, DictScopes.Business);
-        }
+      if (!loginUser.hasRoot()) {
+        w.and(w1 -> w1.isNull(DictDefineEntity::getScope).or().eq(DictDefineEntity::getScope, DictScopes.Business));
       }
     });
     for (IdName app : apps) {
       TreeNode appNode = TreeNode.create().setId(app.getId()).setText(app.getName()).setType("APP");
-      List<DictDefineEntity> appDefines = defineList.stream().filter(x -> x.getAppId().equals(app.getId())).collect(Collectors.toList());
-      List<DictDefineEntity> rootDefines = appDefines.stream().filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+      List<DictDefineEntity> appDefines = defineList.stream().filter(x -> x.getAppId().equals(app.getId())).toList();
+      List<DictDefineEntity> rootDefines = appDefines.stream().filter(x -> StringUtils.isBlank(x.getParentId())).toList();
       List<TreeNode> children = buildChildrenDefine(rootDefines, appDefines);
       if (!children.isEmpty()) {
         appNode.setChildren(children);
@@ -100,19 +98,20 @@ public class ChooseDictDefineCommandHandler implements CommandHandler<ChooseDict
         .setId(dd.getDefineId())
         .setText(dd.getName())
         .setType(dd.getType().getValue());
-      treeNodes.add(node);
 
       if (DictTypes.Item.equals(dd.getType())) {
         node.put("dataType", dd.getDataType().getValue());
         node.put("extFields", dd.getExtFields());
+        treeNodes.add(node);
       } else {
         List<DictDefineEntity> collect = allDefines.stream()
           .filter(x -> dd.getDefineId().equals(x.getParentId()))
-          .collect(Collectors.toList());
+          .toList();
         if (!collect.isEmpty()) {
           List<TreeNode> children = buildChildrenDefine(collect, allDefines);
           if (!children.isEmpty()) {
             node.setChildren(children);
+            treeNodes.add(node);
           }
         }
       }

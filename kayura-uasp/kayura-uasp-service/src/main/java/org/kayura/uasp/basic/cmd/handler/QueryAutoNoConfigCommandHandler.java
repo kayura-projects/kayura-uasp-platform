@@ -68,7 +68,7 @@ public class QueryAutoNoConfigCommandHandler implements CommandHandler<QueryAuto
     List<AutoNoVo> rows = pageList.getRows();
     if (!rows.isEmpty()) {
 
-      List<String> defineIds = rows.stream().map(AutoNoVo::getDefineId).collect(Collectors.toList());
+      List<String> defineIds = rows.stream().map(AutoNoVo::getDefineId).toList();
       List<AutoNoConfigEntity> configs = configManager.selectList(w -> {
         w.in(AutoNoConfigEntity::getDefineId, defineIds);
         if (UaspConsts.GLOBAL.equalsIgnoreCase(query.getTenantId())) {

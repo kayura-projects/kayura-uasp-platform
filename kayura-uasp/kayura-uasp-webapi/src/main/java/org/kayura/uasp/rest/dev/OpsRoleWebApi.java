@@ -1,4 +1,20 @@
 /*------------------------------------------------------------------------------
+ - Copyright 2023 Kayura ( liangxia@live.com )
+ -
+ - Licensed under the Apache License, Version 2.0 (the "License");
+ - you may not use this file except in compliance with the License.
+ - You may obtain a copy of the License at
+ -
+ -     http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ -----------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
  - 版权所有 (C) 2023 kayura
  -
  - 本程序是一个开源软件，根据 GNU 通用公共许可证 (AGPLv3) 的条款发布。
@@ -10,7 +26,7 @@
  - 本程序基于无任何明示或暗示的担保提供，包括但不限于适销性和特定用途适用性的担保。
  - 请参阅 GNU 通用公共许可证以获取详细信息。
  -----------------------------------------------------------------------------*/
-package org.kayura.uasp.rest.auth;
+package org.kayura.uasp.rest.dev;
 
 import org.kayura.cmd.CommandGateway;
 import org.kayura.security.annotation.Secured;
@@ -36,20 +52,20 @@ import static org.kayura.uasp.utils.SecurityConsts.*;
 @RestController
 @RequestMapping("${kayura.uasp.api-url}")
 @Secured(resource = UASP_ADMIN_ROLE)
-public class AdminRoleWebApi {
+public class OpsRoleWebApi {
 
   private final CommandGateway commandGateway;
 
-  public AdminRoleWebApi(CommandGateway commandGateway) {
+  public OpsRoleWebApi(CommandGateway commandGateway) {
     this.commandGateway = commandGateway;
   }
 
   // ------------ admin role --------------
 
-  @PostMapping("/admin-role/page")
+  @PostMapping("/ops-role/page")
   @Secured(actions = QUERY)
-  public HttpResult queryAdminRolePage(QueryRoleCommand command,
-                                       @RequestBody RoleQuery query, PageClause pageClause) {
+  public HttpResult queryOpsRolePage(QueryRoleCommand command,
+                                     @RequestBody RoleQuery query, PageClause pageClause) {
 
     return commandGateway.send(command
       .setAppId(UaspConsts.UASP_APP_ID)
@@ -59,17 +75,17 @@ public class AdminRoleWebApi {
     );
   }
 
-  @GetMapping("/admin-role/get")
+  @GetMapping("/ops-role/get")
   @Secured(actions = QUERY)
   public HttpResult findRoleById(GetRoleCommand command, String id) {
 
     return commandGateway.send(command.setRoleId(id));
   }
 
-  @PostMapping("/admin-role/create")
+  @PostMapping("/ops-role/create")
   @Secured(actions = CREATE)
-  public HttpResult createAdminRole(CreateRoleCommand command,
-                                    @RequestBody @Validated(Create.class) RolePayload payload) {
+  public HttpResult createOpsRole(CreateRoleCommand command,
+                                  @RequestBody @Validated(Create.class) RolePayload payload) {
 
     return commandGateway.send(command
       .setRoleType(RoleTypes.FUNC)
@@ -79,10 +95,10 @@ public class AdminRoleWebApi {
       ));
   }
 
-  @PostMapping("/admin-role/update")
+  @PostMapping("/ops-role/update")
   @Secured(actions = UPDATE)
-  public HttpResult updateAdminRole(UpdateRoleCommand command,
-                                    @RequestBody @Validated(Update.class) RolePayload payload) {
+  public HttpResult updateOpsRole(UpdateRoleCommand command,
+                                  @RequestBody @Validated(Update.class) RolePayload payload) {
 
     return commandGateway.send(command
       .setRoleId(payload.getRoleId())
@@ -91,7 +107,7 @@ public class AdminRoleWebApi {
     );
   }
 
-  @PostMapping("/admin-role/delete")
+  @PostMapping("/ops-role/delete")
   @Secured(actions = DELETE)
   public HttpResult deleteRole(DeleteRoleCommand command, @RequestBody IdPayload payload) {
 
@@ -100,14 +116,14 @@ public class AdminRoleWebApi {
 
   // ------------ role user --------------
 
-  @GetMapping("/admin-role/choose/user")
+  @GetMapping("/ops-role/choose/user")
   @Secured(actions = QUERY)
   public HttpResult chooseAdminUsers(ChooseUserCommand command, String roleId) {
 
     return commandGateway.send(command.setRoleId(roleId).setUserTypes(List.of(UserTypes.ADMIN)));
   }
 
-  @PostMapping("/admin-role/user/page")
+  @PostMapping("/ops-role/user/page")
   @Secured(actions = QUERY)
   public HttpResult selectRoleUserPage(QueryRoleUserCommand command,
                                        String roleId,
@@ -122,7 +138,7 @@ public class AdminRoleWebApi {
     );
   }
 
-  @PostMapping("/admin-role/user/create")
+  @PostMapping("/ops-role/user/create")
   @Secured(actions = CREATE)
   public HttpResult batchCreateRoleUser(CreateRoleUserCommand command,
                                         @RequestBody @Validated(Create.class) List<RoleUserPayload> payloads) {
@@ -130,7 +146,7 @@ public class AdminRoleWebApi {
     return commandGateway.send(command.setPayloads(payloads));
   }
 
-  @PostMapping("/admin-role/user/delete")
+  @PostMapping("/ops-role/user/delete")
   @Secured(actions = DELETE)
   public HttpResult deleteRoleUser(DeleteRoleUserCommand command,
                                    @RequestBody @Validated RoleUserPayload payload) {
@@ -140,7 +156,7 @@ public class AdminRoleWebApi {
 
   // ---------- privilege --------------
 
-  @GetMapping("/admin-role/privilege/auth")
+  @GetMapping("/ops-role/privilege/auth")
   @Secured(actions = QUERY)
   public HttpResult selectAuthPrivileges(QueryPrivilegeCommand command, String roleId) {
 
@@ -152,7 +168,7 @@ public class AdminRoleWebApi {
     );
   }
 
-  @GetMapping("/admin-role/privilege/view")
+  @GetMapping("/ops-role/privilege/view")
   @Secured(actions = QUERY)
   public HttpResult selectViewPrivileges(QueryPrivilegeCommand command, String roleId) {
 
@@ -164,7 +180,7 @@ public class AdminRoleWebApi {
     );
   }
 
-  @PostMapping("/admin-role/privilege/save")
+  @PostMapping("/ops-role/privilege/save")
   @Secured(actions = AUTH)
   public HttpResult saveEmployeePrivilege(SavePrivilegeCommand command,
                                           @RequestBody RolePrivilegePayload payload) {

@@ -24,6 +24,7 @@ import org.kayura.utils.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Component
@@ -45,6 +46,12 @@ public class UpdateDictItemCommandHandler implements CommandHandler<UpdateDictIt
     DictItemEntity entity = itemManager.selectById(itemId);
     if (entity == null) {
       return HttpResult.error("更新的字典项不存在。");
+    }
+
+    if (loginUser.hasTenantUser()) {
+      if (Objects.equals(loginUser.getTenantId(), entity.getTenantId())) {
+        return HttpResult.error("只能修改自己公司下的词典项。");
+      }
     }
 
     if (StringUtils.hasText(payload.getCode()) &&

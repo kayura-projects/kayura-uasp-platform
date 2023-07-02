@@ -60,7 +60,7 @@ public class GetCompanyCommandHandler implements CommandHandler<GetCompanyComman
       w.select(CompanyLeaderEntity::getLeaderName);
       w.select(CompanyLeaderEntity::getDuty);
       w.eq(CompanyLeaderEntity::getCompanyId, companyId);
-    }).stream().map(m -> modelMapper.map(m, LeaderVo.class)).collect(Collectors.toList());
+    }).stream().map(m -> modelMapper.map(m, LeaderVo.class)).toList();
 
     CompanyVo model = modelMapper.map(entity, CompanyVo.class);
     model.setLeaders(leaders);

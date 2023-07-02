@@ -121,7 +121,7 @@ public class CreateCompanyCommandHandler implements CommandHandler<CreateCompany
           .setCompanyId(entity.getCompanyId())
           .setLeaderId(m.getLeaderId())
           .setDuty(m.getDuty())
-      ).collect(Collectors.toList());
+      ).toList();
       leaderManager.insertBatch(collect);
     }
 

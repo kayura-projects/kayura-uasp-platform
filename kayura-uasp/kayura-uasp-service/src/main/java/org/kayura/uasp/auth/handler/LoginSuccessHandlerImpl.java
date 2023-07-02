@@ -1,4 +1,20 @@
 /*------------------------------------------------------------------------------
+ - Copyright 2023 Kayura ( liangxia@live.com )
+ -
+ - Licensed under the Apache License, Version 2.0 (the "License");
+ - you may not use this file except in compliance with the License.
+ - You may obtain a copy of the License at
+ -
+ -     http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ -----------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
  - 版权所有 (C) 2023 kayura
  -
  - 本程序是一个开源软件，根据 GNU 通用公共许可证 (AGPLv3) 的条款发布。
@@ -11,8 +27,10 @@
  - 请参阅 GNU 通用公共许可证以获取详细信息。
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.file.handler;
+package org.kayura.uasp.auth.handler;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.kayura.security.LoginUser;
 import org.kayura.security.PermissionList;
 import org.kayura.security.core.LoginSuccessHandler;
@@ -28,14 +46,11 @@ import org.kayura.uasp.organize.manage.EmployeeManager;
 import org.kayura.uasp.privilege.PrivilegeTypes;
 import org.kayura.uasp.role.RoleTypes;
 import org.kayura.utils.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Component
 public class LoginSuccessHandlerImpl implements LoginSuccessHandler {
@@ -101,7 +116,7 @@ public class LoginSuccessHandlerImpl implements LoginSuccessHandler {
       w.select(RoleUserEntity::getRoleId);
       w.eq(RoleUserEntity::getRoleType, RoleTypes.FUNC);
       w.eq(RoleUserEntity::getUserId, userId);
-    }).stream().map(RoleUserEntity::getRoleId).collect(Collectors.toList());
+    }).stream().map(RoleUserEntity::getRoleId).toList();
     if (!roleIds.isEmpty()) {
       List<PrivilegeEntity> list = privilegeManager.selectList(w -> {
         w.select(PrivilegeEntity::getModuleId);

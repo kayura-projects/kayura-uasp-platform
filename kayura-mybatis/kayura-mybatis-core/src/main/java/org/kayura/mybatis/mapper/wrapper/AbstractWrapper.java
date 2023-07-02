@@ -119,7 +119,7 @@ public abstract class AbstractWrapper<Children extends AbstractWrapper<Children,
 
       Class<?> objectClass = queryObject.getClass();
       List<Field> fields = ReflectKit.getEntityFields(objectClass)
-        .stream().filter(x -> !x.isAnnotationPresent(Ignore.class)).collect(Collectors.toList());
+        .stream().filter(x -> !x.isAnnotationPresent(Ignore.class)).toList();
       for (Field field : fields) {
         String fieldName = field.getName();
         Object fieldValue = null;

@@ -154,7 +154,7 @@ public class EntityInfo implements Constants {
       sqlColumns.addAll(this.getColumns().stream()
         .filter(predicate)
         .map(m -> m.selectColumn(true))
-        .collect(Collectors.toList()));
+        .toList());
     }
 
     return sqlColumns;

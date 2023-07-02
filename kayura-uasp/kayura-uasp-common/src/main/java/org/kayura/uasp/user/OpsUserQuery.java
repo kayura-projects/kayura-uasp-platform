@@ -11,21 +11,41 @@
  - 请参阅 GNU 通用公共许可证以获取详细信息。
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.auth.cmd;
+package org.kayura.uasp.user;
 
-import org.kayura.cmd.ApiCommand;
-import org.kayura.uasp.user.AdminUserPayload;
+import org.kayura.mybatis.annotation.querier.Like;
 
-public class CreateAdminUserCommand extends ApiCommand {
+public class OpsUserQuery {
 
-  private AdminUserPayload payload;
+  private Boolean enabled;
+  private Boolean locked;
+  @Like("userName,displayName,mobile")
+  private String searchText;
 
-  public AdminUserPayload getPayload() {
-    return payload;
+  public String getSearchText() {
+    return searchText;
   }
 
-  public CreateAdminUserCommand setPayload(AdminUserPayload payload) {
-    this.payload = payload;
+  public OpsUserQuery setSearchText(String searchText) {
+    this.searchText = searchText;
+    return this;
+  }
+
+  public Boolean getEnabled() {
+    return enabled;
+  }
+
+  public OpsUserQuery setEnabled(Boolean enabled) {
+    this.enabled = enabled;
+    return this;
+  }
+
+  public Boolean getLocked() {
+    return locked;
+  }
+
+  public OpsUserQuery setLocked(Boolean locked) {
+    this.locked = locked;
     return this;
   }
 }

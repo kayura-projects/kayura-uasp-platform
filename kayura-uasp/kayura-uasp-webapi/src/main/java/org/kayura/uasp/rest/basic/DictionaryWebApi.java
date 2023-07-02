@@ -32,7 +32,7 @@ import static org.kayura.uasp.utils.SecurityConsts.*;
 
 @RestController
 @RequestMapping("${kayura.uasp.api-url}")
-@Secured(resource = UASP_DICT)
+@Secured(resource = UASP_DICT_ITEM)
 public class DictionaryWebApi {
 
   private final CommandGateway commandGateway;
@@ -43,14 +43,14 @@ public class DictionaryWebApi {
 
   /** DictDefine */
 
-  @GetMapping("/dict/define/tree")
+  @GetMapping("/dict-item/define/tree")
   @Secured(actions = QUERY)
   public HttpResult selectDefineTree(ChooseDictDefineCommand command) {
 
     return commandGateway.send(command);
   }
 
-  @PostMapping("/dict/define/page")
+  @PostMapping("/dict-item/define/page")
   @Secured(actions = QUERY)
   public HttpResult selectDictDefinePage(QueryDictDefineCommand command,
                                          @RequestBody @Validated DictDefineQuery query,
@@ -59,7 +59,7 @@ public class DictionaryWebApi {
     return commandGateway.send(command.setQuery(query).setPageClause(pageClause));
   }
 
-  @GetMapping("/dict/define/get")
+  @GetMapping("/dict-item/define/get")
   @Secured(actions = QUERY)
   public HttpResult selectDictDefineById(GetDictDefineCommand command,
                                          @RequestParam("id") String defineId) {
@@ -67,7 +67,7 @@ public class DictionaryWebApi {
     return commandGateway.send(command.setDefineId(defineId));
   }
 
-  @PostMapping("/dict/define/create")
+  @PostMapping("/dict-item/define/create")
   @Secured(actions = CREATE)
   public HttpResult createDictDefine(CreateDictDefineCommand command,
                                      @RequestBody @Validated(Create.class) DictDefinePayload payload) {
@@ -75,15 +75,15 @@ public class DictionaryWebApi {
     return commandGateway.send(command.setPayload(payload));
   }
 
-  @PostMapping("/dict/define/update")
+  @PostMapping("/dict-item/define/update")
   @Secured(actions = UPDATE)
-  public HttpResult updateDictDefine(CreateDictDefineCommand command,
+  public HttpResult updateDictDefine(UpdateDictDefineCommand command,
                                      @RequestBody @Validated(Update.class) DictDefinePayload payload) {
 
     return commandGateway.send(command.setPayload(payload));
   }
 
-  @PostMapping("/dict/define/delete")
+  @PostMapping("/dict-item/define/delete")
   @Secured(actions = DELETE)
   public HttpResult deleteDictDefine(DeleteDictDefineCommand command,
                                      @RequestBody @Validated IdPayload payload) {
@@ -93,7 +93,7 @@ public class DictionaryWebApi {
 
   /** DictItem */
 
-  @PostMapping("/dict/item/page")
+  @PostMapping("/dict-item/item/page")
   @Secured(actions = QUERY)
   public HttpResult selectDictItemPage(QueryDictItemCommand command,
                                        @RequestBody @Validated DictItemQuery query,
@@ -102,7 +102,7 @@ public class DictionaryWebApi {
     return commandGateway.send(command.setQuery(query).setPageClause(pageClause));
   }
 
-  @PostMapping("/dict/item/tree")
+  @PostMapping("/dict-item/item/tree")
   @Secured(actions = QUERY)
   public HttpResult selectDictItemTree(QueryDictItemCommand command,
                                        @RequestBody @Validated DictItemQuery query) {
@@ -110,7 +110,7 @@ public class DictionaryWebApi {
     return commandGateway.send(command.setQuery(query).setOutput(OutputTypes.TREE));
   }
 
-  @GetMapping("/dict/item/get")
+  @GetMapping("/dict-item/item/get")
   @Secured(actions = QUERY)
   public HttpResult selectDictItemById(GetDictItemCommand command,
                                        @RequestParam("id") String itemId) {
@@ -118,7 +118,7 @@ public class DictionaryWebApi {
     return commandGateway.send(command.setItemId(itemId));
   }
 
-  @PostMapping("/dict/item/create")
+  @PostMapping("/dict-item/item/create")
   @Secured(actions = CREATE)
   public HttpResult createDictItem(CreateDictItemCommand command,
                                    @RequestBody @Validated(Create.class) DictItemPayload payload) {
@@ -126,7 +126,7 @@ public class DictionaryWebApi {
     return commandGateway.send(command.setPayload(payload));
   }
 
-  @PostMapping("/dict/item/update")
+  @PostMapping("/dict-item/item/update")
   @Secured(actions = UPDATE)
   public HttpResult updateDictItem(UpdateDictItemCommand command,
                                    @RequestBody @Validated(Update.class) DictItemPayload payload) {
@@ -134,7 +134,7 @@ public class DictionaryWebApi {
     return commandGateway.send(command.setItemId(payload.getItemId()).setPayload(payload));
   }
 
-  @PostMapping("/dict/item/delete")
+  @PostMapping("/dict-item/item/delete")
   @Secured(actions = DELETE)
   public HttpResult deleteDictItem(DeleteDictItemCommand command,
                                    @RequestBody @Validated IdPayload payload) {

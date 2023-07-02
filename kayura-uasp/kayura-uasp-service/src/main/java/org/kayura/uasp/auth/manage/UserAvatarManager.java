@@ -63,7 +63,7 @@ public class UserAvatarManager extends CrudManagerImpl<UserAvatarMapper, UserAva
       w.eq(UserAvatarEntity::getUserId, userId);
     }).stream().map(m ->
       UserAvatarVo.create().setPhotoId(m.getPhotoId()).setUpdateTime(m.getUpdateTime())
-    ).collect(Collectors.toList());
+    ).toList();
     return collect;
   }
 

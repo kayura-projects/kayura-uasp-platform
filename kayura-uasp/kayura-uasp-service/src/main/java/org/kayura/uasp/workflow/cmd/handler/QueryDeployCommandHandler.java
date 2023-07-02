@@ -85,7 +85,7 @@ public class QueryDeployCommandHandler implements CommandHandler<QueryDeployComm
         .findFirst()
         .ifPresent(value -> deployVo.setInstances(value.getCount()));
       return deployVo;
-    }).collect(Collectors.toList());
+    }).toList();
 
     return HttpResult.okBody(collect);
   }

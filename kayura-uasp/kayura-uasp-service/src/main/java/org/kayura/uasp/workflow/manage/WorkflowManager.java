@@ -42,7 +42,7 @@ public class WorkflowManager implements UaspBpmnConstants {
   public void prepareSubmitPayload(String processKey, List<NextTaskFrm> nextTasks, Map<String, Object> variables) {
 
     if (CollectionUtils.isNotEmpty(nextTasks)) {
-      variables.put(NEXT_TASKS, nextTasks.stream().map(NextTaskFrm::getNodeId).collect(Collectors.toList()));
+      variables.put(NEXT_TASKS, nextTasks.stream().map(NextTaskFrm::getNodeId).toList());
 
       ProcessDefinition definition = repositoryService.createProcessDefinitionQuery()
         .processDefinitionKey(processKey).latestVersion().singleResult();

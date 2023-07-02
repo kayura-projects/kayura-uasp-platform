@@ -49,7 +49,7 @@ public class MbSpringBootVFS extends VFS {
     String baseUrlString = urlString.endsWith("/") ? urlString : urlString.concat("/");
     Resource[] resources = resourceResolver.getResources(baseUrlString + "**/*.class");
     return Stream.of(resources).map(resource -> preserveSubpackageName(baseUrlString, resource, path))
-      .collect(Collectors.toList());
+      .toList();
   }
 
   private static String preserveSubpackageName(final String baseUrlString, final Resource resource,

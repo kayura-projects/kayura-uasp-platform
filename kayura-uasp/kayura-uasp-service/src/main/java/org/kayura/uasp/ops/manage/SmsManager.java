@@ -45,7 +45,7 @@ public class SmsManager {
     });
 
     List<String> mobiles = list.stream().map(UserEntity::getMobile)
-      .distinct().collect(Collectors.toList());
+      .distinct().toList();
     if (!mobiles.isEmpty()) {
       this.proxySmsManager.sendSms(templateId, mobiles, params);
     }

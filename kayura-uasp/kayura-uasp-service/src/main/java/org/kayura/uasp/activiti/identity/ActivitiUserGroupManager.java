@@ -35,7 +35,7 @@ public class ActivitiUserGroupManager implements UserGroupManager {
     List<String> groupIds = membershipManager.selectList(w -> {
       w.select(MembershipEntity::getGroupId);
       w.eq(MembershipEntity::getUserId, userId);
-    }).stream().map(MembershipEntity::getGroupId).collect(Collectors.toList());
+    }).stream().map(MembershipEntity::getGroupId).toList();
     return groupIds;
   }
 

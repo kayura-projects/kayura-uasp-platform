@@ -15,6 +15,7 @@ package org.kayura.uasp.utils;
 
 public interface SecurityConsts {
 
+  String MENU = "MENU";
   String QUERY = "QUERY";
   String CREATE = "CREATE";
   String UPDATE = "UPDATE";
@@ -33,13 +34,13 @@ public interface SecurityConsts {
   String UASP_FUNC_ROLE = "UASP_FUNC_ROLE";
   String UASP_ORGANIZE = "UASP_ORGANIZE";
   String UASP_EMPLOYEE = "UASP_EMPLOYEE";
-  String UASP_DICT = "UASP_DICT";
+  String UASP_DICT_ITEM = "UASP_DICT_ITEM";
   String UASP_IP_STORE = "UASP_IP_STORE";
   String UASP_AUTO_NO = "UASP_AUTO_NO";
   String UASP_FILE_MANAGE = "UASP_FILE_MANAGE";
 
-  String UASP_ADMIN_ROLE = "UASP_ADMIN_USER";
-  String UASP_ADMIN_USER = "UASP_ADMIN_USER";
+  String UASP_ADMIN_ROLE = "UASP_ADMIN_ROLE";
+  String UASP_OPS_USER = "UASP_OPS_USER";
   String UASP_CLIENT_USER = "UASP_CLIENT_USER";
   String UASP_NO_SECRET = "UASP_NO_SECRET";
 

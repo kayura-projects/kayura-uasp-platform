@@ -60,7 +60,7 @@ public class CacheKeyGenerator implements KeyGenerator {
       StringBuilder builder = new StringBuilder(method.getName());
       Class<?>[] types = method.getParameterTypes();
       if (types.length != 0) {
-        List<String> typeNames = Arrays.stream(types).map(Class::getName).collect(Collectors.toList());
+        List<String> typeNames = Arrays.stream(types).map(Class::getName).toList();
         builder.append("(");
         builder.append(StringUtils.join(typeNames, ","));
         builder.append(")");

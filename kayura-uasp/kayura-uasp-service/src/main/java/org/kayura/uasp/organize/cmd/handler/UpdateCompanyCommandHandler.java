@@ -92,7 +92,7 @@ public class UpdateCompanyCommandHandler implements CommandHandler<UpdateCompany
           .setCompanyId(entity.getCompanyId())
           .setLeaderId(m.getLeaderId())
           .setDuty(m.getDuty())
-      ).collect(Collectors.toList());
+      ).toList();
       leaderManager.insertBatch(collect);
     }
 

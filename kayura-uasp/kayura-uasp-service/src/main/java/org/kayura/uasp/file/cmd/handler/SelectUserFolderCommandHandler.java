@@ -86,7 +86,7 @@ public class SelectUserFolderCommandHandler
       w.eq(FileFolderEntity::getOwnerType, OwnerTypes.USER);
       w.eq(FileFolderEntity::getOwnerId, userId);
     });
-    List<FileFolderEntity> folders = allFolders.stream().filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+    List<FileFolderEntity> folders = allFolders.stream().filter(x -> StringUtils.isBlank(x.getParentId())).toList();
     fileManager.buildMyChildFolder(folderNode, folders, allFolders);
 
     // 分享的文件
@@ -130,7 +130,7 @@ public class SelectUserFolderCommandHandler
         for (Map.Entry<String, String> map : teams.entrySet()) {
           TreeNode node = TreeNode.create().setId(map.getKey()).setText(map.getValue()).setType(GROUP);
           teamNode.addChildren(node);
-          List<FileFolderEntity> collect = allFolders.stream().filter(x -> StringUtils.hasText(x.getParentId())).collect(Collectors.toList());
+          List<FileFolderEntity> collect = allFolders.stream().filter(x -> StringUtils.hasText(x.getParentId())).toList();
           fileManager.buildMyChildFolder(node, collect, teamFolders);
         }
       }

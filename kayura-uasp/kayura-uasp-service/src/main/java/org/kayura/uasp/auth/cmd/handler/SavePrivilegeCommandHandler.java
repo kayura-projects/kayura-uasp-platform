@@ -16,29 +16,38 @@ package org.kayura.uasp.auth.cmd.handler;
 import org.kayura.cmd.CommandHandler;
 import org.kayura.security.LoginUser;
 import org.kayura.type.HttpResult;
+import org.kayura.type.StringList;
 import org.kayura.uasp.auth.cmd.SavePrivilegeCommand;
 import org.kayura.uasp.auth.entity.RoleEntity;
 import org.kayura.uasp.auth.manage.PrivilegeManager;
 import org.kayura.uasp.auth.manage.RoleManager;
+import org.kayura.uasp.dev.entity.ModuleActionEntity;
+import org.kayura.uasp.dev.manage.ModuleActionManager;
 import org.kayura.uasp.privilege.ModuleAction;
 import org.kayura.uasp.privilege.PrivilegeBody;
 import org.kayura.uasp.privilege.PrivilegeTypes;
+import org.kayura.uasp.utils.SecurityConsts;
 import org.kayura.utils.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
-public class SavePrivilegeCommandHandler implements CommandHandler<SavePrivilegeCommand, HttpResult> {
+public class SavePrivilegeCommandHandler implements CommandHandler<SavePrivilegeCommand, HttpResult>, SecurityConsts {
 
   private final PrivilegeManager privilegeManager;
   private final RoleManager roleManager;
+  private final ModuleActionManager moduleActionManager;
 
   public SavePrivilegeCommandHandler(PrivilegeManager privilegeManager,
-                                     RoleManager roleManager) {
+                                     RoleManager roleManager,
+                                     ModuleActionManager moduleActionManager) {
     this.privilegeManager = privilegeManager;
     this.roleManager = roleManager;
+    this.moduleActionManager = moduleActionManager;
   }
 
   @Transactional
@@ -65,6 +74,22 @@ public class SavePrivilegeCommandHandler implements CommandHandler<SavePrivilege
       }
     }
 
+    // 授权了菜单权限，自动添加查询权限
+    Set<String> moduleIds = privileges.stream().map(ModuleAction::getModuleId).collect(Collectors.toSet());
+    List<ModuleActionEntity> moduleActionEntities = moduleActionManager.selectList(w -> {
+      w.in(ModuleActionEntity::getModuleId, moduleIds);
+    });
+    for (ModuleAction moduleAction : privileges) {
+      String moduleId = moduleAction.getModuleId();
+      StringList actions = moduleAction.getActions();
+      if (actions.contains(MENU) && !actions.contains(QUERY)) {
+        if (moduleActionEntities.stream().anyMatch(x -> moduleId.equals(x.getModuleId()) && QUERY.equals(x.getCode()))) {
+          actions.add(QUERY);
+        }
+      }
+    }
+
+    // 保存至数据库
     privilegeManager.savePrivileges(
       PrivilegeBody.create()
         .setAppId(appId)

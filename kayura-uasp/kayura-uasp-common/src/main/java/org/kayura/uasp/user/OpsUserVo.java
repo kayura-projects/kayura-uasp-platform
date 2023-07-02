@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class AdminUserVo extends UserVo {
+public class OpsUserVo extends UserVo {
 
   private LocalDate accountExpire;
   private Boolean enabled;
@@ -36,7 +36,7 @@ public class AdminUserVo extends UserVo {
     return accountExpire;
   }
 
-  public AdminUserVo setAccountExpire(LocalDate accountExpire) {
+  public OpsUserVo setAccountExpire(LocalDate accountExpire) {
     this.accountExpire = accountExpire;
     return this;
   }
@@ -45,7 +45,7 @@ public class AdminUserVo extends UserVo {
     return enabled;
   }
 
-  public AdminUserVo setEnabled(Boolean enabled) {
+  public OpsUserVo setEnabled(Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -54,7 +54,7 @@ public class AdminUserVo extends UserVo {
     return locked;
   }
 
-  public AdminUserVo setLocked(Boolean locked) {
+  public OpsUserVo setLocked(Boolean locked) {
     this.locked = locked;
     return this;
   }
@@ -63,7 +63,7 @@ public class AdminUserVo extends UserVo {
     return creatorId;
   }
 
-  public AdminUserVo setCreatorId(String creatorId) {
+  public OpsUserVo setCreatorId(String creatorId) {
     this.creatorId = creatorId;
     return this;
   }
@@ -72,7 +72,7 @@ public class AdminUserVo extends UserVo {
     return creatorName;
   }
 
-  public AdminUserVo setCreatorName(String creatorName) {
+  public OpsUserVo setCreatorName(String creatorName) {
     this.creatorName = creatorName;
     return this;
   }
@@ -81,7 +81,7 @@ public class AdminUserVo extends UserVo {
     return createTime;
   }
 
-  public AdminUserVo setCreateTime(LocalDateTime createTime) {
+  public OpsUserVo setCreateTime(LocalDateTime createTime) {
     this.createTime = createTime;
     return this;
   }
@@ -90,7 +90,7 @@ public class AdminUserVo extends UserVo {
     return updaterId;
   }
 
-  public AdminUserVo setUpdaterId(String updaterId) {
+  public OpsUserVo setUpdaterId(String updaterId) {
     this.updaterId = updaterId;
     return this;
   }
@@ -99,7 +99,7 @@ public class AdminUserVo extends UserVo {
     return updaterName;
   }
 
-  public AdminUserVo setUpdaterName(String updaterName) {
+  public OpsUserVo setUpdaterName(String updaterName) {
     this.updaterName = updaterName;
     return this;
   }
@@ -108,7 +108,7 @@ public class AdminUserVo extends UserVo {
     return updateTime;
   }
 
-  public AdminUserVo setUpdateTime(LocalDateTime updateTime) {
+  public OpsUserVo setUpdateTime(LocalDateTime updateTime) {
     this.updateTime = updateTime;
     return this;
   }
@@ -117,7 +117,7 @@ public class AdminUserVo extends UserVo {
     return remark;
   }
 
-  public AdminUserVo setRemark(String remark) {
+  public OpsUserVo setRemark(String remark) {
     this.remark = remark;
     return this;
   }
@@ -126,7 +126,7 @@ public class AdminUserVo extends UserVo {
     return historyAvatars;
   }
 
-  public AdminUserVo setHistoryAvatars(List<UserAvatarVo> historyAvatars) {
+  public OpsUserVo setHistoryAvatars(List<UserAvatarVo> historyAvatars) {
     this.historyAvatars = historyAvatars;
     return this;
   }

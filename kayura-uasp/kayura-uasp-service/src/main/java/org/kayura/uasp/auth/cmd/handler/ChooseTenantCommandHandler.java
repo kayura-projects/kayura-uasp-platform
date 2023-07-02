@@ -145,7 +145,7 @@ public class ChooseTenantCommandHandler implements CommandHandler<ChooseTenantCo
           node.put("APPLICS", applics);
         }
         return node;
-      }).collect(Collectors.toList());
+      }).toList();
       return HttpResult.okBody(nodes);
     } else if (OutputTypes.SELECT.equals(output)) {
       List<SelectItem> selectItems = entities.stream().map(m -> {
@@ -157,12 +157,12 @@ public class ChooseTenantCommandHandler implements CommandHandler<ChooseTenantCo
           node.put("APPLICS", applics);
         }
         return node;
-      }).collect(Collectors.toList());
+      }).toList();
       return HttpResult.okBody(selectItems);
     } else {
       List<TenantVo> selectItems = entities.stream()
         .map(m -> modelMapper.map(m, TenantVo.class))
-        .collect(Collectors.toList());
+        .toList();
       return HttpResult.okBody(selectItems);
     }
   }

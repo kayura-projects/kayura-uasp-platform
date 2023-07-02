@@ -39,6 +39,8 @@ public interface LoginUser extends LoginUserId {
 
   boolean hasAnyRole(String... roles);
 
+  boolean hasRoot();
+
   /** 如果是后台管理人员 */
   boolean hasRootOrAdmin();
 

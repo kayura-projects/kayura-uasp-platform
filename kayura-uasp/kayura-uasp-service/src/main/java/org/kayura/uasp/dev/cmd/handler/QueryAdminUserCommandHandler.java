@@ -1,4 +1,20 @@
 /*------------------------------------------------------------------------------
+ - Copyright 2023 Kayura ( liangxia@live.com )
+ -
+ - Licensed under the Apache License, Version 2.0 (the "License");
+ - you may not use this file except in compliance with the License.
+ - You may obtain a copy of the License at
+ -
+ -     http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ -----------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
  - 版权所有 (C) 2023 kayura
  -
  - 本程序是一个开源软件，根据 GNU 通用公共许可证 (AGPLv3) 的条款发布。
@@ -11,24 +27,24 @@
  - 请参阅 GNU 通用公共许可证以获取详细信息。
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.auth.cmd.handler;
+package org.kayura.uasp.dev.cmd.handler;
 
 import org.kayura.cmd.CommandHandler;
 import org.kayura.type.HttpResult;
 import org.kayura.type.PageClause;
 import org.kayura.type.PageList;
 import org.kayura.type.UserTypes;
-import org.kayura.uasp.auth.cmd.QueryAdminUserCommand;
+import org.kayura.uasp.dev.cmd.QueryOpsUserCommand;
 import org.kayura.uasp.auth.entity.UserEntity;
 import org.kayura.uasp.auth.manage.UserManager;
-import org.kayura.uasp.user.AdminUserQuery;
-import org.kayura.uasp.user.AdminUserVo;
+import org.kayura.uasp.user.OpsUserQuery;
+import org.kayura.uasp.user.OpsUserVo;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
-public class QueryAdminUserCommandHandler implements CommandHandler<QueryAdminUserCommand, HttpResult> {
+public class QueryAdminUserCommandHandler implements CommandHandler<QueryOpsUserCommand, HttpResult> {
 
   private final UserManager userManager;
   private final ModelMapper modelMapper;
@@ -40,16 +56,16 @@ public class QueryAdminUserCommandHandler implements CommandHandler<QueryAdminUs
   }
 
   @Transactional(readOnly = true)
-  public HttpResult execute(QueryAdminUserCommand command) {
+  public HttpResult execute(QueryOpsUserCommand command) {
 
-    AdminUserQuery query = command.getQuery();
+    OpsUserQuery query = command.getQuery();
     PageClause pageClause = command.getPageClause();
 
-    PageList<AdminUserVo> pageList = userManager.selectPage(w -> {
+    PageList<OpsUserVo> pageList = userManager.selectPage(w -> {
       w.of(query);
       w.eq(UserEntity::getUserType, UserTypes.ADMIN);
       w.isNull(UserEntity::getTenantId);
-    }, pageClause).streamMap(m -> modelMapper.map(m, AdminUserVo.class));
+    }, pageClause).streamMap(m -> modelMapper.map(m, OpsUserVo.class));
     return HttpResult.okBody(pageList);
   }
 

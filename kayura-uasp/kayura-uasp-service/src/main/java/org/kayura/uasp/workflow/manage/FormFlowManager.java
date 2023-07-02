@@ -172,11 +172,11 @@ public class FormFlowManager extends CrudManagerImpl<FormFlowMapper, FormFlowEnt
         }
       }
       if (selected.isEmpty()) {
-        selected = entities.stream().filter(FormFlowEntity::getPrimary).collect(Collectors.toList());
+        selected = entities.stream().filter(FormFlowEntity::getPrimary).toList();
       }
     }
 
-    return selected.stream().map(m -> modelMapper.map(m, ChooseFlowVo.class)).collect(Collectors.toList());
+    return selected.stream().map(m -> modelMapper.map(m, ChooseFlowVo.class)).toList();
   }
 
   public void autoPatchPrimary(boolean primary, String formId) {

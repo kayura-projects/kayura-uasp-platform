@@ -39,7 +39,7 @@ public class ChooseInnerExprCommandHandler implements CommandHandler<ChooseInner
     List<SelectItem> selectItems = innerExprManager.queryHandlers()
       .stream()
       .map(m -> SelectItem.create().setId(m.getId()).setText(m.getName()))
-      .collect(Collectors.toList());
+      .toList();
     return HttpResult.okBody(selectItems);
   }
 }

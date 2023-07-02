@@ -195,7 +195,7 @@ public class SelectOrganizeTreeCommandHandler implements CommandHandler<SelectOr
       List<String> companyIds = allCompany.stream()
         .map(CompanyEntity::getCompanyId)
         .distinct()
-        .collect(Collectors.toList());
+        .toList();
       if (!companyIds.isEmpty()) {
         List<DepartEntity> collect = departManager.selectList(w -> {
           w.select(DepartEntity::getDepartId);
@@ -213,7 +213,7 @@ public class SelectOrganizeTreeCommandHandler implements CommandHandler<SelectOr
       if (level > 2 && !allDepart.isEmpty()) {
         List<String> departIds = allDepart.stream()
           .map(DepartEntity::getDepartId)
-          .collect(Collectors.toList());
+          .toList();
         if (!departIds.isEmpty()) {
           List<PositionEntity> collect = positionManager.selectList(w -> {
             w.select(PositionEntity::getPositionId);

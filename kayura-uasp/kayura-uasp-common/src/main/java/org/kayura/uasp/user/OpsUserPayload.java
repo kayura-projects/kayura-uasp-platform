@@ -21,7 +21,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-public class AdminUserPayload {
+public class OpsUserPayload {
 
   @NotBlank(groups = Update.class)
   private String userId;
@@ -43,7 +43,7 @@ public class AdminUserPayload {
     return userId;
   }
 
-  public AdminUserPayload setUserId(String userId) {
+  public OpsUserPayload setUserId(String userId) {
     this.userId = userId;
     return this;
   }
@@ -52,7 +52,7 @@ public class AdminUserPayload {
     return userName;
   }
 
-  public AdminUserPayload setUserName(String userName) {
+  public OpsUserPayload setUserName(String userName) {
     this.userName = userName;
     return this;
   }
@@ -61,7 +61,7 @@ public class AdminUserPayload {
     return displayName;
   }
 
-  public AdminUserPayload setDisplayName(String displayName) {
+  public OpsUserPayload setDisplayName(String displayName) {
     this.displayName = displayName;
     return this;
   }
@@ -70,7 +70,7 @@ public class AdminUserPayload {
     return avatar;
   }
 
-  public AdminUserPayload setAvatar(String avatar) {
+  public OpsUserPayload setAvatar(String avatar) {
     this.avatar = avatar;
     return this;
   }
@@ -79,7 +79,7 @@ public class AdminUserPayload {
     return password;
   }
 
-  public AdminUserPayload setPassword(String password) {
+  public OpsUserPayload setPassword(String password) {
     this.password = password;
     return this;
   }
@@ -88,7 +88,7 @@ public class AdminUserPayload {
     return email;
   }
 
-  public AdminUserPayload setEmail(String email) {
+  public OpsUserPayload setEmail(String email) {
     this.email = email;
     return this;
   }
@@ -97,7 +97,7 @@ public class AdminUserPayload {
     return mobile;
   }
 
-  public AdminUserPayload setMobile(String mobile) {
+  public OpsUserPayload setMobile(String mobile) {
     this.mobile = mobile;
     return this;
   }
@@ -106,7 +106,7 @@ public class AdminUserPayload {
     return accountExpire;
   }
 
-  public AdminUserPayload setAccountExpire(LocalDate accountExpire) {
+  public OpsUserPayload setAccountExpire(LocalDate accountExpire) {
     this.accountExpire = accountExpire;
     return this;
   }
@@ -115,7 +115,7 @@ public class AdminUserPayload {
     return enabled;
   }
 
-  public AdminUserPayload setEnabled(Boolean enabled) {
+  public OpsUserPayload setEnabled(Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -124,7 +124,7 @@ public class AdminUserPayload {
     return locked;
   }
 
-  public AdminUserPayload setLocked(Boolean locked) {
+  public OpsUserPayload setLocked(Boolean locked) {
     this.locked = locked;
     return this;
   }
@@ -133,7 +133,7 @@ public class AdminUserPayload {
     return remark;
   }
 
-  public AdminUserPayload setRemark(String remark) {
+  public OpsUserPayload setRemark(String remark) {
     this.remark = remark;
     return this;
   }

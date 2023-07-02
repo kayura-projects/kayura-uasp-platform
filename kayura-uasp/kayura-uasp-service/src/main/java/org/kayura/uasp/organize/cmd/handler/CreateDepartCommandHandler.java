@@ -102,7 +102,7 @@ public class CreateDepartCommandHandler implements CommandHandler<CreateDepartCo
           .setDepartId(entity.getDepartId())
           .setLeaderId(m.getLeaderId())
           .setDuty(m.getDuty())
-      ).collect(Collectors.toList());
+      ).toList();
       departLeaderManager.insertBatch(collect);
     }
 

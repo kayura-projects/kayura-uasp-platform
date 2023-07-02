@@ -60,7 +60,7 @@ public class ModuleManager {
       List<String> appModuleIds = appModules.stream()
         .filter(x -> ModuleTypes.Module.equals(x.getType()))
         .map(ModuleDefineEntity::getModuleId)
-        .collect(Collectors.toList());
+        .toList();
       List<ModuleActionEntity> appModuleActions = moduleActionManager.selectList(w -> {
         w.in(ModuleActionEntity::getModuleId, appModuleIds);
       });
@@ -70,7 +70,7 @@ public class ModuleManager {
           md.setActions(
             appModuleActions.stream()
               .filter(x -> x.getModuleId().equalsIgnoreCase(md.getModuleId()))
-              .collect(Collectors.toList())
+              .toList()
           );
         }
       }
@@ -107,7 +107,7 @@ public class ModuleManager {
             m.setActions(moduleActions);
           }
         }
-      }).collect(Collectors.toList());
+      }).toList();
     return scopeModules;
   }
 
@@ -149,7 +149,7 @@ public class ModuleManager {
 
         List<ModuleDefineEntity> childModules = allModules.stream()
           .filter(x -> rm.getModuleId().equals(x.getParentId()))
-          .collect(Collectors.toList());
+          .toList();
 
         List<PrivilegeModuleVo> children = new ArrayList<>();
         makeChildrenModules(children, childModules, allModules, haveAuth, rolePrivilege);

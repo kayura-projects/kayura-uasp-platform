@@ -42,7 +42,7 @@ public class FileManager implements FileConst {
       treeNode.addChildren(node);
       List<FileFolderEntity> collect = allFolders.stream()
         .filter(x -> folder.getFolderId().equalsIgnoreCase(x.getParentId()))
-        .collect(Collectors.toList());
+        .toList();
       buildMyChildFolder(node, collect, allFolders);
     }
   }

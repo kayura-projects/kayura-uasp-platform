@@ -26,8 +26,8 @@ import org.kayura.uasp.auth.cmd.AccountGetCommand;
 import org.kayura.uasp.dev.entity.ModuleDefineEntity;
 import org.kayura.uasp.dev.manage.ModuleManager;
 import org.kayura.uasp.func.ModuleTypes;
-import org.kayura.uasp.privilege.AuthConst;
 import org.kayura.uasp.utils.UaspConsts;
+import org.kayura.utils.CollectionUtils;
 import org.kayura.utils.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
@@ -37,6 +37,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static org.kayura.uasp.utils.SecurityConsts.MENU;
 
 @Component
 public class AccountGetCommandHandler implements CommandHandler<AccountGetCommand, HttpResult> {
@@ -75,6 +77,7 @@ public class AccountGetCommandHandler implements CommandHandler<AccountGetComman
 
       // ROOT 拥有全部UASP功能菜单
       mainMenus = this.makeAllMenusByRoot();
+
     } else {
 
       // 生成角色列表
@@ -89,11 +92,12 @@ public class AccountGetCommandHandler implements CommandHandler<AccountGetComman
 
       // 生成菜单
       List<String> menuModules = permissions.stream()
-        .filter(x -> x.getActions().contains(AuthConst.ACTION_MENU))
+        .filter(x -> x.getActions().contains(MENU))
         .map(Permission::getResource)
         .toList();
       mainMenus = this.makeHaveAuthUserMenus(loginUser.getAppId(), menuModules);
     }
+
     account.setMainMenus(mainMenus);
 
     return HttpResult.okBody(account);
@@ -108,7 +112,7 @@ public class AccountGetCommandHandler implements CommandHandler<AccountGetComman
       appModules.addAll(this.initDeveloperMenus());
     }
     List<ModuleDefineEntity> rootModules = appModules.stream()
-      .filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+      .filter(x -> StringUtils.isBlank(x.getParentId())).toList();
     this.makeChildrenMenus(result, rootModules, appModules);
     return result;
   }
@@ -135,7 +139,7 @@ public class AccountGetCommandHandler implements CommandHandler<AccountGetComman
     if (!moduleCodes.isEmpty()) {
       List<ModuleDefineEntity> appModules = moduleManager.chooseModulesByCode(appId, moduleCodes);
       List<ModuleDefineEntity> rootModules = appModules.stream()
-        .filter(x -> StringUtils.hasText(x.getParentId())).collect(Collectors.toList());
+        .filter(x -> StringUtils.isBlank(x.getParentId())).toList();
       this.makeChildrenMenus(result, rootModules, appModules);
     }
     return result;
@@ -165,7 +169,7 @@ public class AccountGetCommandHandler implements CommandHandler<AccountGetComman
 
       List<ModuleDefineEntity> childModules = allModules.stream()
         .filter(x -> rm.getModuleId().equals(x.getParentId()))
-        .collect(Collectors.toList());
+        .toList();
       if (!childModules.isEmpty()) {
         List<MenuVo> children = new ArrayList<>();
         this.makeChildrenMenus(children, childModules, allModules);
@@ -174,7 +178,13 @@ public class AccountGetCommandHandler implements CommandHandler<AccountGetComman
         }
       }
 
-      result.add(mb);
+      if (ModuleTypes.Category.equals(rm.getType())) {
+        if (CollectionUtils.isNotEmpty(mb.getItems())) {
+          result.add(mb);
+        }
+      } else {
+        result.add(mb);
+      }
     }
   }
 }

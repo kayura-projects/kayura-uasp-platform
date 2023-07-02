@@ -129,7 +129,7 @@ public class SqlFragmentBuilder extends SqlTagTool {
       insertColumns.addAll(info.getColumns().stream()
         .filter(ColumnInfo::isInsert)
         .map(ColumnInfo::getColumnName)
-        .collect(Collectors.toList()));
+        .toList());
     }
 
     return StringKit.join(insertColumns, COMMA);
@@ -161,7 +161,7 @@ public class SqlFragmentBuilder extends SqlTagTool {
       insertProperties.addAll(info.getColumns().stream()
         .filter(ColumnInfo::isInsert)
         .map(m -> safeParam(m.getPropertyName()))
-        .collect(Collectors.toList()));
+        .toList());
     }
 
     return StringKit.join(insertProperties, COMMA);

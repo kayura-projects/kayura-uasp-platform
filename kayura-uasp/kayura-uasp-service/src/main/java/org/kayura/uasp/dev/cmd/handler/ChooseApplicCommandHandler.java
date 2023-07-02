@@ -102,7 +102,7 @@ public class ChooseApplicCommandHandler implements CommandHandler<ChooseApplicCo
       w.orderByAsc(CompanyApplicEntity::getAppSort);
     }).stream().map(m ->
       ApplicEntity.create().setAppId(m.getAppId()).setCode(m.getAppCode()).setName(m.getAppName())
-    ).collect(Collectors.toList());
+    ).toList();
     return entities;
   }
 
@@ -142,17 +142,17 @@ public class ChooseApplicCommandHandler implements CommandHandler<ChooseApplicCo
     if (OutputTypes.TREE.equals(output)) {
       List<TreeNode> collect = entities.stream()
         .map(m -> TreeNode.create().setId(m.getAppId()).setText(m.getName()))
-        .collect(Collectors.toList());
+        .toList();
       return HttpResult.okBody(collect);
     } else if (OutputTypes.SELECT.equals(output)) {
       List<SelectItem> collect = entities.stream()
         .map(m -> SelectItem.create().setId(m.getAppId()).setText(m.getName()))
-        .collect(Collectors.toList());
+        .toList();
       return HttpResult.okBody(collect);
     } else {
       List<ApplicVo> collect = entities.stream()
         .map(m -> modelMapper.map(m, ApplicVo.class))
-        .collect(Collectors.toList());
+        .toList();
       return HttpResult.okBody(collect);
     }
   }

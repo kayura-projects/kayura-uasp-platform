@@ -131,12 +131,12 @@ public class CandidateRoleCommandHandler implements CommandHandler<CandidateRole
           .setText(m.getName())
           .put("app", m.getAppName())
           .put("tenant", m.getTenantName())
-      ).collect(Collectors.toList());
+      ).toList();
       return HttpResult.okBody(selectItems);
     } else {
       List<RoleVo> selectItems = entities.stream()
         .map(m -> modelMapper.map(m, RoleVo.class))
-        .collect(Collectors.toList());
+        .toList();
       return HttpResult.okBody(selectItems);
     }
 

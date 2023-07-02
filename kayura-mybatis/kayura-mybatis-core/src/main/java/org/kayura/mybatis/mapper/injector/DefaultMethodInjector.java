@@ -37,7 +37,7 @@ public class DefaultMethodInjector extends AbstractMethodInjector {
       new SelectPage(),
       new UpdateById(),
       new UpdateByWhere()
-    ).collect(Collectors.toList());
+    ).toList();
   }
 
 }

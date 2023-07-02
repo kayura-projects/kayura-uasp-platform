@@ -111,7 +111,7 @@ public class EntityHelper {
     String idColumn = null;
     if (!ID_CACHE.containsKey(entityClazz)) {
       List<Field> idFields = ReflectKit.getEntityFields(entityClazz).stream()
-        .filter(a -> a.isAnnotationPresent(Id.class)).collect(Collectors.toList());
+        .filter(a -> a.isAnnotationPresent(Id.class)).toList();
       if (idFields.isEmpty()) {
         ExceptUtils.config("目标实体未定义主键ID。");
       } else if (idFields.size() > 1) {

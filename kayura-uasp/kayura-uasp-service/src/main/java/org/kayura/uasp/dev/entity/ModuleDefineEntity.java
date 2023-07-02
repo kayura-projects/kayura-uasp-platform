@@ -20,6 +20,8 @@ import org.kayura.uasp.func.UsageTypes;
 
 import java.util.List;
 
+
+
 @Table("uasp_module_define")
 public class ModuleDefineEntity {
 

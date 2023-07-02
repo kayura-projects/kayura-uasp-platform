@@ -174,8 +174,13 @@ public class LoginUserImpl implements LoginUser, UserDetails, CredentialsContain
   }
 
   @Override
+  public boolean hasRoot() {
+    return UserTypes.ROOT.equals(this.userType);
+  }
+
+  @Override
   public boolean hasRootOrAdmin() {
-    return UserTypes.ROOT.equals(this.userType) || UserTypes.ADMIN.equals(this.userType);
+    return this.hasRoot() || UserTypes.ADMIN.equals(this.userType);
   }
 
   @Override

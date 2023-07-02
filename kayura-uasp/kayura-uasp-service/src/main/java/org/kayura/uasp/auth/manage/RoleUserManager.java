@@ -39,7 +39,7 @@ public class RoleUserManager extends CrudManagerImpl<RoleUserMapper, RoleUserEnt
       w.eq(RoleUserEntity::getUserId, userId);
       w.eq(RoleUserEntity::getRoleType, RoleTypes.FUNC);
       w.eq(RoleUserEntity::getRoleStatus, DataStatus.Valid);
-    }).stream().map(RoleUserEntity::getRoleCode).collect(Collectors.toList());
+    }).stream().map(RoleUserEntity::getRoleCode).toList();
     return roleCodes;
   }
 }

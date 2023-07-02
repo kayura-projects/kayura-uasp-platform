@@ -66,7 +66,7 @@ public class ChooseUserFolderCommandHandler implements CommandHandler<ChooseUser
       w.eq(FileFolderEntity::getOwnerType, OwnerTypes.USER);
       w.eq(FileFolderEntity::getOwnerId, userId);
     });
-    List<FileFolderEntity> folders = allFolders.stream().filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+    List<FileFolderEntity> folders = allFolders.stream().filter(x -> StringUtils.isBlank(x.getParentId())).toList();
     fileManager.buildMyChildFolder(folderNode, folders, allFolders);
 
     return HttpResult.okBody(treeNodes);

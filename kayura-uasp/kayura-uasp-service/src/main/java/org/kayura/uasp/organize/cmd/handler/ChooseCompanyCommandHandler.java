@@ -79,7 +79,7 @@ public class ChooseCompanyCommandHandler implements CommandHandler<ChooseCompany
         List<TreeNode> children = entities.stream()
           .filter(x -> cat.getKey().equalsIgnoreCase(x.getCategoryId()))
           .map(m -> TreeNode.create().setId(m.getCompanyId()).setCode(m.getCode()).setText(m.getShortName()).setType("COM"))
-          .collect(Collectors.toList());
+          .toList();
         node.setChildren(children);
         nodeList.add(node);
       }

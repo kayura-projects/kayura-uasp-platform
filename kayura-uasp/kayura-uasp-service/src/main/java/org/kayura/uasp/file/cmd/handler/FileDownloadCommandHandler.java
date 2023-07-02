@@ -63,7 +63,7 @@ public class FileDownloadCommandHandler implements CommandHandler<FileDownloadCo
     List<FileLinkEntity> links = linkManager.selectList(w -> w.of(query));
     linkManager.updateDownloads(links);
     List<DownloadFile> downloads = links.stream().map(m -> modelMapper.map(m, DownloadFile.class))
-      .collect(Collectors.toList());
+      .toList();
     try {
       File downFile = null;
       String fileName = null;

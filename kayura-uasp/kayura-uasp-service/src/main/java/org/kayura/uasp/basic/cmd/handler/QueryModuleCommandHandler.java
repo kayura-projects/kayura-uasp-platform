@@ -60,7 +60,7 @@ public class QueryModuleCommandHandler implements CommandHandler<QueryModuleComm
     // 加载操作项
     List<ModuleVo> rows = pageList.getRows();
     if (CollectionUtils.isNotEmpty(rows)) {
-      List<String> moduleIds = rows.stream().map(ModuleVo::getModuleId).collect(Collectors.toList());
+      List<String> moduleIds = rows.stream().map(ModuleVo::getModuleId).toList();
       List<ModuleActionEntity> entities = actionManager.selectList(w -> {
         w.in(ModuleActionEntity::getModuleId, moduleIds);
       });
@@ -68,7 +68,7 @@ public class QueryModuleCommandHandler implements CommandHandler<QueryModuleComm
         List<CodeName> actions = entities.stream()
           .filter(x -> x.getModuleId().equalsIgnoreCase(vo.getModuleId()))
           .map(m -> CodeName.create().setCode(m.getCode()).setName(m.getName()))
-          .collect(Collectors.toList());
+          .toList();
         vo.setActions(actions);
       }
     }

@@ -1,4 +1,20 @@
 /*------------------------------------------------------------------------------
+ - Copyright 2023 Kayura ( liangxia@live.com )
+ -
+ - Licensed under the Apache License, Version 2.0 (the "License");
+ - you may not use this file except in compliance with the License.
+ - You may obtain a copy of the License at
+ -
+ -     http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ -----------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
  - 版权所有 (C) 2023 kayura
  -
  - 本程序是一个开源软件，根据 GNU 通用公共许可证 (AGPLv3) 的条款发布。
@@ -11,15 +27,15 @@
  - 请参阅 GNU 通用公共许可证以获取详细信息。
  -----------------------------------------------------------------------------*/
 
-package org.kayura.uasp.auth.cmd.handler;
+package org.kayura.uasp.dev.cmd.handler;
 
 import org.kayura.cmd.CommandHandler;
 import org.kayura.type.HttpResult;
-import org.kayura.uasp.auth.cmd.GetAdminUserCommand;
+import org.kayura.uasp.dev.cmd.GetOpsUserCommand;
 import org.kayura.uasp.auth.entity.UserEntity;
 import org.kayura.uasp.auth.manage.UserAvatarManager;
 import org.kayura.uasp.auth.manage.UserManager;
-import org.kayura.uasp.user.AdminUserVo;
+import org.kayura.uasp.user.OpsUserVo;
 import org.kayura.uasp.user.UserAvatarVo;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -28,7 +44,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Component
-public class GetAdminUserCommandHandler implements CommandHandler<GetAdminUserCommand, HttpResult> {
+public class GetAdminUserCommandHandler implements CommandHandler<GetOpsUserCommand, HttpResult> {
 
   private final UserManager userManager;
   private final ModelMapper modelMapper;
@@ -43,14 +59,14 @@ public class GetAdminUserCommandHandler implements CommandHandler<GetAdminUserCo
   }
 
   @Transactional(readOnly = true)
-  public HttpResult execute(GetAdminUserCommand command) {
+  public HttpResult execute(GetOpsUserCommand command) {
 
     String userId = command.getUserId();
 
-    AdminUserVo model = null;
+    OpsUserVo model = null;
     UserEntity entity = userManager.selectById(userId);
     if (entity != null) {
-      model = modelMapper.map(entity, AdminUserVo.class);
+      model = modelMapper.map(entity, OpsUserVo.class);
       // History Avatars
       List<UserAvatarVo> avatars = this.userAvatarManager.queryHistory(userId);
       model.setHistoryAvatars(avatars);

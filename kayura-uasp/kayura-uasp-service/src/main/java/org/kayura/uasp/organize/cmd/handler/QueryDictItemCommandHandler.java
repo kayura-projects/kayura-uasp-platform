@@ -14,9 +14,11 @@
 package org.kayura.uasp.organize.cmd.handler;
 
 import org.kayura.cmd.CommandHandler;
+import org.kayura.security.LoginUser;
 import org.kayura.type.HttpResult;
 import org.kayura.type.PageClause;
 import org.kayura.type.PageList;
+import org.kayura.uasp.basic.entity.DictItemEntity;
 import org.kayura.uasp.basic.manage.DictItemManager;
 import org.kayura.uasp.dict.DictItemQuery;
 import org.kayura.uasp.dict.DictItemVo;
@@ -28,7 +30,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class QueryDictItemCommandHandler implements CommandHandler<QueryDictItemCommand, HttpResult> {
@@ -45,6 +46,7 @@ public class QueryDictItemCommandHandler implements CommandHandler<QueryDictItem
   @Transactional(readOnly = true)
   public HttpResult execute(QueryDictItemCommand command) {
 
+    LoginUser loginUser = command.getLoginUser();
     OutputTypes output = command.getOutput();
     DictItemQuery query = command.getQuery();
 
@@ -52,9 +54,14 @@ public class QueryDictItemCommandHandler implements CommandHandler<QueryDictItem
 
       List<DictItemVo> collect = itemManager.selectList(w -> {
         w.of(query);
-      }).stream().map(m -> modelMapper.map(m, DictItemVo.class)).collect(Collectors.toList());
+        if (loginUser.hasRootOrAdmin()) {
+          w.isNull(DictItemEntity::getTenantId);
+        } else if (loginUser.hasTenantUser()) {
+          w.and(w1 -> w1.isNull(DictItemEntity::getTenantId).or().eq(DictItemEntity::getTenantId, loginUser.getTenantId()));
+        }
+      }).stream().map(m -> modelMapper.map(m, DictItemVo.class)).toList();
       List<DictItemVo> rootItems = collect.stream()
-        .filter(x -> StringUtils.isBlank(x.getParentId())).collect(Collectors.toList());
+        .filter(x -> StringUtils.isBlank(x.getParentId())).toList();
       makeChildren(rootItems, collect);
       return HttpResult.okBody(rootItems);
 
@@ -72,7 +79,7 @@ public class QueryDictItemCommandHandler implements CommandHandler<QueryDictItem
 
     for (DictItemVo item : items) {
       List<DictItemVo> collect = allItems.stream()
-        .filter(x -> item.getItemId().equals(x.getParentId())).collect(Collectors.toList());
+        .filter(x -> item.getItemId().equals(x.getParentId())).toList();
       if (!collect.isEmpty()) {
         item.setChildren(collect);
         makeChildren(collect, allItems);
