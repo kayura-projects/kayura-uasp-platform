@@ -23,7 +23,7 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <kayura.version>1.0.0.a1</kayura.version>
+    <kayura.version>1.0.0.a2</kayura.version>
     <mysql.version>8.0.33</mysql.version>
     <druid-spring.version>1.2.17</druid-spring.version>
   </properties>
@@ -62,8 +62,8 @@
 
   <repositories>
     <repository>
-      <id>kayura-host</id>
-      <url>http://nexus.kayura.org/repository/maven-host</url>
+      <id>kayura-release</id>
+      <url>http://nexus.kayura.cn/repository/maven-host</url>
     </repository>
   </repositories>
 
