@@ -10,7 +10,7 @@
  - 本程序基于无任何明示或暗示的担保提供，包括但不限于适销性和特定用途适用性的担保。
  - 请参阅 GNU 通用公共许可证以获取详细信息。
  -----------------------------------------------------------------------------*/
-package org.kayura.uasp.rest.basic;
+package org.kayura.uasp.rest.dev;
 
 import org.kayura.cmd.CommandGateway;
 import org.kayura.security.annotation.Secured;

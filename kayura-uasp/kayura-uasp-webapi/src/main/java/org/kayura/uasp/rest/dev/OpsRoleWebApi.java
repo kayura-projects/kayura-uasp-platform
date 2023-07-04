@@ -51,7 +51,7 @@ import static org.kayura.uasp.utils.SecurityConsts.*;
 
 @RestController
 @RequestMapping("${kayura.uasp.api-url}")
-@Secured(resource = UASP_ADMIN_ROLE)
+@Secured(resource = UASP_OPS_ROLE)
 public class OpsRoleWebApi {
 
   private final CommandGateway commandGateway;

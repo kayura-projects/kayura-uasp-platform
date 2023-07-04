@@ -40,7 +40,7 @@ public interface SecurityConsts {
   String UASP_AUTO_NO = "UASP_AUTO_NO";
   String UASP_FILE_MANAGE = "UASP_FILE_MANAGE";
 
-  String UASP_ADMIN_ROLE = "UASP_ADMIN_ROLE";
+  String UASP_OPS_ROLE = "UASP_OPS_ROLE";
   String UASP_OPS_USER = "UASP_OPS_USER";
   String UASP_CLIENT_USER = "UASP_CLIENT_USER";
   String UASP_NO_SECRET = "UASP_NO_SECRET";
