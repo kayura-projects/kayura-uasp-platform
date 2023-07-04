@@ -17,7 +17,6 @@ import org.kayura.security.annotation.Secured;
 import org.kayura.type.HttpResult;
 import org.kayura.type.PageClause;
 import org.kayura.uasp.common.IdPayload;
-import org.kayura.uasp.dict.DictDefinePayload;
 import org.kayura.uasp.dict.DictDefineQuery;
 import org.kayura.uasp.dict.DictItemPayload;
 import org.kayura.uasp.dict.DictItemQuery;
@@ -33,11 +32,11 @@ import static org.kayura.uasp.utils.SecurityConsts.*;
 @RestController
 @RequestMapping("${kayura.uasp.api-url}")
 @Secured(resource = UASP_DICT_ITEM)
-public class DictionaryWebApi {
+public class DictItemWebApi {
 
   private final CommandGateway commandGateway;
 
-  public DictionaryWebApi(CommandGateway commandGateway) {
+  public DictItemWebApi(CommandGateway commandGateway) {
     this.commandGateway = commandGateway;
   }
 
@@ -65,30 +64,6 @@ public class DictionaryWebApi {
                                          @RequestParam("id") String defineId) {
 
     return commandGateway.send(command.setDefineId(defineId));
-  }
-
-  @PostMapping("/dict-item/define/create")
-  @Secured(actions = CREATE)
-  public HttpResult createDictDefine(CreateDictDefineCommand command,
-                                     @RequestBody @Validated(Create.class) DictDefinePayload payload) {
-
-    return commandGateway.send(command.setPayload(payload));
-  }
-
-  @PostMapping("/dict-item/define/update")
-  @Secured(actions = UPDATE)
-  public HttpResult updateDictDefine(UpdateDictDefineCommand command,
-                                     @RequestBody @Validated(Update.class) DictDefinePayload payload) {
-
-    return commandGateway.send(command.setPayload(payload));
-  }
-
-  @PostMapping("/dict-item/define/delete")
-  @Secured(actions = DELETE)
-  public HttpResult deleteDictDefine(DeleteDictDefineCommand command,
-                                     @RequestBody @Validated IdPayload payload) {
-
-    return commandGateway.send(command.setPayload(payload));
   }
 
   /** DictItem */
