@@ -1,3 +1,3 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-org.kayura.uasp.config.AutoImportUaspConfigurer
+org.kayura.uasp.config.ImportUaspConfigurer

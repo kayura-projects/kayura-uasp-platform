@@ -22,5 +22,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan("org.kayura.uasp")
 @MapperScan("org.kayura.uasp.*.mapper")
-public class AutoImportUaspConfigurer {
+public class ImportUaspConfigurer {
 }
