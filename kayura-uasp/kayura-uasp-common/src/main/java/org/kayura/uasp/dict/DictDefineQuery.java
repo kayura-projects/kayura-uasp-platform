@@ -18,11 +18,6 @@ import org.kayura.mybatis.annotation.querier.Like;
 
 public class DictDefineQuery {
 
-  public static final String APP = "APP";
-  public static final String Category = "C";
-
-  @Ignore
-  private String type; // APP 应用, C 分类
   @Ignore
   private String appId;
   @Ignore
@@ -36,15 +31,6 @@ public class DictDefineQuery {
 
   public DictDefineQuery setParentId(String parentId) {
     this.parentId = parentId;
-    return this;
-  }
-
-  public String getType() {
-    return type;
-  }
-
-  public DictDefineQuery setType(String type) {
-    this.type = type;
     return this;
   }
 

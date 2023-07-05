@@ -17,4 +17,14 @@ import org.kayura.cmd.ApiCommand;
 
 public class ChooseDictDefineCommand extends ApiCommand {
 
+  private boolean incEmpty;
+
+  public boolean isIncEmpty() {
+    return incEmpty;
+  }
+
+  public ChooseDictDefineCommand setIncEmpty(boolean incEmpty) {
+    this.incEmpty = incEmpty;
+    return this;
+  }
 }

@@ -14,7 +14,6 @@
 package org.kayura.uasp.organize.cmd.handler;
 
 import org.kayura.cmd.CommandHandler;
-import org.kayura.security.LoginUser;
 import org.kayura.type.HttpResult;
 import org.kayura.type.PageClause;
 import org.kayura.type.PageList;
@@ -23,6 +22,7 @@ import org.kayura.uasp.basic.manage.DictDefineManager;
 import org.kayura.uasp.dict.DictDefineQuery;
 import org.kayura.uasp.dict.DictDefineVo;
 import org.kayura.uasp.organize.cmd.QueryDictDefineCommand;
+import org.kayura.utils.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,14 +43,20 @@ public class QueryDictDefineCommandHandler implements CommandHandler<QueryDictDe
   public HttpResult execute(QueryDictDefineCommand command) {
 
     DictDefineQuery query = command.getQuery();
+    String appId = query.getAppId();
+    String parentId = query.getParentId();
     PageClause pageClause = command.getPageClause();
 
+    if (StringUtils.isAllBlank(appId, parentId)) {
+      return HttpResult.error("缺少必要的查询参数。");
+    }
+
     PageList<DictDefineVo> pageList = defineManager.selectPage(w -> {
-      if (DictDefineQuery.APP.equalsIgnoreCase(query.getType())) {
+      if (StringUtils.hasText(parentId)) {
+        w.eq(DictDefineEntity::getParentId, query.getParentId());
+      } else {
         w.eq(DictDefineEntity::getAppId, query.getAppId());
         w.isNull(DictDefineEntity::getParentId);
-      } else if (DictDefineQuery.Category.equalsIgnoreCase(query.getType())) {
-        w.eq(DictDefineEntity::getParentId, query.getParentId());
       }
       w.of(query);
     }, pageClause).streamMap(m -> modelMapper.map(m, DictDefineVo.class));

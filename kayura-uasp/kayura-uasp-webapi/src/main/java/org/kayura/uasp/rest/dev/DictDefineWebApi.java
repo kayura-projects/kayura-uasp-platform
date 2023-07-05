@@ -44,7 +44,7 @@ public class DictDefineWebApi {
   @Secured(actions = QUERY)
   public HttpResult selectDefineTree(ChooseDictDefineCommand command) {
 
-    return commandGateway.send(command);
+    return commandGateway.send(command.setIncEmpty(true));
   }
 
   @PostMapping("/dict-define/page")

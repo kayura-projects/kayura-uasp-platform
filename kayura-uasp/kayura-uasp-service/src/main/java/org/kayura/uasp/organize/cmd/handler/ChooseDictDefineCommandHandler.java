@@ -19,10 +19,10 @@ import org.kayura.type.HttpResult;
 import org.kayura.type.IdName;
 import org.kayura.type.TreeNode;
 import org.kayura.type.UsableStatus;
-import org.kayura.uasp.dev.entity.ApplicEntity;
-import org.kayura.uasp.dev.manage.ApplicManager;
 import org.kayura.uasp.basic.entity.DictDefineEntity;
 import org.kayura.uasp.basic.manage.DictDefineManager;
+import org.kayura.uasp.dev.entity.ApplicEntity;
+import org.kayura.uasp.dev.manage.ApplicManager;
 import org.kayura.uasp.dict.DictScopes;
 import org.kayura.uasp.dict.DictTypes;
 import org.kayura.uasp.organize.cmd.ChooseDictDefineCommand;
@@ -33,7 +33,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class ChooseDictDefineCommandHandler implements CommandHandler<ChooseDictDefineCommand, HttpResult> {
@@ -50,6 +49,7 @@ public class ChooseDictDefineCommandHandler implements CommandHandler<ChooseDict
   @Transactional(readOnly = true)
   public HttpResult execute(ChooseDictDefineCommand command) {
 
+    boolean incEmpty = command.isIncEmpty();
     LoginUser loginUser = command.getLoginUser();
 
     List<TreeNode> treeNodes = new ArrayList<>();
@@ -75,8 +75,8 @@ public class ChooseDictDefineCommandHandler implements CommandHandler<ChooseDict
       TreeNode appNode = TreeNode.create().setId(app.getId()).setText(app.getName()).setType("APP");
       List<DictDefineEntity> appDefines = defineList.stream().filter(x -> x.getAppId().equals(app.getId())).toList();
       List<DictDefineEntity> rootDefines = appDefines.stream().filter(x -> StringUtils.isBlank(x.getParentId())).toList();
-      List<TreeNode> children = buildChildrenDefine(rootDefines, appDefines);
-      if (!children.isEmpty()) {
+      List<TreeNode> children = buildChildrenDefine(rootDefines, appDefines, incEmpty);
+      if (incEmpty || !children.isEmpty()) {
         appNode.setChildren(children);
       }
       treeNodes.add(appNode);
@@ -89,7 +89,7 @@ public class ChooseDictDefineCommandHandler implements CommandHandler<ChooseDict
     return HttpResult.okBody(Collections.singletonList(root));
   }
 
-  protected List<TreeNode> buildChildrenDefine(List<DictDefineEntity> defines, List<DictDefineEntity> allDefines) {
+  protected List<TreeNode> buildChildrenDefine(List<DictDefineEntity> defines, List<DictDefineEntity> allDefines, boolean incEmpty) {
 
     List<TreeNode> treeNodes = new ArrayList<>();
     for (DictDefineEntity dd : defines) {
@@ -107,12 +107,14 @@ public class ChooseDictDefineCommandHandler implements CommandHandler<ChooseDict
         List<DictDefineEntity> collect = allDefines.stream()
           .filter(x -> dd.getDefineId().equals(x.getParentId()))
           .toList();
-        if (!collect.isEmpty()) {
-          List<TreeNode> children = buildChildrenDefine(collect, allDefines);
-          if (!children.isEmpty()) {
-            node.setChildren(children);
-            treeNodes.add(node);
+        if (incEmpty || !collect.isEmpty()) {
+          if (!collect.isEmpty()) {
+            List<TreeNode> children = buildChildrenDefine(collect, allDefines, incEmpty);
+            if (!children.isEmpty()) {
+              node.setChildren(children);
+            }
           }
+          treeNodes.add(node);
         }
       }
     }
