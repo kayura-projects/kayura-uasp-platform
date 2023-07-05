@@ -36,8 +36,8 @@ public interface UaspBpmnConstants extends BpmnXMLConstants {
 
   String CHAR_SEPARATOR = ",";
 
-  String kayura_NAMESPACE = "http://www.kayura.cloud/bpmn/model";
-  String kayura_PREFIX = "kayura";
+  String KAYURA_NAMESPACE = "http://www.kayura.cn/bpmn/model";
+  String KAYURA_PREFIX = "kayura";
 
   String ASSIGNMENT_TYPE = "assignmentType"; // starter,current,candidate
   String ASSIGNMENT_TYPE_STARTER = "starter";
@@ -67,7 +67,7 @@ public interface UaspBpmnConstants extends BpmnXMLConstants {
   String FLOW_LABEL = "flowLabel";
   String APPROVAL_RESULT = "approvalResult";
 
-  Map<String, String> kayura_DEFAULT_VALUES = Map.of(
+  Map<String, String> KAYURA_DEFAULT_VALUES = Map.of(
     ASSIGNMENT_TYPE, ASSIGNMENT_TYPE_CANDIDATE,
     HANDLE_MODE, HANDLE_MODE_ANY,
     ALLOW_BACK, ATTRIBUTE_VALUE_TRUE,

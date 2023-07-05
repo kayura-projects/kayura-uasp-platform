@@ -37,10 +37,10 @@ public class ActivitiHelper {
       List<ExtensionElement> elements = extensionElements.get(propName);
       for (ExtensionElement el : elements) {
         String prefix = el.getNamespacePrefix();
-        if ((StringUtils.isBlank(prefix) || kayura_PREFIX.equals(prefix)) && propName.equals(el.getName())) {
+        if ((StringUtils.isBlank(prefix) || KAYURA_PREFIX.equals(prefix)) && propName.equals(el.getName())) {
           return el.getElementText();
-        } else if (defaultValue == null && kayura_DEFAULT_VALUES.containsKey(el.getName())) {
-          return kayura_DEFAULT_VALUES.get(el.getName());
+        } else if (defaultValue == null && KAYURA_DEFAULT_VALUES.containsKey(el.getName())) {
+          return KAYURA_DEFAULT_VALUES.get(el.getName());
         }
       }
     }
@@ -65,13 +65,13 @@ public class ActivitiHelper {
       for (Map.Entry<String, List<ExtensionElement>> map : extensionElements.entrySet()) {
         for (ExtensionElement el : map.getValue()) {
           String prefix = el.getNamespacePrefix();
-          if ((StringUtils.isBlank(prefix) || kayura_PREFIX.equals(prefix))) {
+          if ((StringUtils.isBlank(prefix) || KAYURA_PREFIX.equals(prefix))) {
             properties.put(map.getKey(), el.getElementText());
           }
         }
       }
     }
-    for (Map.Entry<String, String> e : kayura_DEFAULT_VALUES.entrySet()) {
+    for (Map.Entry<String, String> e : KAYURA_DEFAULT_VALUES.entrySet()) {
       if (!properties.containsKey(e.getKey())) {
         properties.put(e.getKey(), e.getValue());
       }
