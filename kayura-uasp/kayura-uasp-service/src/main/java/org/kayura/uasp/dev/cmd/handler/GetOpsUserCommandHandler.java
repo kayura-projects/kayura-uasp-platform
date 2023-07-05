@@ -31,42 +31,46 @@ package org.kayura.uasp.dev.cmd.handler;
 
 import org.kayura.cmd.CommandHandler;
 import org.kayura.type.HttpResult;
-import org.kayura.type.PageClause;
-import org.kayura.type.PageList;
-import org.kayura.type.UserTypes;
-import org.kayura.uasp.dev.cmd.QueryOpsUserCommand;
+import org.kayura.uasp.dev.cmd.GetOpsUserCommand;
 import org.kayura.uasp.auth.entity.UserEntity;
+import org.kayura.uasp.auth.manage.UserAvatarManager;
 import org.kayura.uasp.auth.manage.UserManager;
-import org.kayura.uasp.user.OpsUserQuery;
 import org.kayura.uasp.user.OpsUserVo;
+import org.kayura.uasp.user.UserAvatarVo;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Component
-public class QueryAdminUserCommandHandler implements CommandHandler<QueryOpsUserCommand, HttpResult> {
+public class GetOpsUserCommandHandler implements CommandHandler<GetOpsUserCommand, HttpResult> {
 
   private final UserManager userManager;
   private final ModelMapper modelMapper;
+  private final UserAvatarManager userAvatarManager;
 
-  public QueryAdminUserCommandHandler(UserManager userManager,
-                                      ModelMapper modelMapper) {
+  public GetOpsUserCommandHandler(UserManager userManager,
+                                  ModelMapper modelMapper,
+                                  UserAvatarManager userAvatarManager) {
     this.userManager = userManager;
     this.modelMapper = modelMapper;
+    this.userAvatarManager = userAvatarManager;
   }
 
   @Transactional(readOnly = true)
-  public HttpResult execute(QueryOpsUserCommand command) {
+  public HttpResult execute(GetOpsUserCommand command) {
 
-    OpsUserQuery query = command.getQuery();
-    PageClause pageClause = command.getPageClause();
+    String userId = command.getUserId();
 
-    PageList<OpsUserVo> pageList = userManager.selectPage(w -> {
-      w.of(query);
-      w.eq(UserEntity::getUserType, UserTypes.ADMIN);
-      w.isNull(UserEntity::getTenantId);
-    }, pageClause).streamMap(m -> modelMapper.map(m, OpsUserVo.class));
-    return HttpResult.okBody(pageList);
+    OpsUserVo model = null;
+    UserEntity entity = userManager.selectById(userId);
+    if (entity != null) {
+      model = modelMapper.map(entity, OpsUserVo.class);
+      // History Avatars
+      List<UserAvatarVo> avatars = this.userAvatarManager.queryHistory(userId);
+      model.setHistoryAvatars(avatars);
+    }
+    return HttpResult.okBody(model);
   }
-
 }

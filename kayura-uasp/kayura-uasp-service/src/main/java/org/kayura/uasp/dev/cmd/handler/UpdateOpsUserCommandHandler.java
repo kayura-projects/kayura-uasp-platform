@@ -47,15 +47,15 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Component
-public class UpdateAdminUserCommandHandler implements CommandHandler<UpdateOpsUserCommand, HttpResult> {
+public class UpdateOpsUserCommandHandler implements CommandHandler<UpdateOpsUserCommand, HttpResult> {
 
   private final UserManager userManager;
   private final PasswordEncoder passwordEncoder;
   private final UserAvatarManager userAvatarManager;
 
-  public UpdateAdminUserCommandHandler(UserManager userManager,
-                                       PasswordEncoder passwordEncoder,
-                                       UserAvatarManager userAvatarManager) {
+  public UpdateOpsUserCommandHandler(UserManager userManager,
+                                     PasswordEncoder passwordEncoder,
+                                     UserAvatarManager userAvatarManager) {
     this.userManager = userManager;
     this.passwordEncoder = passwordEncoder;
     this.userAvatarManager = userAvatarManager;

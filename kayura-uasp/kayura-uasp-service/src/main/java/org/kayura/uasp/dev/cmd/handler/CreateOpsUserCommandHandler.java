@@ -50,17 +50,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Component
-public class CreateAdminUserCommandHandler implements CommandHandler<CreateOpsUserCommand, HttpResult> {
+public class CreateOpsUserCommandHandler implements CommandHandler<CreateOpsUserCommand, HttpResult> {
 
   private final UserManager userManager;
   private final UserAvatarManager userAvatarManager;
   private final ModelMapper modelMapper;
   private final PasswordEncoder passwordEncoder;
 
-  public CreateAdminUserCommandHandler(UserManager userManager,
-                                       UserAvatarManager userAvatarManager,
-                                       ModelMapper modelMapper,
-                                       PasswordEncoder passwordEncoder) {
+  public CreateOpsUserCommandHandler(UserManager userManager,
+                                     UserAvatarManager userAvatarManager,
+                                     ModelMapper modelMapper,
+                                     PasswordEncoder passwordEncoder) {
     this.userManager = userManager;
     this.userAvatarManager = userAvatarManager;
     this.modelMapper = modelMapper;

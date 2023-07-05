@@ -19,7 +19,7 @@ package org.kayura.type;
 public enum UserTypes implements EnumValue {
 
   ROOT("ROOT", "超级用户"),
-  ADMIN("ADMIN", "系统管理员"),
+  ADMIN("ADMIN", "运维管理员"),
   MANAGER("MANAGER", "公司管理员"),
   USER("USER", "业务操作员"),
   CLIENT("CLIENT", "客户端");
