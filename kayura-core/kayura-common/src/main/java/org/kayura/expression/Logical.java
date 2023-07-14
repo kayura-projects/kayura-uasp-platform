@@ -16,18 +16,28 @@
 
 package org.kayura.expression;
 
-import java.util.List;
+import org.kayura.type.EnumValue;
 
-public class WhereExpr {
+public enum Logical implements EnumValue {
 
-  private List<ConditionExpr> conditions;
+  AND("AND", "并且"),
+  OR("OR", "或者");
 
-  public List<ConditionExpr> getConditions() {
-    return conditions;
+  private final String value;
+  private final String name;
+
+  Logical(final String value, String name) {
+    this.value = value;
+    this.name = name;
   }
 
-  public WhereExpr setConditions(List<ConditionExpr> conditions) {
-    this.conditions = conditions;
-    return this;
+  @Override
+  public String toString() {
+    return this.value;
+  }
+
+  @Override
+  public String getName() {
+    return name;
   }
 }
