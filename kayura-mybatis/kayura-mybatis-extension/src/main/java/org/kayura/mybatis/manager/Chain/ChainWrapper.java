@@ -13,9 +13,9 @@
 
 package org.kayura.mybatis.manager.Chain;
 
-import org.kayura.mybatis.mapper.BaseMapper;
+import org.kayura.data.Mapper;
 
 public interface ChainWrapper<T> {
 
-  BaseMapper getBaseMapper();
+  Mapper getBaseMapper();
 }

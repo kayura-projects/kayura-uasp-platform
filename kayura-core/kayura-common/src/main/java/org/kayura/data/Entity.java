@@ -14,39 +14,7 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.expression;
+package org.kayura.data;
 
-import org.kayura.type.EnumValue;
-
-public enum Operator implements EnumValue {
-
-  Eq("=", "等于"),
-  Gt(">", "大于"),
-  Lt("<", "小于"),
-  GtEq(">=", "大于等于"),
-  LtEq("<=", "小于等于"),
-  IsNull("IS NULL", "为Null"),
-  IsNotNull("<=", "不为Null"),
-  In("in", "在列表"),
-  NotIn("not in", "不在列表"),
-  Like("like", "包含"),
-  NotLike("like", "不包含");
-
-  private final String value;
-  private final String name;
-
-  Operator(final String value, String name) {
-    this.value = value;
-    this.name = name;
-  }
-
-  @Override
-  public String toString() {
-    return this.value;
-  }
-
-  @Override
-  public String getName() {
-    return name;
-  }
+public interface Entity {
 }

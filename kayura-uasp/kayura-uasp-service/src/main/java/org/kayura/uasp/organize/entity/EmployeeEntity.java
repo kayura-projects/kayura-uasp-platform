@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.organize.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.ForeignKey;
 import org.kayura.mybatis.annotation.mapper.Id;
 import org.kayura.mybatis.annotation.mapper.RefColumn;
@@ -32,7 +33,7 @@ import java.time.LocalDateTime;
  * @author liangXia@live.com
  */
 @Table("uasp_employee")
-public class EmployeeEntity {
+public class EmployeeEntity implements Entity {
 
   /** 员工ID */
   @Id

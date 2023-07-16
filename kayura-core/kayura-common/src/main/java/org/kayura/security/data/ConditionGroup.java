@@ -14,10 +14,11 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.expression;
+package org.kayura.security.data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ConditionGroup {
 
@@ -27,11 +28,11 @@ public class ConditionGroup {
     return new ConditionGroup();
   }
 
-  public StringBuilder buildSql() {
+  public StringBuilder buildSql(Map<String, Object> params) {
 
     StringBuilder builder = new StringBuilder();
     for (int i = 0; i < conditions.size(); i++) {
-      conditions.get(i).appendSqlExpression(i, builder);
+      conditions.get(i).appendSqlExpression(params, i, builder);
     }
     return builder;
   }

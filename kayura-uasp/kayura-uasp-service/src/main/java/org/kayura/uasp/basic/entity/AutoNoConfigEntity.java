@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.basic.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.uasp.dev.entity.ApplicEntity;
 import org.kayura.uasp.organize.entity.CompanyEntity;
@@ -25,7 +26,7 @@ import java.time.LocalDateTime;
  * @author liangXia@live.com
  */
 @Table("uasp_auto_no_config")
-public class AutoNoConfigEntity {
+public class AutoNoConfigEntity implements Entity {
 
   /** 编号详情ID */
   @Id

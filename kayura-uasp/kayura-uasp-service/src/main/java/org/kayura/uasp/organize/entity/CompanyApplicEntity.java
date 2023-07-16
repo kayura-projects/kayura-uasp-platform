@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.organize.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.type.UsableStatus;
 import org.kayura.uasp.dev.entity.ApplicEntity;
@@ -23,7 +24,7 @@ import org.kayura.uasp.company.CompanyTypes;
 import java.time.LocalDateTime;
 
 @Table("uasp_company_applic")
-public class CompanyApplicEntity {
+public class CompanyApplicEntity implements Entity {
 
   /** 公司应用ID */
   @Id

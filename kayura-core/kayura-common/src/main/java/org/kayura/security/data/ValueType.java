@@ -14,19 +14,20 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.expression;
+package org.kayura.security.data;
 
 import org.kayura.type.EnumValue;
 
-public enum Logical implements EnumValue {
+public enum ValueType implements EnumValue {
 
-  AND("AND", "并且"),
-  OR("OR", "或者");
+  Text("TEXT", "文本"),
+  Number("NUMBER", "数字"),
+  Date("DATE", "日期");
 
   private final String value;
   private final String name;
 
-  Logical(final String value, String name) {
+  ValueType(final String value, String name) {
     this.value = value;
     this.name = name;
   }

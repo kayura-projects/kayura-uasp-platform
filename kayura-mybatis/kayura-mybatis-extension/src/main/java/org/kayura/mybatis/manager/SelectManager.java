@@ -13,6 +13,7 @@
 
 package org.kayura.mybatis.manager;
 
+import org.kayura.data.Manager;
 import org.kayura.mybatis.mapper.wrapper.Wrapper;
 import org.kayura.mybatis.manager.Chain.LambdaQueryChainWrapper;
 import org.kayura.mybatis.manager.Chain.QueryChainWrapper;
@@ -24,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public interface SelectManager<T> extends BaseManager {
+public interface SelectManager<T> extends Manager {
 
   QueryChainWrapper<T> queryWrapper();
 

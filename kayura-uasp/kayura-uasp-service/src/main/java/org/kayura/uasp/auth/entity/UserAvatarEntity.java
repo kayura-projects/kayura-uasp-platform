@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.auth.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 
 import java.time.LocalDateTime;
@@ -23,7 +24,7 @@ import java.time.LocalDateTime;
  * @author liangXia@live.com
  */
 @Table("uasp_user_avatar")
-public class UserAvatarEntity {
+public class UserAvatarEntity implements Entity {
 
   /** 头像ID */
   @Id

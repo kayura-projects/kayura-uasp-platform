@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.basic.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 
 /**
@@ -21,7 +22,7 @@ import org.kayura.mybatis.annotation.mapper.*;
  * @author liangXia@live.com
  */
 @Table("uasp_auto_no_define")
-public class AutoNoDefineEntity {
+public class AutoNoDefineEntity implements Entity {
 
   /** 自动编号ID */
   @Id

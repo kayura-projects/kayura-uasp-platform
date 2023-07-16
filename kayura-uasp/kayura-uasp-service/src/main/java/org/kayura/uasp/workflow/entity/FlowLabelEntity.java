@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.workflow.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.Id;
 import org.kayura.mybatis.annotation.mapper.Table;
 
@@ -24,7 +25,7 @@ import java.time.LocalDateTime;
  * @author liangxia@live.com
  */
 @Table("uasp_flow_label")
-public class FlowLabelEntity {
+public class FlowLabelEntity implements Entity {
 
   @Id
   private String businessKey;

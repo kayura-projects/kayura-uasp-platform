@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.auth.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.Id;
 import org.kayura.mybatis.annotation.mapper.Table;
 import org.kayura.uasp.signup.SignupStatus;
@@ -25,7 +26,7 @@ import java.time.LocalDateTime;
  * @author liangXia@live.com
  */
 @Table("uasp_signup")
-public class SignupEntity {
+public class SignupEntity implements Entity {
 
   /** 注册ID */
   @Id

@@ -13,6 +13,7 @@
 
 package org.kayura.mybatis.mapper;
 
+import org.kayura.data.Mapper;
 import org.kayura.mybatis.mapper.wrapper.Wrapper;
 import org.kayura.mybatis.toolkit.Constants;
 import org.kayura.mybatis.type.PageBounds;
@@ -23,7 +24,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
 
-public interface SelectMapper<ENTITY> extends BaseMapper {
+public interface SelectMapper<ENTITY> extends Mapper {
 
   List<ENTITY> selectList(@Param(Constants.WRAPPER) Wrapper queryWrapper);
 

@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.ops.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.uasp.applibrary.UpdateModes;
 import org.kayura.uasp.dev.entity.ApplicEntity;
@@ -25,7 +26,7 @@ import java.time.LocalDateTime;
  * @author liangXia@live.com
  */
 @Table("uasp_app_store")
-public class AppStoreEntity {
+public class AppStoreEntity implements Entity {
 
   /** 发布ID */
   @Id

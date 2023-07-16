@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.workflow.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.type.ApproveStatus;
 import org.kayura.type.ExtendFields;
@@ -27,7 +28,7 @@ import java.time.LocalDateTime;
  * @author liangxia@live.com
  */
 @Table("uasp_mock_form")
-public class MockFormEntity {
+public class MockFormEntity implements Entity {
 
   @Id
   private String mockId;

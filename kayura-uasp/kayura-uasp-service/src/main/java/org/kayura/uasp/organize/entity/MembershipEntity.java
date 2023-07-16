@@ -13,10 +13,11 @@
 
 package org.kayura.uasp.organize.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.Table;
 
 @Table("uasp_membership")
-public class MembershipEntity {
+public class MembershipEntity implements Entity {
 
   private String userId;
   private String groupId;

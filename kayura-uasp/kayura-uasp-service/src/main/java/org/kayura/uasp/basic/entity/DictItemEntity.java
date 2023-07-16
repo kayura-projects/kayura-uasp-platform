@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.basic.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.type.UsableStatus;
 
@@ -22,7 +23,7 @@ import org.kayura.type.UsableStatus;
  * @author liangXia@live.com
  */
 @Table("uasp_dict_item")
-public class DictItemEntity {
+public class DictItemEntity implements Entity {
 
   /** 词典项ID */
   @Id

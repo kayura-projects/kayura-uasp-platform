@@ -13,10 +13,11 @@
 
 package org.kayura.uasp.organize.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 
 @Table("uasp_depart_leader")
-public class DepartLeaderEntity {
+public class DepartLeaderEntity implements Entity {
 
   private String departId;
   @ForeignKey(entity = EmployeeEntity.class, alias = "ee")

@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.dev.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.type.UsableStatus;
 import org.kayura.uasp.func.ModuleTypes;
@@ -21,9 +22,8 @@ import org.kayura.uasp.func.UsageTypes;
 import java.util.List;
 
 
-
 @Table("uasp_module_define")
-public class ModuleDefineEntity {
+public class ModuleDefineEntity implements Entity {
 
   @Id
   private String moduleId;

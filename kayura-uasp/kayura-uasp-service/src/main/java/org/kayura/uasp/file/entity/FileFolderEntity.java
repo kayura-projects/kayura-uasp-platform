@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.file.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.Id;
 import org.kayura.mybatis.annotation.mapper.Table;
 import org.kayura.uasp.file.OwnerTypes;
@@ -25,7 +26,7 @@ import java.time.LocalDateTime;
  * @author liangXia@live.com
  */
 @Table("uasp_file_folder")
-public class FileFolderEntity {
+public class FileFolderEntity implements Entity {
 
   /** 目录ID */
   @Id

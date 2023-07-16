@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.basic.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.uasp.dev.entity.ApplicEntity;
 import org.kayura.uasp.dict.DataTypes;
@@ -26,7 +27,7 @@ import org.kayura.uasp.dict.DictTypes;
  * @author liangXia@live.com
  */
 @Table("uasp_dict_define")
-public class DictDefineEntity {
+public class DictDefineEntity implements Entity {
 
   /** 词典分类ID */
   @Id

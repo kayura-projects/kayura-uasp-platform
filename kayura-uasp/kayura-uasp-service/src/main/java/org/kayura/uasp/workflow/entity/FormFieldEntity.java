@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.workflow.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.uasp.form.FieldUsage;
 
@@ -22,7 +23,7 @@ import org.kayura.uasp.form.FieldUsage;
  * @author liangxia@live.com
  */
 @Table("uasp_form_field")
-public class FormFieldEntity {
+public class FormFieldEntity implements Entity {
 
   /** 表单字段ID */
   @Id

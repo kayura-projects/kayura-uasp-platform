@@ -13,12 +13,13 @@
 
 package org.kayura.uasp.dev.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.Sort;
 import org.kayura.mybatis.annotation.mapper.Table;
 import org.kayura.uasp.func.ActionTypes;
 
 @Table("uasp_module_action")
-public class ModuleActionEntity {
+public class ModuleActionEntity implements Entity {
 
   private String moduleId;
   private ActionTypes type;

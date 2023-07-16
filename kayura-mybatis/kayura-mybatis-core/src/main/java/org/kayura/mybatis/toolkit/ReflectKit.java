@@ -13,7 +13,7 @@
 
 package org.kayura.mybatis.toolkit;
 
-import org.kayura.mybatis.exceptions.ExceptUtils;
+import org.kayura.except.ExceptUtils;
 import org.kayura.utils.Assert;
 import org.kayura.utils.CollectionUtils;
 import org.kayura.utils.ReflectUtils;
@@ -173,11 +173,11 @@ public abstract class ReflectKit {
       Method method = entityClass.getMethod(methodName);
       return method.invoke(entity);
     } catch (NoSuchMethodException e) {
-      throw ExceptUtils.except("Error: NoSuchMethod in %s.  Cause:", e, entityClass.getSimpleName());
+      throw ExceptUtils.ibatis("Error: NoSuchMethod in %s.  Cause:", e, entityClass.getSimpleName());
     } catch (IllegalAccessException e) {
-      throw ExceptUtils.except("Error: Cannot execute a private method. in %s.  Cause:", e, entityClass.getSimpleName());
+      throw ExceptUtils.ibatis("Error: Cannot execute a private method. in %s.  Cause:", e, entityClass.getSimpleName());
     } catch (InvocationTargetException e) {
-      throw ExceptUtils.except("Error: InvocationTargetException on getMethodValue.  Cause:" + e);
+      throw ExceptUtils.ibatis("Error: InvocationTargetException on getMethodValue.  Cause:" + e);
     }
   }
 
@@ -221,7 +221,7 @@ public abstract class ReflectKit {
       writeMethod.setAccessible(true);
       writeMethod.invoke(entity, value);
     } catch (IllegalAccessException | InvocationTargetException e) {
-      throw ExceptUtils.except("Error: Cannot execute a private method. in %s.  Cause:", e, entityClass.getSimpleName());
+      throw ExceptUtils.ibatis("Error: Cannot execute a private method. in %s.  Cause:", e, entityClass.getSimpleName());
     }
   }
 }

@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.file.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.Id;
 import org.kayura.mybatis.annotation.mapper.Table;
 import org.kayura.uasp.file.FileClassify;
@@ -26,7 +27,7 @@ import java.time.LocalDateTime;
  * @author liangXia@live.com
  */
 @Table("uasp_file_store")
-public class FileStoreEntity {
+public class FileStoreEntity implements Entity {
 
   /** 文件ID */
   @Id

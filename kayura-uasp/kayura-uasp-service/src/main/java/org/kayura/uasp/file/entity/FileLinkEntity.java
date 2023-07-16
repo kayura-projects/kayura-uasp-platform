@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.file.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.type.StringList;
 import org.kayura.uasp.organize.entity.CompanyEntity;
@@ -27,7 +28,7 @@ import java.time.LocalDateTime;
  * @author liangXia@live.com
  */
 @Table("uasp_file_link")
-public class FileLinkEntity {
+public class FileLinkEntity implements Entity {
 
   /** 文件链接ID */
   @Id

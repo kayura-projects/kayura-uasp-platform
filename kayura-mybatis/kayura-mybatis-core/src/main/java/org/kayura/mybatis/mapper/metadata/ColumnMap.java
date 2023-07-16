@@ -18,6 +18,10 @@ public class ColumnMap {
   private String fieldName;
   private String selectName;
 
+  public static ColumnMap create() {
+    return new ColumnMap();
+  }
+
   public String getFieldName() {
     return fieldName;
   }
@@ -36,8 +40,5 @@ public class ColumnMap {
     return this;
   }
 
-  public static ColumnMap builder() {
-    return new ColumnMap();
-  }
 
 }

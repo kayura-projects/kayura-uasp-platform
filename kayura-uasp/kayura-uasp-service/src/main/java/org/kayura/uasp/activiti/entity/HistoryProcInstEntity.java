@@ -13,10 +13,11 @@
 
 package org.kayura.uasp.activiti.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 
 @Table("act_hi_procinst")
-public class HistoryProcInstEntity {
+public class HistoryProcInstEntity implements Entity {
 
   @Id
   @Column("ID_")

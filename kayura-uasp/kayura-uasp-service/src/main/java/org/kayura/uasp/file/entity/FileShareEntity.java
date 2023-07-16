@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.file.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 
 import java.time.LocalDateTime;
@@ -23,7 +24,7 @@ import java.time.LocalDateTime;
  * @author liangXia@live.com
  */
 @Table("uasp_file_share")
-public class FileShareEntity {
+public class FileShareEntity implements Entity {
 
   /** 文件分享ID */
   @Id

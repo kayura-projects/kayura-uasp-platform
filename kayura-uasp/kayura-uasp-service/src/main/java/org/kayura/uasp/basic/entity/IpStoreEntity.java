@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.basic.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.Id;
 import org.kayura.mybatis.annotation.mapper.Table;
 import org.kayura.uasp.ip.IPTypes;
@@ -25,7 +26,7 @@ import java.time.LocalDateTime;
  * @author liangXia@live.com
  */
 @Table("uasp_ip_store")
-public class IpStoreEntity {
+public class IpStoreEntity implements Entity {
 
   /** IP地址 */
   @Id

@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.auth.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.type.DataStatus;
 import org.kayura.uasp.dev.entity.ApplicEntity;
@@ -23,7 +24,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Table("uasp_tenant")
-public class TenantEntity {
+public class TenantEntity implements Entity {
 
   @Id
   @ForeignKey(entity = CompanyEntity.class, alias = "cc")

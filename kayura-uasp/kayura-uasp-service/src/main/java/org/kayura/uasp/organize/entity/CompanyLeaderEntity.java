@@ -13,12 +13,13 @@
 
 package org.kayura.uasp.organize.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.ForeignKey;
 import org.kayura.mybatis.annotation.mapper.RefColumn;
 import org.kayura.mybatis.annotation.mapper.Table;
 
 @Table("uasp_company_leader")
-public class CompanyLeaderEntity {
+public class CompanyLeaderEntity implements Entity {
 
   private String companyId;
   @ForeignKey(entity = EmployeeEntity.class, alias = "ee")

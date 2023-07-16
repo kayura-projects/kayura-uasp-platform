@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.basic.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.Id;
 import org.kayura.mybatis.annotation.mapper.Table;
 
@@ -22,7 +23,7 @@ import org.kayura.mybatis.annotation.mapper.Table;
  * @author liangXia@live.com
  */
 @Table("uasp_auto_no_recycle")
-public class AutoNoRecycleEntity {
+public class AutoNoRecycleEntity implements Entity {
 
   /** 计数周期 */
   @Id

@@ -13,12 +13,13 @@
 
 package org.kayura.mybatis.mapper;
 
+import org.kayura.data.Mapper;
 import org.kayura.type.TreeNode;
 
 import java.io.Serializable;
 import java.util.List;
 
-public interface TreeMapper<ENTITY> extends BaseMapper {
+public interface TreeMapper<ENTITY> extends Mapper {
 
   List<TreeNode> loadTreeByParent(Serializable parentId);
 

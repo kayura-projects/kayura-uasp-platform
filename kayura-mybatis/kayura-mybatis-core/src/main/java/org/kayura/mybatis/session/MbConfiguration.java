@@ -17,7 +17,7 @@ import org.kayura.mybatis.binding.MbMapperRegistry;
 import org.kayura.mybatis.executor.MbBatchExecutor;
 import org.kayura.mybatis.executor.MbReuseExecutor;
 import org.kayura.mybatis.executor.MbSimpleExecutor;
-import org.kayura.mybatis.mapper.BaseMapper;
+import org.kayura.data.Mapper;
 import org.kayura.mybatis.mapper.injector.DefaultMethodInjector;
 import org.kayura.mybatis.mapper.injector.IKeyGenerator;
 import org.kayura.mybatis.mapper.injector.IMethodInjector;
@@ -51,7 +51,7 @@ public class MbConfiguration extends Configuration {
 
   protected static final Log logger = LogFactory.getLog(MbConfiguration.class);
 
-  protected Class<?> superMapperClass = BaseMapper.class;
+  protected Class<?> superMapperClass = Mapper.class;
   protected IKeyGenerator keyGenerator;
   protected final MbMapperRegistry mapperRegistry = new MbMapperRegistry(this);
   protected final Map<Class<?>, EntityInfo> entityInfos = new HashMap<>();

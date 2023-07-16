@@ -25,7 +25,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class EntityInfo implements Constants {
 
@@ -124,14 +123,14 @@ public class EntityInfo implements Constants {
       this.columnMap = new HashMap<>();
 
       if (StringKit.isNotBlank(this.idProperty)) {
-        ColumnMap idMap = ColumnMap.builder();
+        ColumnMap idMap = ColumnMap.create();
         idMap.setSelectName(this.selectIdColumn(true));
         idMap.setFieldName(this.selectIdColumn(false));
         this.columnMap.put(this.getIdProperty(), idMap);
       }
 
       for (ColumnInfo column : this.getColumns()) {
-        ColumnMap colMap = ColumnMap.builder();
+        ColumnMap colMap = ColumnMap.create();
         colMap.setSelectName(column.selectColumn(true));
         colMap.setFieldName(column.selectColumn(false));
         this.columnMap.put(column.getPropertyName(), colMap);

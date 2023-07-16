@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.workflow.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.type.DataStatus;
 import org.kayura.uasp.organize.entity.CompanyEntity;
@@ -26,7 +27,7 @@ import org.kayura.uasp.workflow.FormulaGroups;
  * @author liangxia@live.com
  */
 @Table("uasp_form_flow")
-public class FormFlowEntity {
+public class FormFlowEntity implements Entity {
 
   /** 流程ID */
   @Id

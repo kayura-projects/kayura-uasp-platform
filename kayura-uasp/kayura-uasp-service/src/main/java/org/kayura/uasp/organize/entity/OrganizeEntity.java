@@ -13,12 +13,13 @@
 
 package org.kayura.uasp.organize.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.Id;
 import org.kayura.mybatis.annotation.mapper.Table;
 import org.kayura.uasp.organize.OrganizeTypes;
 
 @Table("uasp_organize")
-public class OrganizeEntity {
+public class OrganizeEntity implements Entity {
 
   @Id
   private String id;

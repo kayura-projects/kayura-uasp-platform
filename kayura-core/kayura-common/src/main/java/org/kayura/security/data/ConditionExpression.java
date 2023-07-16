@@ -14,12 +14,13 @@
  - limitations under the License.
  -----------------------------------------------------------------------------*/
 
-package org.kayura.expression;
+package org.kayura.security.data;
 
 import org.kayura.utils.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ConditionExpression {
 
@@ -28,7 +29,7 @@ public class ConditionExpression {
   private String leftName;
   private ValueType type = ValueType.Text;
   private Operator operator = Operator.Eq;
-  private Object rightValue;
+  private String rightValue;
   private String rightName;
   private List<ConditionExpression> nestedExpressions = new ArrayList<>();
 
@@ -38,29 +39,43 @@ public class ConditionExpression {
 
   // --- 构建可执行SQL脚本 ---
 
-  public void appendSqlExpression(int index, StringBuilder sqlExpression) {
+  public void appendSqlExpression(Map<String, Object> params, int index, StringBuilder sqlExpression) {
 
     if (index > 0) {
       sqlExpression.append(" ").append(this.logic.getValue()).append(" ");
     }
     sqlExpression.append("(");
 
-    // 先检查当前表达式是否为一个嵌套的表达式
     if (CollectionUtils.isNotEmpty(this.nestedExpressions)) {
       for (int i = 0; i < nestedExpressions.size(); i++) {
-        nestedExpressions.get(i).appendSqlExpression(i, sqlExpression);
+        nestedExpressions.get(i).appendSqlExpression(params, i, sqlExpression);
       }
     } else {
-      // 构建当前条件表达式的SQL子表达式
-      sqlExpression.append(leftValue).append(" ").append(operator);
-      if (this.valueIsExpr(rightValue) || this.type.equals(ValueType.Number)) {
-        sqlExpression.append(" ").append(rightValue);
+      sqlExpression.append(leftValue).append(" ").append(operator).append(" ");
+      if (this.valueIsExpr(rightValue)) {
+        Object target = params.get(rightValue);
+        if (target instanceof String) {
+          sqlExpression.append(this.escapeString((String) target));
+        } else if (target instanceof Number) {
+          sqlExpression.append(target);
+        } else if (target instanceof SubqueryExpression subqueryExpression) {
+          sqlExpression.append("(").append(subqueryExpression.buildSql(params)).append(")");
+        }
+      } else if (this.type.equals(ValueType.Number)) {
+        sqlExpression.append(rightValue);
       } else {
-        sqlExpression.append(" '").append(rightValue).append("'");
+        sqlExpression.append(this.escapeString(rightValue));
       }
     }
-
     sqlExpression.append(")");
+  }
+
+  private String escapeString(String input) {
+    if (input == null) {
+      return "IS NULL";
+    }
+    String escapedString = input.replace("'", "''");
+    return "'" + escapedString + "'";
   }
 
   private boolean valueIsExpr(Object value) {
@@ -112,11 +127,11 @@ public class ConditionExpression {
     return this;
   }
 
-  public Object getRightValue() {
+  public String getRightValue() {
     return rightValue;
   }
 
-  public ConditionExpression setRightValue(Object rightValue) {
+  public ConditionExpression setRightValue(String rightValue) {
     this.rightValue = rightValue;
     return this;
   }

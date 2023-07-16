@@ -59,4 +59,16 @@ public abstract class ExceptUtils {
     security(StringUtils.format(message, params));
   }
 
+  public static IBatisException ibatis(String msg, Throwable t, Object... params) {
+    return new IBatisException(StringUtils.format(msg, params), t);
+  }
+
+  public static IBatisException ibatis(String msg, Object... params) {
+    return new IBatisException(StringUtils.format(msg, params));
+  }
+
+  public static IBatisException ibatis(Throwable t) {
+    return new IBatisException(t);
+  }
+
 }

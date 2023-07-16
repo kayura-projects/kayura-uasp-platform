@@ -13,7 +13,10 @@
 
 package org.kayura.uasp.auth.entity;
 
-import org.kayura.mybatis.annotation.mapper.*;
+import org.kayura.data.Entity;
+import org.kayura.mybatis.annotation.mapper.ForeignKey;
+import org.kayura.mybatis.annotation.mapper.RefColumn;
+import org.kayura.mybatis.annotation.mapper.Table;
 import org.kayura.type.StringList;
 import org.kayura.uasp.dev.entity.ModuleDefineEntity;
 import org.kayura.uasp.privilege.PrivilegeTypes;
@@ -24,7 +27,7 @@ import org.kayura.uasp.privilege.PrivilegeTypes;
  * @author liangXia@live.com
  */
 @Table("uasp_privilege")
-public class PrivilegeEntity {
+public class PrivilegeEntity implements Entity {
 
   /** 关联ID:租户ID,角色ID,用户ID,公司ID; */
   private String linkId;

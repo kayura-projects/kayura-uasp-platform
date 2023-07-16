@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.workflow.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.type.DataStatus;
 import org.kayura.uasp.dev.entity.ApplicEntity;
@@ -24,7 +25,7 @@ import org.kayura.uasp.form.FormTypes;
  * @author liangxia@live.com
  */
 @Table("uasp_form_define")
-public class FormDefineEntity {
+public class FormDefineEntity implements Entity {
 
   /** 业务表单ID */
   @Id

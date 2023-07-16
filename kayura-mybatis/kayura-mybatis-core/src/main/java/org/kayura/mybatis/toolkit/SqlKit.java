@@ -17,13 +17,10 @@ import org.kayura.mybatis.mapper.wrapper.SqlLike;
 
 public class SqlKit {
   public static String concatLike(Object str, SqlLike type) {
-    switch (type) {
-      case LEFT:
-        return StringPool.PERCENT + str;
-      case RIGHT:
-        return str + StringPool.PERCENT;
-      default:
-        return StringPool.PERCENT + str + StringPool.PERCENT;
-    }
+    return switch (type) {
+      case LEFT -> StringPool.PERCENT + str;
+      case RIGHT -> str + StringPool.PERCENT;
+      default -> StringPool.PERCENT + str + StringPool.PERCENT;
+    };
   }
 }

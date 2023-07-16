@@ -13,6 +13,7 @@
 
 package org.kayura.uasp.auth.entity;
 
+import org.kayura.data.Entity;
 import org.kayura.mybatis.annotation.mapper.*;
 import org.kayura.type.UsableStatus;
 import org.kayura.type.UserTypes;
@@ -28,7 +29,7 @@ import java.time.LocalDateTime;
  * @author liangXia@live.com
  */
 @Table("uasp_role_user")
-public class RoleUserEntity {
+public class RoleUserEntity implements Entity {
 
   /** 角色ID */
   @ForeignKey(entity = RoleEntity.class, alias = "rr")
